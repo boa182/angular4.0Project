@@ -16,7 +16,10 @@
   ng serve --open
 #### 4.引入ui框架
 #### 5.新建组件
-	 ng g c superSell  特卖页面【首页】 
+- 在指定目录components下，命令行运行以下的代码
+	
+	 ng g c superSell  特卖页面【默认显示的第一个页面】
+	 ng g c home       主页面 
 	 ng g c classify   分类页面 
 	 ng g c shopping   商场页面 
 	 ng g c car	   购物车页面 

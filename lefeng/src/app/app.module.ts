@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import {RootRouter} from './router/router.ts'
 
 import { AppComponent } from './app.component';
 import { SuperSellComponent } from './components/super-sell/super-sell.component';
@@ -11,6 +11,7 @@ import { MyComponent } from './components/my/my.component';
 import { GoodslistComponent } from './components/goodslist/goodslist.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
@@ -23,10 +24,11 @@ import { RegisterComponent } from './components/register/register.component';
     MyComponent,
     GoodslistComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    HomeComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,RootRouter
   ],
   providers: [],
   bootstrap: [AppComponent]
