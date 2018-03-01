@@ -16,14 +16,14 @@
   ng serve --open
 #### 4.引入ui框架
 #### 5.新建组件
-	 ng g c superSell  特卖页面【首页】<br />
-	 ng g c classify   分类页面<br />
-	 ng g c shopping   商场页面<br />
-	 ng g c car	          购物车页面<br />
-	 ng g c my  个人页面<br />
-	 ng g c goodslist 商品列表页面 <br />
-	 ng g c login 登录页面<br />
-	 ng g c register 注册页面 <br />
+	 ng g c superSell  特卖页面【首页】 
+	 ng g c classify   分类页面 
+	 ng g c shopping   商场页面 
+	 ng g c car	   购物车页面 
+	 ng g c my  	   个人页面 
+	 ng g c goodslist  商品列表页面 
+	 ng g c login      登录页面 
+	 ng g c register  注册页面 
 #### 6.配置路由
 ###  三、实战开始
 ###  四、项目中遇到的困难
