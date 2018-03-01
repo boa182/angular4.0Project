@@ -8,13 +8,14 @@
     <p>命令行输入 npm install -g @angular/cli</P>
 - 检测 Angular CLI 是否安装成功
     <p>命令行输入 ng --version</p>
-#### 3.开始使用
+#### 3.开启服务器
 - 在指定目录下运行：ng new myProject -style=scss
     <p>为了指定样式用scss</p>
 - 启动开发服务器<br />
   cd myProject<br />
   ng serve --open
-  
+#### 4.引入ui框架
+
 ###  三、实战开始
 ###  四、项目中遇到的困难
 
