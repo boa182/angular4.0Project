@@ -18,15 +18,15 @@
 #### 5.新建组件
 - 在指定目录components下，命令行运行以下的代码
 	
-	 ng g c superSell  特卖页面【默认显示的第一个页面】
-	 ng g c home       主页面 
-	 ng g c classify   分类页面 
-	 ng g c shopping   商场页面 
-	 ng g c car	   购物车页面 
-	 ng g c my  	   个人页面 
-	 ng g c goodslist  商品列表页面 
-	 ng g c login      登录页面 
-	 ng g c register  注册页面 
+	 ng g c superSell  特卖页面【默认显示的第一个页面】<br />
+	 ng g c home       主页面 <br />
+	 ng g c classify   分类页面 <br />
+	 ng g c shopping   商场页面 <br />
+	 ng g c car	   购物车页面 <br />
+	 ng g c my  	   个人页面 <br />
+	 ng g c goodslist  商品列表页面 <br />
+	 ng g c login      登录页面 <br />
+	 ng g c register  注册页面 <br />
 #### 6.配置路由
 ###  三、实战开始
 ###  四、项目中遇到的困难
