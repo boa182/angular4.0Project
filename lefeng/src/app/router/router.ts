@@ -12,16 +12,13 @@ import {RegisterComponent} from '../components/register/register.component';
 const appRoutes: Routes = [
 	{
 		path:'',
-		component:HomeComponent,
-		children:[
-			{path:'shopping',component:ShoppingComponent},
-			{path:'car',component:CarComponent},
-			{path:'classify',component:ClassifyComponent},
-			{path:'my',component:MyComponent},
-			{path:'super',component:SuperSellComponent},
-			
-		]
+		component:SuperSellComponent,	
 	},
+	{path:'shopping',component:ShoppingComponent},
+	{path:'car',component:CarComponent},
+	{path:'classify',component:ClassifyComponent},
+	{path:'my',component:MyComponent},
+	{path:'super',component:SuperSellComponent},
 	{path:'login',component:LoginComponent},
 	{path:'goodslist',component:GoodslistComponent},
 	{path:'regster',component:RegisterComponent},

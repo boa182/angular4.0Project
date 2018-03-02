@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {RootRouter} from './router/router.ts'
+import {RootRouter} from './router/router'
 
 import { AppComponent } from './app.component';
 import { SuperSellComponent } from './components/super-sell/super-sell.component';
@@ -11,8 +11,8 @@ import { MyComponent } from './components/my/my.component';
 import { GoodslistComponent } from './components/goodslist/goodslist.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { HomeComponent } from './components/home/home.component';
 
+import { FootnavComponent } from './components/footnav/footnav.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,8 @@ import { HomeComponent } from './components/home/home.component';
     GoodslistComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+   
+    FootnavComponent
   ],
   imports: [
     BrowserModule,RootRouter
