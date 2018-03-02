@@ -84,14 +84,18 @@ import {RootRouter} from './router/router.ts';
 - 在各页面
 ```javascript
 	<div class="bigbox">
-		<div class="contain">
-			<p>
-			  shopping works!
-			</p>
-			<a routerLink="/goodslist">跳转到列表页</a> 
-		</div>
-		//需要底部导航的页面，才渲染footnav这个组件
-		<footnav></footnav>		
+	<div class="clearfix">
+	//需要头部搜索功能的页面才渲染这个组件
+		<search></search>
 	</div>
+	<div class="contain">
+		<p>
+		  shopping works!
+		</p>
+		<a routerLink="/goodslist">跳转到列表页</a> 
+	</div>
+	//需要底部导航的页面才渲染这个组件
+	<footnav></footnav>		
+</div>
 ```
 ###  四、项目中遇到的困难
