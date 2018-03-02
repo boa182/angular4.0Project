@@ -32,6 +32,7 @@
 	 ng g c goodslist  商品列表页面 <br />
 	 ng g c login      登录页面 <br />
 	 ng g c register  注册页面 <br />
+	 ng g c search    头部搜索组件 <br />
 #### 3.配置路由
 - 在src目录下新建一个router文件夹，新建一个配置文件router.ts
 ```javascript
