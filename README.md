@@ -33,6 +33,7 @@
 	 ng g c login      登录页面 <br />
 	 ng g c register  注册页面 <br />
 	 ng g c search    头部搜索组件 <br />
+	 ng g c banner    轮播图组件 <br />
 #### 3.配置路由
 - 在src目录下新建一个router文件夹，新建一个配置文件router.ts
 ```javascript
@@ -89,6 +90,8 @@ import {RootRouter} from './router/router.ts';
 		<search></search>
 	</div>
 	<div class="contain">
+		//需要轮播图功能的页面才渲染这个组件
+		<banner></banner>
 		<p>
 		  shopping works!
 		</p>
@@ -99,3 +102,4 @@ import {RootRouter} from './router/router.ts';
 </div>
 ```
 ###  四、项目中遇到的困难
+#### 1.引入第三方类库

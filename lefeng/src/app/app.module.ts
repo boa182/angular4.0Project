@@ -14,6 +14,7 @@ import { RegisterComponent } from './components/register/register.component';
 
 import { FootnavComponent } from './components/footnav/footnav.component';
 import { SearchComponent } from './components/search/search.component';
+import { BannerComponent } from './components/banner/banner.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,9 @@ import { SearchComponent } from './components/search/search.component';
    
     FootnavComponent,
    
-    SearchComponent
+    SearchComponent,
+   
+    BannerComponent
   ],
   imports: [
     BrowserModule,RootRouter
