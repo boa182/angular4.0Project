@@ -16,9 +16,11 @@
 - 启动开发服务器<br />
   cd myProject<br />
   ng serve --open
-#### 4.引入ui框架
+
+###  三、实战开始
+#### 1.引入ui框架
 - SUI Mobile 
-#### 5.新建组件
+#### 2.新建组件
 - 在指定目录components下，命令行运行以下的代码
 	
 	 ng g c superSell  特卖页面【默认显示的第一个页面】<br />
@@ -30,7 +32,7 @@
 	 ng g c goodslist  商品列表页面 <br />
 	 ng g c login      登录页面 <br />
 	 ng g c register  注册页面 <br />
-#### 6.配置路由
+#### 3.配置路由
 - 在src目录下新建一个router文件夹，新建一个配置文件router.ts
 ```javascript
 	//引入组件
@@ -91,7 +93,4 @@ import {RootRouter} from './router/router.ts';
 		<footnav></footnav>		
 	</div>
 ```
-
-
-###  三、实战开始
 ###  四、项目中遇到的困难
