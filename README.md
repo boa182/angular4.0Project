@@ -67,6 +67,31 @@ export const RootRouter = RouterModule.forRoot(
 	{ enableTracing: false}
 )
 ```
+- 在根组件 --app.module.ts设置路由出口
+<router-outlet></router-outlet> <br />
+- 根模块 --app.module.ts
+```javascript
+import {RootRouter} from './router/router.ts';
+	@NgModule({
+    	imports: [
+        	RootRouter
+    	]
+	})
+```
+- 在各页面
+```javascript
+	<div class="bigbox">
+		<div class="contain">
+			<p>
+			  shopping works!
+			</p>
+			<a routerLink="/goodslist">跳转到列表页</a> 
+		</div>
+		//需要底部导航的页面，才渲染footnav这个组件
+		<footnav></footnav>		
+	</div>
+```
+
+
 ###  三、实战开始
 ###  四、项目中遇到的困难
-
