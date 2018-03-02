@@ -1,8 +1,8 @@
 ## 主要目的：通过一个angular项目来学习angular框架
 ### 一、如何跑通项目
 - 在lefeng文件下npm install -g @angular/cli
-- npm install 
-- 开启服务器
+- 然后再npm install 
+- 开启服务器 ng serve --open
 ### 二、从零搭建
 #### 1.typeScript知识的学习
 #### 2.搭建angular开发环境
@@ -32,6 +32,7 @@
 	 ng g c goodslist  商品列表页面 <br />
 	 ng g c login      登录页面 <br />
 	 ng g c register  注册页面 <br />
+	 ng g c search    头部搜索组件 <br />
 #### 3.配置路由
 - 在src目录下新建一个router文件夹，新建一个配置文件router.ts
 ```javascript
@@ -82,15 +83,19 @@ import {RootRouter} from './router/router.ts';
 ```
 - 在各页面
 ```javascript
-	<div class="bigbox">
-		<div class="contain">
-			<p>
-			  shopping works!
-			</p>
-			<a routerLink="/goodslist">跳转到列表页</a> 
-		</div>
-		//需要底部导航的页面，才渲染footnav这个组件
-		<footnav></footnav>		
+<div class="bigbox">
+	<div class="clearfix">
+		//需要头部搜索功能的页面才渲染这个组件
+		<search></search>
 	</div>
+	<div class="contain">
+		<p>
+		  shopping works!
+		</p>
+		<a routerLink="/goodslist">跳转到列表页</a> 
+	</div>
+	//需要底部导航的页面才渲染这个组件
+	<footnav></footnav>		
+</div>
 ```
 ###  四、项目中遇到的困难
