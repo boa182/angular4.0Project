@@ -1,8 +1,8 @@
 ## 主要目的：通过一个angular项目来学习angular框架
 ### 一、如何跑通项目
 - 在lefeng文件下npm install -g @angular/cli
-- npm install 
-- 开启服务器
+- 然后再npm install 
+- 开启服务器 ng serve --open
 ### 二、从零搭建
 #### 1.typeScript知识的学习
 #### 2.搭建angular开发环境
