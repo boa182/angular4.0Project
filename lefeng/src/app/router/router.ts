@@ -4,7 +4,6 @@ import {MyComponent} from '../components/my/my.component';
 import {GoodslistComponent} from '../components/goodslist/goodslist.component';
 import {ClassifyComponent} from '../components/classify/classify.component';
 import {ShoppingComponent} from '../components/shopping/shopping.component';
-import {HomeComponent} from '../components/home/home.component';
 import {SuperSellComponent} from '../components/super-sell/super-sell.component';
 import {LoginComponent} from '../components/login/login.component';
 import {RegisterComponent} from '../components/register/register.component';
