@@ -13,6 +13,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 
 import { FootnavComponent } from './components/footnav/footnav.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,9 @@ import { FootnavComponent } from './components/footnav/footnav.component';
     LoginComponent,
     RegisterComponent,
    
-    FootnavComponent
+    FootnavComponent,
+   
+    SearchComponent
   ],
   imports: [
     BrowserModule,RootRouter
