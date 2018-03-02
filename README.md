@@ -83,9 +83,9 @@ import {RootRouter} from './router/router.ts';
 ```
 - 在各页面
 ```javascript
-	<div class="bigbox">
+<div class="bigbox">
 	<div class="clearfix">
-	//需要头部搜索功能的页面才渲染这个组件
+		//需要头部搜索功能的页面才渲染这个组件
 		<search></search>
 	</div>
 	<div class="contain">
