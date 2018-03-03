@@ -1,0 +1,29 @@
+#header{
+    height:60px;
+    background:#3c8dbc;
+}
+#main{
+    position:fixed;
+    top:60px;
+    left:0;
+    right:0;
+    bottom:0;
+
+}
+#main #nav{
+    position:absolute;
+    left:0;
+    top:0;
+    bottom:0;
+    width:200px;
+    background:#1e282c;
+
+}
+#main #content{
+    position:absolute;
+    left:206px;
+    right:0;
+    top:0;
+    bottom:0;
+    overflow-x: auto;
+}
