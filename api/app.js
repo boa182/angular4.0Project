@@ -7,10 +7,10 @@ var mysql = require("mysql");
 //连接服务器配置.......................................................................
 function createConnection() {
 	var connection = mysql.createConnection({
-		host: 'localhost',// 127.0.0.1 10.3.136.153
+		host: '10.0.136.252',// 127.0.0.1 10.3.136.153
 		user: 'root',
 		password: '',
-		database: 'try',
+		database: 'lefeng',
         multipleStatements: true
 	});
 	return connection

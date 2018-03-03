@@ -5,9 +5,9 @@
 - 开启服务器 ng serve --open
 ### 二、从零搭建
 #### 1.typeScript知识的学习
-- 1）与JavaScript最大的区别
-	JavaScript是一种弱类型，即变量的类型是不确定的
-	typescript最大特点就是支持强类型和ES6 Class
+- 1）与JavaScript最大的区别<br />
+	JavaScript是一种弱类型，即变量的类型是不确定的 <br />
+	typescript最大特点就是支持强类型和ES6 Class <br />
 ```javascript
 let name: string = `Gene`;
 let age: number = 37;

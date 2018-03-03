@@ -24,6 +24,7 @@ export default {
             })
         })
     },
+    /*
     post: (http, api, params = {}) => {
         return new Promise((resolve, reject) => {
             // http.get(getUrl(api)).subscribe((res) => {
@@ -41,4 +42,5 @@ export default {
             })
         })
     }
+    */
 }
