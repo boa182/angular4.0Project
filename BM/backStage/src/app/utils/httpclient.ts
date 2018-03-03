@@ -1,6 +1,6 @@
 import {RequestMethod, RequestOptions} from '@angular/http';
 
-let baseUrl = 'http://localhost:8080/';
+let baseUrl = 'http://10.0.136.252:3000/';
 
 function getUrl(_url){
     if(_url.startsWith('http')){
