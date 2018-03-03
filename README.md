@@ -33,6 +33,7 @@
 	 ng g c login      登录页面 <br />
 	 ng g c register  注册页面 <br />
 	 ng g c search    头部搜索组件 <br />
+	 ng g c banner    轮播图组件 <br />
 #### 3.配置路由
 - 在src目录下新建一个router文件夹，新建一个配置文件router.ts
 ```javascript
@@ -83,15 +84,44 @@ import {RootRouter} from './router/router.ts';
 ```
 - 在各页面
 ```javascript
-	<div class="bigbox">
-		<div class="contain">
-			<p>
-			  shopping works!
-			</p>
-			<a routerLink="/goodslist">跳转到列表页</a> 
-		</div>
-		//需要底部导航的页面，才渲染footnav这个组件
-		<footnav></footnav>		
+<div class="bigbox">
+	<div class="clearfix">
+		//需要头部搜索功能的页面才渲染这个组件
+		<search></search>
 	</div>
+	<div class="contain">
+		//需要轮播图功能的页面才渲染这个组件
+		<banner></banner>
+		<p>
+		  shopping works!
+		</p>
+		<a routerLink="/goodslist">跳转到列表页</a> 
+	</div>
+	//需要底部导航的页面才渲染这个组件
+	<footnav></footnav>		
+</div>
 ```
 ###  四、项目中遇到的困难
+#### 1.引入第三方类库swiper（npm install方法失败了）
+- 将swiper文件（swiper-3.4.2.css /swiper-3.4.2.js）放到assets文件下
+- 项目目录下：（命令行）<br />
+	PS:因为ts并不能准确识别js语法，所以需要用ts中的interface接口，将js转化成ts并暴露出来<br />
+	npm install @types/swiper --save  配置在生产环境<br />
+	npm install @types/swiper --save-dev 配置在开发环境<br />
+- 在index.html引入放在assets文件夹下的swiper文件
+- 全局引入swiper
+在typings.d.ts文件内 声明全局的jQuery对象，全局的对象一般都放在这里声明 <br />
+```javascript
+/* SystemJS module definition */
+declare var module: NodeModule;
+	interface NodeModule {
+	  id: string;
+	}
+
+declare var jquey:any;
+declare var swiper:any;;
+```
+- 在组件内引入swiper <br />
+	import * as swiper from 'swiper'
+- 参照swiper的文档，在组件内写入swiper的代码结构
+	
