@@ -10,7 +10,8 @@ function createConnection() {
 		host: 'localhost',// 127.0.0.1 10.3.136.153
 		user: 'root',
 		password: '',
-		database: 'try'
+		database: 'try',
+        multipleStatements: true
 	});
 	return connection
 }

@@ -1,0 +1,25 @@
+{
+    "api":"students",
+    "cols":"*",
+    "filterCols":"imgurl,color,size,type",
+    "mutipleSelect":true,
+    "dictionary":{
+        "en":{
+
+        },
+        "cn":{
+            "details":"描述信息"
+        }
+    },
+    "filterData":{
+        "add_time":{
+            "type":"DateFormat",
+            "format":"yyyy-MM-dd"
+        },
+        "name":{
+            "type":"Replace",
+            "reg":"(.).+",
+            "replaceVal":"$1**"
+        }
+    }
+}
