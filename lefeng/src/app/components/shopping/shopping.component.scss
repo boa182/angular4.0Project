@@ -1,0 +1,38 @@
+#contain{
+	position:relative;
+	top:-1.4rem;
+	overflow-x:hidden;
+	height: 123%;
+	background: #f5f5f5;
+	.classifyItem{
+		background: #fff;
+		margin-bottom:0.466667rem;
+		ul{
+			display:flex;
+			flex-wrap:wrap;
+		}
+		li{
+			width:25%;
+			text-align: center;
+			padding: 0.466667rem;
+			img{
+				width: 1.853333rem;
+			}
+		}
+	}
+	.classifyItem2{
+		background: #fff;
+		margin-bottom:0.466667rem;
+		ul{
+			display: flex;
+			flex-wrap: wrap;
+			li{
+				width: 50%;
+				justify-content: space-between;
+				img{
+					width: 9.033333rem;
+				}
+			}
+		}
+	}
+}

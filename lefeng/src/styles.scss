@@ -42,7 +42,8 @@ ul,li{
     flex-direction: column;
     .contain{
         height: 100%;
-        overflow-x:hidden;
+        display: flex;
+        flex-direction: column;
     }
     .footnav{
         ul{
