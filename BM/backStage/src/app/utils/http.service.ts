@@ -25,21 +25,5 @@ export class HttpService{
         })
     }
 
-    post(api, params = {}){
-        return new Promise((resolve, reject) => {
-            // http.get(getUrl(api)).subscribe((res) => {
-            //     resolve(res.json());
-            // })
-            params['_'] = Math.random();
-            this.http.request(getUrl(api), new RequestOptions({
-                method: RequestMethod.Post,
-                body: params,
-                headers: new Headers({
-                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-                })
-            })).toPromise().then((res) => {
-                resolve(res.json());
-            })
-        }
-    }
+   
 }
