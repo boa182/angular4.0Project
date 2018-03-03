@@ -17,6 +17,10 @@
 			img{
 				width: 1.853333rem;
 			}
+			p{
+				font-size: 0.526667rem;
+				font-weight: bold;
+			}
 		}
 	}
 	.classifyItem2{
@@ -34,4 +38,40 @@
 			}
 		}
 	}
+}
+
+.zbyTitle{
+	position: relative;
+	font-size: 0.813333rem;
+	text-align: center;
+	padding-top:0.366667rem;
+	height: 2.866667rem;
+	i{
+		position: absolute;
+		left:50%;
+		transform:translateX(-50%);
+		display:block;
+		border: 1px solid #A0A0A0;
+		width: 5.8rem;
+		height: 2.1rem;
+	}
+	p{	
+		height: 2.5rem;
+		background: #fff;
+		color:#DB7897;
+		position: absolute;
+		left:50%;
+		transform:translateX(-50%);
+		top:0.233333rem;
+		padding: 0 0.533333rem;
+	}
+	span{
+		display:block;
+		color:#979797;
+		font-size:0.226667rem ;
+	}
+}
+.classifyItem3{
+	background: #fff;
+	margin-bottom:0.466667rem;
 }
