@@ -4,16 +4,8 @@
 .swiper-pagination{
 	top:6.266667rem;
 }
-// 有数据之后可以删除背景颜色
-.red{
-	background: red;
-}
-.blue{
-	background: blue;
-}
-.green{
-	background: #58bc58;
-}
-.yellow{
-	background: yellow;
+.swiper-slide{
+	img{
+		width: 100%;
+	}
 }
