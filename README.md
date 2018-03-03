@@ -5,6 +5,15 @@
 - 开启服务器 ng serve --open
 ### 二、从零搭建
 #### 1.typeScript知识的学习
+- 1）与JavaScript最大的区别
+	JavaScript是一种弱类型，即变量的类型是不确定的
+	typescript最大特点就是支持强类型和ES6 Class
+```javascript
+let name: string = `Gene`;
+let age: number = 37;
+let sentence: string = `Hello, my name is ${ name }.
+I'll be ${ age + 1 } years old next month.`;
+```
 #### 2.搭建angular开发环境
 - 安装Angular CLi
     <p>命令行输入 npm install -g @angular/cli</P>
