@@ -29,13 +29,29 @@ app.use(express.static('config'));
 // parse application/json 
 
 //get请求.................................................................................
-
+app.get('/login', function(req, res) {
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/user').login(req,res,connection);
+    console.log(req.query)
+})
 
 //要post请求...............................................................................
 // parse application/x-www-form-urlencoded 
 //使用bodyParser模块
 //用于post请求获取参数
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
+
+app.post('/register', function(req, res) {
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/user').register(req,res,connection);
+    console.log(req.query)
+})
 
 
 //监听该端口..............................................................................
