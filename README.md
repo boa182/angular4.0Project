@@ -110,6 +110,67 @@ import {RootRouter} from './router/router.ts';
 	<footnav></footnav>		
 </div>
 ```
+#### 4.配置baseUrl
+- 1)往根模块引入http
+```javascript
+import { HttpModule } from '@angular/http';
+
+@NgModule({
+    imports: [HttpModule]
+})
+```
+- 2)在utils目录下新建httpclient.ts
+```javascript
+import {RequestMethod, RequestOptions} from '@angular/http';
+
+let baseUrl = 'http://localhost:3000/';
+
+function getUrl(_url){
+    if(_url.startsWith('http')){
+        return _url;
+    }
+    return baseUrl + _url;
+}
+
+export default {
+    get: (http, api, params = {}) => {
+        return new Promise((resolve, reject) => {
+            //每一次get请求都会加上一个随机参数，目的是为了自动刷新清空缓存
+            params['_'] = Math.random();
+            http.request(getUrl(api), new RequestOptions({
+                method: RequestMethod.Get,
+                search: params
+            })).toPromise().then((res) => {
+                resolve(res.json());
+            })
+        })
+  	}
+}
+```
+- 3)在需要使用的组件
+```javascript
+import { Component, OnInit } from '@angular/core';
+//1、先把需要的东西引进来
+import {Http} from '@angular/http';
+import httpclient from '../../utils/httpclient';
+
+@Component({
+  selector: 'app-shopping',
+  templateUrl: './shopping.component.html',
+  styleUrls: ['./shopping.component.scss']
+})
+export class ShoppingComponent implements OnInit {
+//2、定义引进来的http，这一步很重要，没有会报request is not defined；
+  constructor(private http: Http) { }
+
+  ngOnInit() {
+  //3.使用
+  	httpclient.get(this.http,'try.txt').then((res)=>{
+  		console.log(res);
+  	})
+	}
+}
+```
 ###  四、项目中遇到的困难
 #### 1.引入第三方类库swiper（npm install方法失败了）
 - 将swiper文件（swiper-3.4.2.css /swiper-3.4.2.js）放到assets文件下
@@ -133,4 +194,5 @@ declare var swiper:any;;
 - 在组件内引入swiper <br />
 	import * as swiper from 'swiper'
 - 参照swiper的文档，在组件内写入swiper的代码结构
+
 	
