@@ -37,6 +37,15 @@ app.get('/login', function(req, res) {
     require('./router/user').login(req,res,connection);
     console.log(req.query)
 })
+//通过class查找商品
+app.get('/selectclass', function(req, res) {
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/select').selectClass(req,res,connection);
+    console.log(req.query)
+})
 
 //要post请求...............................................................................
 // parse application/x-www-form-urlencoded 
