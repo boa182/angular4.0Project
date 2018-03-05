@@ -11,8 +11,9 @@ import { CommonService } from './../../utils/common.service';
 })
 export class GoodslistComponent implements OnInit {
 	goodslist: Array<object> = [];
+	dataset: Object = {};
+	@Input() type :string = null;
   constructor(private http: HttpService ,private common: CommonService ) { }
-  dataset: Object = {};
 	
   ngOnInit() {
 			this.createList();
@@ -24,7 +25,7 @@ export class GoodslistComponent implements OnInit {
   }
   createList(){
   	this.http.get('selectClass',{
-				type: this.common.type
+				type: this.type || this.common.type
 			}).then((res) => {
 //				数据太多,ERROR  is not assignable to type 'object[]'.Property 'includes' is missing in type '{}'.
 //				let data = JSON.parse(JSON.stringify(res));

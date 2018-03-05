@@ -57,6 +57,15 @@ app.get('/selectclass', function(req, res) {
     console.log(req.query)
 })
 
+// 分页查找商品
+app.get('/goods', function(req, res) {
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/goods').goods(req,res,connection);
+    console.log(req.query)
+})
 
 //要post请求...............................................................................
 // parse application/x-www-form-urlencoded 
