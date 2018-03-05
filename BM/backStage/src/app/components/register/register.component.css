@@ -8,3 +8,7 @@
     display:block;
     margin-top:10px;
 }
+.help-block{
+    color:red;
+    /*display:none;*/
+}

@@ -7,7 +7,7 @@ var mysql = require("mysql");
 //连接服务器配置.......................................................................
 function createConnection() {
 	var connection = mysql.createConnection({
-		host: '10.0.136.252',// 127.0.0.1 10.3.136.153
+		host: '10.3.136.140',// 127.0.0.1 10.3.136.153
 		user: 'root',
 		password: '',
 		database: 'lefeng',
@@ -43,6 +43,9 @@ app.get('/login', function(req, res) {
 //使用bodyParser模块
 //用于post请求获取参数
 var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({
+    extended: false
+}))
 
 app.post('/register', function(req, res) {
     //然后请求的很快的时候才能正常关闭链接、
@@ -50,7 +53,6 @@ app.post('/register', function(req, res) {
     connection.connect();
     //引入查找模块
     require('./router/user').register(req,res,connection);
-    console.log(req.query)
 })
 
 

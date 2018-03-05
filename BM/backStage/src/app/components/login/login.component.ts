@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Http} from '@angular/http';
-import $ from '../../utils/httpclient'
+import {HttpService} from '../../utils/http.service';
+import {CommonService} from '../../utils/common.service'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'login',
@@ -11,16 +12,21 @@ export class LoginComponent implements OnInit {
     user:string;
     password:string;
 
-  constructor() { }
+  constructor(private httpserver:HttpService, private common: CommonService ,private router: Router) { }
 
   ngOnInit() {
   }
   login(){
-    console.log(this.user);
-    /*
-    $.get(this.http, 'login', {user:this.user,psd:this.password}).then((res) => {
+    console.log(this.user,this.password);
+    
+     this.httpserver.get( 'login', {user:this.user,psd:this.password}).then((res) => {
             console.log(res);
+            if(res.length==0){
+              alert('password error');
+            }else if(res.length==1){
+              this.router.navigate(['/home']);
+            }
         })
-    */
+    
   }
 }
