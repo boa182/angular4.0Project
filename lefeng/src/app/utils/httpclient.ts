@@ -1,7 +1,7 @@
 //第2步配置httpclient
 import {RequestMethod, RequestOptions} from '@angular/http';
 
-let baseUrl = 'http://localhost:3000/';
+let baseUrl = 'http://10.3.136.140:3000/';
 
 function getUrl(_url){
     if(_url.startsWith('http')){

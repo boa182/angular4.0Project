@@ -74,4 +74,15 @@
 .classifyItem3{
 	background: #fff;
 	margin-bottom:0.466667rem;
+	ul{
+	    display: flex;
+	    flex-wrap: wrap;
+	    justify-content: space-between;
+	    li{
+	        width: 33%;
+	        img{
+	            width: 100%;
+	        }
+	    }
+	}
 }
