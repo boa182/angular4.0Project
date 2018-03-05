@@ -58,15 +58,18 @@
     background:#337ab7;
 }
 .setting{
-    position:absolute;
+    position:fixed;
     top:60px;
     right:-200px;
-    display:none;
+    z-index: 1000;
 }
 .setting_main{
     width: 200px;
     height:635px;
     background:#333;
+}
+.setting_main span{
+    color:#fff;
 }
 #main{
     position:fixed;

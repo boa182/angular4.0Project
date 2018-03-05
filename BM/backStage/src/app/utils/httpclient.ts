@@ -1,6 +1,6 @@
 import {RequestMethod, RequestOptions, URLSearchParams} from '@angular/http';
 
-let baseUrl = 'http://10.3.136.252:3000/';
+let baseUrl = 'http://localhost:3000/';
 
 function getUrl(_url){
     if(_url.startsWith('http')){
@@ -25,7 +25,6 @@ export default {
             })
         })
     }
-}
     post:(api, params = {})=>{
             console.log(api);
         return new Promise((resolve, reject) => {

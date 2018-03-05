@@ -7,12 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
     setting(){
-        if($(".setting").toggleClass('aa')){
-            $(".setting").css({
-                display:"block"
-            }).animate({
+        if($(".setting").stop().hasClass('aa')){
+            $(".setting").animate({
                 right:0
             })
+            $(".setting").removeClass('aa')
+        }else{
+            $(".setting").animate({
+                right:-200
+            })
+            $(".setting").addClass('aa')
         }
     }
     
