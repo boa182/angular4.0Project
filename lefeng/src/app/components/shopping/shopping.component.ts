@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
+//依赖组件模块引用
+import { HttpService } from './../../utils/http.service';
+
+
+
 @Component({
   selector: 'app-shopping',
   templateUrl: './shopping.component.html',
@@ -7,9 +12,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShoppingComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http: HttpService) { }
 
   ngOnInit() {
+  	this.http.get('try.txt').then((res)=>{
+  		console.log(res);
+  	})
+	}
+  selectType(txt){
+  	console.log(txt.target.innerText)
   }
-
 }
