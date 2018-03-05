@@ -39,7 +39,7 @@ I'll be ${ age + 1 } years old next month.`;
 	 ng g c shopping   商场页面 <br />
 	 ng g c car	   购物车页面 <br />
 	 ng g c my  	   个人页面 <br />
-	 ng g c goodslist  商品列表页面 <br />
+	 ng g c list  商品列表页面 <br />
 	 ng g c login      登录页面 <br />
 	 ng g c register  注册页面 <br />
 	 ng g c search    头部搜索组件 <br />

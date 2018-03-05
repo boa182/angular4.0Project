@@ -9,11 +9,17 @@ import { HttpService } from './../../utils/http.service';
   styleUrls: ['./goodslist.component.scss']
 })
 export class GoodslistComponent implements OnInit {
-	@Input() type:Array ;
+	@Input() type:String;
+	goodslist: Array<object>;
   constructor(private http: HttpService ) { }
-
+	
   ngOnInit() {
-			console.log(this.type);
+			this.http.get('selectClass',{
+				type: this.type
+			}).then((res) => {
+				this.goodslist = res;
+				console.log(res);
+		})	
   }
   
 
