@@ -1,5 +1,6 @@
+<!--<h1>{{common.type}}</h1>-->
 <ul *ngIf="goodslist">
-	<li *ngFor="let obj of goodslist ">
+	<li *ngFor="let obj of dataset[type]; trackBy: trackByGid">
 		<img [src]="obj.verticalImage"/>
 		<p>
 			<span>{{obj.brandStoreName}}</span>
@@ -8,7 +9,7 @@
 		</p>
 		
 		<p>
-			<span>￥{{obj.marketPrice}} <del>￥{{obj.vipshopPrice}}</del></span>
+			<span>￥{{obj.vipshopPrice}} <del>￥{{obj.marketPrice}}</del></span>
 			<span class="icon icon-cart gouwuche"></span>
 		</p>
 	</li>

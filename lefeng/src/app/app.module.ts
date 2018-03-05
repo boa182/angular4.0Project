@@ -4,7 +4,7 @@ import {RootRouter} from './router/router';
 //第一步往根模块引入http
 import { HttpModule } from '@angular/http';
 import {HttpService} from './utils/http.service';
-
+import {CommonService} from './utils/common.service'
 //双向绑定表单
 import {FormsModule} from '@angular/forms';
 
@@ -43,7 +43,7 @@ import {ListComponent} from './components/list/list.component'
     BrowserModule,RootRouter,HttpModule,FormsModule
   ],
   providers: [
-  	HttpService
+  	HttpService,CommonService
   ],
   bootstrap: [AppComponent]
 })

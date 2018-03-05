@@ -1,0 +1,36 @@
+.listhead{
+    height: 2.2rem;
+    line-height: 2.2rem;
+    p{
+        width: 100%;
+        text-align: center;
+        font-weight: bold;
+        font-size: 1.326666rem;
+        border: 1px solid #F3F3F3;
+        span{
+            padding-left: 0.4rem;
+            float: left;
+            font-size: 0.8rem;
+        }
+    }
+}
+.listFun{
+    height: 2.2rem;
+    line-height: 2.2rem;
+    border: 1px solid #F3F3F3;
+    ul{
+        display: flex;
+        li{
+            width: 33.3%;
+            text-align: center;
+        }
+        li:nth-child(2){
+            border-right:1px solid #F3F3F3 ;
+            border-left:1px solid #F3F3F3 ;
+        }
+    }
+}
+.listBox{
+    height: 100%;
+    overflow-y: scroll;
+}

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
+//依赖组件模块引用
+import { HttpService } from './../../utils/http.service';
+import { CommonService } from './../../utils/common.service';
+
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -7,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http: HttpService,private common:CommonService) { }
 
   ngOnInit() {
   }

@@ -1,9 +1,11 @@
 ## 主要目的：通过一个angular项目来学习angular框架
 ### 参考资料：官网api  https://angular.cn/docs
 ### 一、如何跑通项目
+#### 1.跑通app的步骤
 - 在lefeng文件下npm install -g @angular/cli
 - 然后再npm install 
 - 开启服务器 ng serve --open
+#### 2.开启后台服务器
 ### 二、从零搭建
 #### 1.typeScript知识的学习
 - 1）与JavaScript最大的区别<br />
@@ -223,4 +225,26 @@ declare var swiper:any;;
 	import * as swiper from 'swiper'
 - 参照swiper的文档，在组件内写入swiper的代码结构
 
-#### 2.组件间传参	
+#### 2.请求回来的数据太多，造成的ERROR  is not assignable to type 'object[]'.Property 'includes' is missing in type '{}'.
+- 第一种解决方法
+```javascript
+//在组件里面
+	//利用深拷贝，防止数据源的改变
+	let data = JSON.parse(JSON.stringify(res));
+	this.goodslist = data;				
+```
+- 第二种解决方法
+```javascript
+//在组件里
+//利用对象，把数据分类存储起来
+	dataset: Object = {};
+	this.http.get('selectClass',{
+			type: this.type		
+		}).then((res) => {
+			this.dataset[this.type] = res;
+		})	
+```
+#### 3.底部菜单高亮(routerLinkActive)
+```javascript
+	<li routerLink="/my" routerLinkActive="active">
+```
