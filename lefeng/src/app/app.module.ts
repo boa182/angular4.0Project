@@ -1,7 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {RootRouter} from './router/router'
-
+//第一步往根模块引入http
+import { HttpModule } from '@angular/http';
+import {FormsModule} from '@angular/forms';
+//这里是引入组件
 import { AppComponent } from './app.component';
 import { SuperSellComponent } from './components/super-sell/super-sell.component';
 import { ClassifyComponent } from './components/classify/classify.component';
@@ -35,7 +38,7 @@ import { BannerComponent } from './components/banner/banner.component';
     BannerComponent
   ],
   imports: [
-    BrowserModule,RootRouter
+    BrowserModule,RootRouter,HttpModule,FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

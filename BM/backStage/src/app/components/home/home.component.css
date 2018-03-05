@@ -21,7 +21,7 @@
     left:0;
     right:0;
     bottom:0;
-
+    
 }
 #main a{
     text-decoration: none;
@@ -42,6 +42,7 @@
     top:0;
     bottom:0;
     overflow-x: auto;
+<<<<<<< HEAD
 }
 #accordion{
     margin-bottom: 0px;
@@ -73,4 +74,7 @@
 }
 .input-group{
     padding: 15px 10px;
+=======
+    background:#ecf0f5;
+>>>>>>> c6be85f79a7211ab5aa2c9f33cd02a6ce759597f
 }

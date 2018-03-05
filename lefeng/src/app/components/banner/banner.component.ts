@@ -17,7 +17,8 @@ export class BannerComponent implements OnInit {
         spaceBetween: 30,
         centeredSlides: true,
         autoplay: 2500,
-        autoplayDisableOnInteraction: false
+        autoplayDisableOnInteraction: false,
+        loop:true
     });
   }
 

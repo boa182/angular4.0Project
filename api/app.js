@@ -7,10 +7,10 @@ var mysql = require("mysql");
 //连接服务器配置.......................................................................
 function createConnection() {
 	var connection = mysql.createConnection({
-		host: 'localhost',// 127.0.0.1 10.3.136.153
+		host: 'localhost',// 127.0.0.1 /10.3.136.153 /10.0.136.252
 		user: 'root',
 		password: '',
-		database: 'try',
+		database: 'lefeng',
         multipleStatements: true
 	});
 	return connection
@@ -29,13 +29,29 @@ app.use(express.static('config'));
 // parse application/json 
 
 //get请求.................................................................................
-
+app.get('/login', function(req, res) {
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/user').login(req,res,connection);
+    console.log(req.query)
+})
 
 //要post请求...............................................................................
 // parse application/x-www-form-urlencoded 
 //使用bodyParser模块
 //用于post请求获取参数
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
+
+app.post('/register', function(req, res) {
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/user').register(req,res,connection);
+    console.log(req.query)
+})
 
 
 //监听该端口..............................................................................
