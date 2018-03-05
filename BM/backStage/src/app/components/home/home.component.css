@@ -1,6 +1,19 @@
 #header{
     height:60px;
     background:#3c8dbc;
+    position:relative;
+}
+#header h3{
+    text-align: center;
+    line-height:60px;
+    color:#fff;
+    font-size: 24px;
+    letter-spacing: 10px;
+    font-weight: bold;
+}
+#header select{
+    position:absolute;
+    top:0;
 }
 #main{
     position:fixed;
@@ -9,6 +22,9 @@
     right:0;
     bottom:0;
 
+}
+#main a{
+    text-decoration: none;
 }
 #main #nav{
     position:absolute;
@@ -26,4 +42,35 @@
     top:0;
     bottom:0;
     overflow-x: auto;
+}
+#accordion{
+    margin-bottom: 0px;
+}
+.panel{
+    margin-bottom: 0px;
+    border-radius: 0px; 
+    border:0 none;
+    color: #8aa4af;
+    background: #2c3b41;
+    font-size: 14px;
+}
+.panel-body {
+    padding: 10px 0 10px 33px;
+}
+.panel-default>.panel-heading{
+    color: #fff;
+    background: #1e282c;
+    border-left-color: #3c8dbc;
+}
+.panel-body a{
+    color: #8aa4af;
+}
+.panel-heading{
+   border:0 none;
+}
+.panel-heading a{
+    color:#fff;
+}
+.input-group{
+    padding: 15px 10px;
 }

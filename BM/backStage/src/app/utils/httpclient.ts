@@ -23,7 +23,7 @@ export default {
                 resolve(res.json());
             })
         })
-    },
+    }
     post: (http, api, params = {}) => {
         return new Promise((resolve, reject) => {
             // http.get(getUrl(api)).subscribe((res) => {
