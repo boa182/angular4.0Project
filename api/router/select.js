@@ -1,4 +1,5 @@
 
+
 //查找travel所有的东西  黄子健
 exports.selectBrand = function(req, res, connection) {
 	connection.query(`SELECT * FROM brand`, function(error, results, fields) {
