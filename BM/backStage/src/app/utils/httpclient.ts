@@ -23,10 +23,8 @@ export default {
                 resolve(res.json());
             })
         })
-<<<<<<< HEAD
     }
-=======
-    },
+}
     /*
 >>>>>>> c6be85f79a7211ab5aa2c9f33cd02a6ce759597f
     post: (http, api, params = {}) => {
@@ -46,5 +44,5 @@ export default {
             })
         })
     }
-    */
-}
+    
+}*/

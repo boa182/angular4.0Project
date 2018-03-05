@@ -1,5 +1,24 @@
 <div id="header">
     <h3>乐峰商城后台管理系统</h3>
+    <ul class="header_r">
+        <li>
+            <i class="iconfont icon-xiaoxi"></i>
+            <span>9</span>
+        </li>
+        <li>
+            <i class="iconfont icon-xiaoxi1"></i>
+            <span style="background-color: #f39c12">15</span>
+        </li>
+        <li>
+            <h4>欢迎您：yulu</h4>
+        </li>
+        <div class="setting aa">
+            <div class="setting_main"></div>
+        </div>
+        <li (click)="setting()">
+            <i class="iconfont icon-setup"></i>
+        </li>
+    </ul>
     <select>
         <option value="en">en</option>
         <option value="cn">cn</option>
@@ -7,42 +26,41 @@
 </div>
 <div id="main">
 
-    <div id="nav">
-        <div class="input-group">
-            <input type="text" class="form-control">
-            <span class="input-group-btn">
-                <button class="btn btn-default" type="button">
-                    Go!
-                </button>
-            </span>
-        </div>
-        <div class="panel panel-default">
+    <ul id="nav">
+        <li  class="panel panel-default">
+            主导航
+        </li>
+        <li class="panel panel-default">
             <div class="panel-heading">
+                <i class="iconfont icon-shangpinguanli"></i>
                 <a data-toggle="collapse" data-parent="#accordion" 
                    href="#collapseOne">
-                    <i class="el-icon-arrow-down"></i>商品信息管理
+                    商品信息管理
                 </a>
+                <i class="iconfont icon-jiantou3"></i>
             </div>
             <div id="collapseOne" class="panel-collapse collapse in">
                 <div class="panel-body">
                     <div><a routerLink="goods">商品库存预览</a></div>
                 </div>
             </div>
-        </div>
-        <div class="panel panel-default">
+        </li>
+        <li class="panel panel-default">
             <div class="panel-heading">
+                <i class="iconfont icon-yonghu"></i>
                 <a data-toggle="collapse" data-parent="#accordion" 
                    href="#collapseTwo">
                     会员信息管理
                 </a>
+                <i class="iconfont icon-jiantou3"></i>
             </div>
             <div id="collapseTwo" class="panel-collapse collapse">
                 <div class="panel-body">
                     <div><a routerLink="vip">会员信息</a></div>
                 </div>
             </div>
-        </div>
-    </div>
+        </li>
+    </ul>
     <div id="content">
         <router-outlet></router-outlet>
     </div>

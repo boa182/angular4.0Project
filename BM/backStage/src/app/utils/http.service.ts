@@ -25,8 +25,8 @@ export class HttpService{
         })
     }
 
-<<<<<<< HEAD
-    /*post(api, params = {}){
+
+    post(api, params = {}){
         return new Promise((resolve, reject) => {
             // http.get(getUrl(api)).subscribe((res) => {
             //     resolve(res.json());
@@ -42,8 +42,6 @@ export class HttpService{
                 resolve(res.json());
             })
         }
-    }*/
-=======
-   
->>>>>>> c6be85f79a7211ab5aa2c9f33cd02a6ce759597f
+    }
+
 }
