@@ -1,4 +1,5 @@
 ## 主要目的：通过一个angular项目来学习angular框架
+### 参考资料：官网api  https://angular.cn/docs
 ### 一、如何跑通项目
 - 在lefeng文件下npm install -g @angular/cli
 - 然后再npm install 
@@ -114,45 +115,72 @@ import {RootRouter} from './router/router.ts';
 - 1)往根模块引入http
 ```javascript
 import { HttpModule } from '@angular/http';
+import {HttpService} from './utils/http.service';
 
 @NgModule({
-    imports: [HttpModule]
+    imports: [HttpModule],
+    providers: [
+  		HttpService
+  	],
 })
 ```
-- 2)在utils目录下新建httpclient.ts
+- 2)在utils目录下新建http.service.ts（这里get和post的坑）
 ```javascript
-import {RequestMethod, RequestOptions} from '@angular/http';
+import {Http, RequestMethod, RequestOptions, Headers, URLSearchParams} from '@angular/http';
 
-let baseUrl = 'http://localhost:3000/';
+//解决传参问题
+import { Injectable } from '@angular/core';
+@Injectable()
 
-function getUrl(_url){
-    if(_url.startsWith('http')){
-        return _url;
-    }
-    return baseUrl + _url;
-}
+export class HttpService{
+	constructor(private http: Http){}
 
-export default {
-    get: (http, api, params = {}) => {
-        return new Promise((resolve, reject) => {
-            //每一次get请求都会加上一个随机参数，目的是为了自动刷新清空缓存
+	private baseUrl = 'http://localhost:3000/';
+
+	private getUrl(_url){
+	    if(_url.startsWith('http')){
+	        return _url;
+	    }
+	    return this.baseUrl + _url;
+	}
+
+	get(api, params = {}){
+		return new Promise((resolve, reject) => {
+			//添加随机数，每次请求的url问题，解决浏览器缓存问题
             params['_'] = Math.random();
-            http.request(getUrl(api), new RequestOptions({
-                method: RequestMethod.Get,
-                search: params
-            })).toPromise().then((res) => {
+            
+            const ops = Object.assign({}, {params: params});
+            this.http.get(this.getUrl(api), ops).toPromise().then( res => {
                 resolve(res.json());
             })
         })
-  	}
+	}
+
+	post(api, params = {}){
+		return new Promise((resolve, reject) => {
+            
+            //拼接请求参数
+            let urlSearchParams = new URLSearchParams();
+            for(let key in params){
+                urlSearchParams.append(key, params[key]);
+            }
+            //把参数先转成字符串
+            let param = urlSearchParams.toString();
+            //请求头
+            let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'});
+            this.http.post(this.getUrl(api), param, {headers: headers}).toPromise().then( res=> {
+                resolve(res.json());
+            })
+        })
+	}
 }
 ```
-- 3)在需要使用的组件
+- 3)在需要使用的组件（这里有组件坑）
 ```javascript
 import { Component, OnInit } from '@angular/core';
 //1、先把需要的东西引进来
-import {Http} from '@angular/http';
-import httpclient from '../../utils/httpclient';
+//依赖组件模块引用
+import { HttpService } from './../../utils/http.service';
 
 @Component({
   selector: 'app-shopping',
@@ -161,11 +189,11 @@ import httpclient from '../../utils/httpclient';
 })
 export class ShoppingComponent implements OnInit {
 //2、定义引进来的http，这一步很重要，没有会报request is not defined；
-  constructor(private http: Http) { }
+  constructor(private http: HttpService) { }
 
   ngOnInit() {
   //3.使用
-  	httpclient.get(this.http,'try.txt').then((res)=>{
+  	this.http.get('try.txt').then((res)=>{
   		console.log(res);
   	})
 	}
@@ -195,4 +223,4 @@ declare var swiper:any;;
 	import * as swiper from 'swiper'
 - 参照swiper的文档，在组件内写入swiper的代码结构
 
-	
+#### 2.组件间传参	

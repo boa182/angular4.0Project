@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
     setting(){
         if($(".setting").toggleClass('aa')){
-            $(".settings").css({
+            $(".setting").css({
                 display:"block"
             }).animate({
                 right:0

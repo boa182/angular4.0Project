@@ -1,28 +1,33 @@
-//第2步配置httpclient
-import {RequestMethod, RequestOptions} from '@angular/http';
+import {Http, RequestMethod, RequestOptions, Headers, URLSearchParams} from '@angular/http';
 
-let baseUrl = 'http://10.3.136.140:3000/';
+//解决传参问题
+import { Injectable } from '@angular/core';
+@Injectable()
 
-function getUrl(_url){
-    if(_url.startsWith('http')){
-        return _url;
-    }
-    return baseUrl + _url;
-}
+export class HttpService{
+	constructor(private http: Http){}
 
-export default {
-    get: (http, api, params = {}) => {
-        return new Promise((resolve, reject) => {
-            //每一次get请求都会加上一个随机参数，目的是为了自动刷新清空缓存
+	private baseUrl = 'http://localhost:3000/';
+
+	private getUrl(_url){
+	    if(_url.startsWith('http')){
+	        return _url;
+	    }
+	    return this.baseUrl + _url;
+	}
+
+	get(api, params = {}){
+		return new Promise((resolve, reject) => {
+			//添加随机数，每次请求的url问题，解决浏览器缓存问题
             params['_'] = Math.random();
-            http.request(getUrl(api), new RequestOptions({
-                method: RequestMethod.Get,
-                search: params
-            })).toPromise().then((res) => {
+            
+            const ops = Object.assign({}, {params: params});
+            this.http.get(this.getUrl(api), ops).toPromise().then( res => {
                 resolve(res.json());
             })
         })
-  	},
+	}
+
 	post(api, params = {}){
 		return new Promise((resolve, reject) => {
             
