@@ -37,7 +37,15 @@ app.get('/login', function(req, res) {
     require('./router/user').login(req,res,connection);
     console.log(req.query)
 })
-
+//根据名牌id查找东西
+app.get('/selectbrand', function(req, res) {
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/select').selectBrand(req,res,connection);
+    console.log(req.query)
+})
 //通过class查找商品
 app.get('/selectclass', function(req, res) {
     //然后请求的很快的时候才能正常关闭链接、

@@ -1,6 +1,72 @@
 #header{
     height:60px;
     background:#3c8dbc;
+    position:relative;
+}
+#header h3{
+    text-align: center;
+    line-height:60px;
+    color:#fff;
+    font-size: 24px;
+    letter-spacing: 10px;
+    font-weight: bold;
+}
+#header select{
+    position:absolute;
+    top:0;
+}
+#header .header_r{
+    position:absolute;
+    right:0;
+    top:0;
+    margin-bottom: 0rem;
+}
+#header .header_r li{
+    float:left;
+    padding: 0 10px;
+    position:relative;
+}
+#header .header_r li span{
+    position:absolute;
+    top: 13px;
+    left: 18px;
+    text-align: center;
+    font-size: 9px;
+    padding: 2px 3px;
+    background-color: #00a65a;
+    color:#fff;
+    font-weight: 700;
+    border-radius: .25em;
+    white-space: nowrap;
+    vertical-align: baseline;
+    line-height: .9;
+}
+#header .header_r li i{
+    color:#fff;
+    line-height: 60px;
+}
+#header .header_r li h4{
+    line-height: 60px;
+    color:#fff;
+    margin-bottom: 0px;
+    margin-left: 15px;
+}
+#header .header_r li:last-child{
+    padding: 0 15px;
+}
+#header .header_r li:last-child:hover{
+    background:#337ab7;
+}
+.setting{
+    position:absolute;
+    top:60px;
+    right:-200px;
+    display:none;
+}
+.setting_main{
+    width: 200px;
+    height:635px;
+    background:#333;
 }
 #main{
     position:fixed;
@@ -9,6 +75,9 @@
     right:0;
     bottom:0;
     
+}
+#main a{
+    text-decoration: none;
 }
 #main #nav{
     position:absolute;
@@ -26,5 +95,57 @@
     top:0;
     bottom:0;
     overflow-x: auto;
-    background:#ecf0f5;
+}
+#accordion{
+    margin-bottom: 0px;
+}
+.panel{
+    margin-bottom: 0px;
+    border-radius: 0px; 
+    border:0 none;
+    color: #8aa4af;
+    background: #2c3b41;
+    font-size: 14px;
+}
+.panel-body {
+    padding: 10px 0 10px 38px;
+}
+.panel-default>.panel-heading{
+    color: #fff;
+    background: #1e282c;
+    border-left-color: #3c8dbc;
+}
+.panel-body a{
+    color: #8aa4af;
+}
+.panel-heading{
+   border:0 none;
+   position:relative;
+   padding:0;
+}
+.panel-heading a{
+    color:#fff;
+    display: block;
+    padding: 10px 30px;
+}
+#nav li:first-child{
+    padding: 10px 15px;
+    color: #4b646f;
+    background: #1a2226;
+}
+.panel-heading>i:first-child{
+    font-size: 16px;
+    position:absolute;
+    top: 7px;
+    left: 8px;
+}
+.panel-heading>i:last-child{
+    font-size: 10px;
+    position: absolute;
+    top: 13px;
+    right: 11px;
+}
+select {
+    border: solid 1px #000;
+    padding-right: 3px;
 }

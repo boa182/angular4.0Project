@@ -25,8 +25,6 @@ export class HttpService{
             })
         })
     }
-
-
      post(api,params={}){
 
         return new Promise((resolve,reject)=>{
@@ -50,7 +48,4 @@ export class HttpService{
             } )
         })
     }
-
-
-   
 }
