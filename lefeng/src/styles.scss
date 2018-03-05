@@ -46,24 +46,24 @@ ul,li{
         display: flex;
         flex-direction: column;
     }
-    .footnav{
-        ul{
-            height: 2.173333rem;
-            background: #fff;
-            color: #666666;
-            display: flex;
-            border-top: 1px solid #DADCDB;
-            li{
-                float: left;
-                width: 20%;
-                text-align: center;
-                font-size: 0.4rem;
-                align-self: center;
-                display:flex;
-                flex-direction: column;
-                span{
-                    font-size: 0.72rem;
-                }
+}
+.footnav{
+    ul{
+        height: 2.173333rem;
+        background: #fff;
+        color: #666666;
+        display: flex;
+        border-top: 1px solid #DADCDB;
+        li{
+            float: left;
+            width: 20%;
+            text-align: center;
+            font-size: 0.4rem;
+            align-self: center;
+            display:flex;
+            flex-direction: column;
+            span{
+                font-size: 0.72rem;
             }
         }
     }

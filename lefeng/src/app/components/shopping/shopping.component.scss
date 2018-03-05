@@ -73,7 +73,7 @@
 }
 .classifyItem3{
 	background: #fff;
-	margin-bottom:0.466667rem;
+	border-bottom:0.466667rem solid  #f5f5f5;
 	ul{
 	    display: flex;
 	    flex-wrap: wrap;
@@ -85,4 +85,17 @@
 	        }
 	    }
 	}
+}
+.classifyItem4{
+   background: #fff;
+}
+.buttons-tab{
+    border-top: 1px solid #A0A0A0;
+    .button.active{
+        color: #ED5D8E;
+        border-color: #D21555;
+    }
+}
+.content-block{
+    margin: 0;
 }

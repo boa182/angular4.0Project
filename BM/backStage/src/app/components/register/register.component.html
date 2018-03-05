@@ -3,14 +3,16 @@
             <h1>Register</h1>
             <div class="form-group">
                 <label for="user">User Name</label>
-                <input type="text" class="form-control" id="user" placeholder="User Name">
+                <input type="text" class="form-control" id="user" placeholder="User Name" [(ngModel)]="user" name="user">
+                <p class="help-block" *ngIf="askRes=='exist'">User exist!</p>
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" [(ngModel)]="password" name="psd">
             </div>
-            <button type="button" class="btn btn-primary">Register</button>
+            <button type="button" class="btn btn-primary" (click)="register()">Register</button>
             <a routerLink="/enter/login">login</a>
             <router-outlet></router-outlet>
         </form>
+    
     </div>

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-//在需要ajax请求的组件
-import {Http} from '@angular/http';
-import httpclient from '../../utils/httpclient';
+//依赖组件模块引用
+import { HttpService } from './../../utils/http.service';
+
+
 
 @Component({
   selector: 'app-shopping',
@@ -11,11 +12,14 @@ import httpclient from '../../utils/httpclient';
 })
 export class ShoppingComponent implements OnInit {
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpService) { }
 
   ngOnInit() {
-  	httpclient.get(this.http,'try.txt').then((res)=>{
+  	this.http.get('try.txt').then((res)=>{
   		console.log(res);
   	})
 	}
+  selectType(txt){
+  	console.log(txt.target.innerText)
+  }
 }
