@@ -60,12 +60,69 @@
         }
     }
     .article4{
+        background:#fff;
         .title{
             width:145px !important;
             position: relative !important;
             float: left;
             font-size: 14px;
-            color:#ccc;
+            color:#444;
+        }
+    }
+    .article5{
+        padding: 10px;
+        img{
+            width: 355px;
+            height: 130px;
+            margin-top: 3px;
+        }
+    }
+    .article6{
+        li{
+            position:relative;
+            img{
+                width:375px;
+                height:165px;
+            }
+            span{
+                position: absolute;
+                bottom:27px;
+                background: #000;
+                opacity: 0.5;
+                color:#fff;
+                text-align: left;
+                font-size: 14px;
+                padding: 0 10px;
+                width: 100%;
+            }
+            p{
+                padding: 0 10px;
+                font-size: 14px;
+                color:#444;
+            }
+        }
+    }
+    .article7{
+        li{
+            width: 187px;
+            height: 283px;
+            padding: 10px;
+            float: left;
+            div{
+                img{
+                    width: 155px;
+                    height: 186px;
+                }
+            }
+            
+            p{  
+                font-size: 12px;
+                width: 168px;
+                height: 25px;
+                white-space: nowrap;
+                text-overflow:ellipsis;
+                overflow: hidden;
+            }
         }
     }
 }

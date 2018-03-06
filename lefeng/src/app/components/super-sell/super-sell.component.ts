@@ -7,13 +7,31 @@ import { HttpService } from './../../utils/http.service';
   styleUrls: ['./super-sell.component.scss']
 })
 export class SuperSellComponent implements OnInit {
+  Brand:Array<any>;
+  Discount:Array<any>;
 
   constructor(private http: HttpService) { }
 
   ngOnInit() {
-    this.http.get('selectBrand').then((res)=>{
-  		console.log(res);
-  	})
+    // this.http.get('selectBrand').then((res)=>{
+    //   this.Brand = res;
+    // })
+    
+    this.http.get('getgoods').then((res)=>{
+      this.Discount = res;
+      console.log(this.Discount)
+    })
   }
 
+  getScroll(){
+    if($('.contain').scrollTop() < 1731){
+      $('.article4').removeAttr("style")
+    }else{
+      $('.article4').css({'position':'fixed','top':44,'z-index':'2'})
+    }
+  }
+
+  getKeys(_obj){
+    return Object.keys(_obj)
+  }
 }
