@@ -8,7 +8,7 @@ import {SuperSellComponent} from '../components/super-sell/super-sell.component'
 import {LoginComponent} from '../components/login/login.component';
 import {RegisterComponent} from '../components/register/register.component';
 import {PinpaiComponent} from '../components/pinpai/pinpai.component';
-
+import {DetailsComponent} from '../components/details/details.component';
 
 const appRoutes: Routes = [
 	{
@@ -24,7 +24,7 @@ const appRoutes: Routes = [
 	{path:'goodslist',component:ListComponent},
 	{path:'regster',component:RegisterComponent},
 	{path:'pinpai',component:PinpaiComponent},
-
+	{path:'details',component:DetailsComponent}
 	
 ]
 

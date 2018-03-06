@@ -1,18 +1,23 @@
 <div class="bigbox">
 		<div class="listhead">
-				 <p>
-				 		<span class="icon icon-left" routerLink="/shopping"></span>
-				 		{{common.type}}
-				 </p>
+			 <p>
+		 		<span class="icon icon-left"  (click)="goBack()"></span>
+		 		{{common.type}}
+			 </p>
 		</div>
 		<div class="listFun">
-				<ul>
-					<li>价格排序</li>
-					<li>销量</li>
-					<li>筛选</li>
-				</ul>
+			<ul>
+				<li>价格排序</li>
+				<li>销量</li>
+				<li>筛选</li>
+			</ul>
 		</div>
 		<div class="listBox">
 			<goodslist></goodslist>			
 		</div>
-</div>
+		<ul class="listAside">
+			<li><img src="./../../../assets/images/n1.jpg" /></li>
+			<li><img src="./../../../assets/images/n2.jpg" /></li>
+			<li><img src="./../../../assets/images/n3.jpg" /></li>
+		</ul>
+</div>	

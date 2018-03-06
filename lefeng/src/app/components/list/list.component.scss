@@ -33,4 +33,14 @@
 .listBox{
     height: 100%;
     overflow-y: scroll;
+    position: relative;
+}
+.listAside{
+    position: fixed;
+    bottom: 30px;
+    right: 20px;
+    width: 52px;
+    img{
+        width: 100%;
+    }
 }

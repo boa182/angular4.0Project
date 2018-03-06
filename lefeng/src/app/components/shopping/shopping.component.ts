@@ -24,6 +24,12 @@ export class ShoppingComponent implements OnInit {
 			this.common.type = e.target.innerText;
 			this.router.navigate(['/goodslist']);
 		}
+		if(e.target.tagName=="IMG"){
+			
+				this.common.type = e.target.title;
+				this.router.navigate(['/goodslist']);
+			
+		}
 	}
 	getScroll(){
 	    if($('.contain').scrollTop() < 1000){
