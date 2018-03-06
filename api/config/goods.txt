@@ -2,8 +2,9 @@
     "api":"getgoods",
     "cols":"*",
     "api":"goods",
-    "cols":"name,brandStoreName,marketPrice,vipshopPrice,class",
+    "cols":"name,brandStoreName,marketPrice,vipshopPrice,class,originArea",
     "filterCols":"imgurl,color,size,type",
+    "key":"gid",
     "mutipleSelect":true,
     "pagination":{
         "pageitems":20
@@ -30,5 +31,6 @@
     "search":{
         "show":true,
         "api":"goodsForm.txt"
-    }
+    },
+    "edit":true
 }

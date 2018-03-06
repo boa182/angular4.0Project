@@ -1,6 +1,6 @@
 <div *ngIf="dataset">
     <div *ngIf="searchConfig.show">
-        <formtemplate [api]="searchConfig.api"></formtemplate>
+        <formtemplate [api]="searchConfig.api" (parentAttr)="getSearchData($event)"></formtemplate>
     </div>
     <table class='table table-striped table-bordered'>
         <thead>
@@ -9,14 +9,18 @@
                 <ng-template ngFor let-key [ngForOf]="getKeys(dataset[0])" >
                     <th *ngIf="(!columns[0] || columns.indexOf(key) > -1) && filterColumns.indexOf(key) < 0">{{privateDic[common.lanType] && privateDic[common.lanType][key] ? privateDic[common.lanType][key] : common.publicDic[common.lanType][key] || key}}</th>
                 </ng-template>
+                <th *ngIf="editConfig">edit</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let obj of dataset; let idx = index;" [class.actived]="currentTrIndexs.indexOf(idx) > -1" (click)="selectTr(idx)">
+            <tr *ngFor="let obj of dataset; let idx = index;" [class.actived]="currentTrIndexs.indexOf(idx) > -1" (click)="selectTr(idx)" [attr.gid]="obj[keyConfig]">
                 <td *ngIf="multiple"><input type="checkbox" name="" id="" [checked]="currentTrIndexs.indexOf(idx) > -1"></td>
                 <ng-template ngFor let-key [ngForOf]="getKeys(obj)">
                     <td *ngIf="(!columns[0] || columns.indexOf(key) > -1) &&  filterColumns.indexOf(key) < 0">{{filterData(key, obj[key])}}</td>
                 </ng-template>
+                <td *ngIf="editConfig">
+                    <button type="button" class="btn btn-primary">edit</button>
+                </td>
             </tr>
         </tbody>
     </table>

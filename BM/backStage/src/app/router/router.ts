@@ -9,8 +9,6 @@ import {RegisterComponent} from '../components/register/register.component';
 import {HomeComponent} from '../components/home/home.component';
 
 const appRoutes:Routes=[
-    
-    {path:'vip',component:VipComponent},
     {path:'enter',component:LogRegisterComponent,children: [
             {path: 'login', component:LoginComponent},
             {path:'register',component:RegisterComponent}
