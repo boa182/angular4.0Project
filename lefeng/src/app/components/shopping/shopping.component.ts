@@ -25,5 +25,11 @@ export class ShoppingComponent implements OnInit {
 			this.router.navigate(['/goodslist']);
 		}
 	}
-
+	getScroll(){
+	    if($('.contain').scrollTop() < 1000){
+	      $('.typeNav').removeAttr("style")
+	    }else{
+	      $('.typeNav').css({'position':'fixed','top':44,'z-index':'2','width':'100%'})
+	    }
+  	}
 }

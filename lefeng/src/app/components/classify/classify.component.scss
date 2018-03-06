@@ -1,0 +1,62 @@
+.daohang{
+    display:flex;
+    height: 1.171875rem;
+    li{
+        width:50%;
+        text-align: center;
+        line-height: 1.171875rem;
+        font-size: 0.546875rem;
+        font-weight: bold;
+        color:#DADADA;
+    }
+}
+.abc{
+    height: 0.234375rem;
+    background-color: #F2F5FA;
+    margin: 0.3125rem 0;
+}
+.hufu{
+    padding-top: 0.40625rem;
+    flex:1;
+}
+.active{
+    a{
+        color:red;
+    }
+    position:relative;
+    div:first-of-type{
+        width: 100%;
+        background-color: red;
+        position:absolute;
+        bottom:0;
+        height: 0.0625rem;
+    }
+}
+.biaoti{
+        display:flex;
+        justify-content:center;
+        font-size: 0.390625rem;
+        >span{
+            color:#F4F4F4;
+
+        }
+        >p{
+            font-weight: bold;
+        }   
+    }
+.goods{
+    display:flex;
+    flex-wrap:wrap;
+    li{
+        width: 25%;
+        margin-top: 0.78125rem;
+        img{
+            width: 100%;
+            height: 2.203125rem;
+        }
+        p{
+            font-size: 0.40625rem;
+            text-align: center;
+        }
+    }
+}
