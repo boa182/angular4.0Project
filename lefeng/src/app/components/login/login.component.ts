@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-login',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private location : Location) { }
 
   ngOnInit() {
+    $('.forget').click(function(){
+      alert('密码都忘记就别登录了')
+    })
   }
+
+  back(){
+    this.location.back();
+  }
+
 
 }

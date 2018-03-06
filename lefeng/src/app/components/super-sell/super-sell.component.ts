@@ -39,4 +39,16 @@ export class SuperSellComponent implements OnInit {
   getKeys(_obj){
     return Object.keys(_obj)
   }
+
+  getA(){
+  }
+
+  getB(){
+    
+  }
+
+  getC(){
+    
+  }
+
 }
