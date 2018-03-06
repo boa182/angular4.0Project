@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {HttpService} from '../../utils/http.service'
 import {CommonService}  from '../../utils/common.service'
 
@@ -9,7 +9,7 @@ import {CommonService}  from '../../utils/common.service'
 })
 export class FormtemplateComponent implements OnInit {
     @Input() api: string;
-
+    @Output() parentAttr = new EventEmitter<object>();
     colsConfig: Array<string> = [];
     privateDic: Object = {};
     colsAttributes: Object = {};
@@ -36,6 +36,22 @@ export class FormtemplateComponent implements OnInit {
                 }
             }
         })
+    }
+    changeval(key,e){
+        console.log(e.target.value);
+        this.searchData[key]=e.target.value;
+        console.log(this.searchData);
+    }
+    reset(){
+        for(let key in this.searchData){
+            console.log(key);
+            this.searchData[key]="";
+        }
+        console.log(this.searchData);
+    }
+    tosearch(){
+        //把参数传递给父组件
+        this.parentAttr.emit(this.searchData);
     }
 }
 

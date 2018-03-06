@@ -28,6 +28,7 @@ export class TabletemplateComponent implements OnInit {
     pages:Array<number>;
     editConfig:boolean;
     keyConfig:string;
+    searchapi:string;
     
 
     @Input() config: string;
@@ -60,6 +61,8 @@ export class TabletemplateComponent implements OnInit {
             this.searchConfig = configRes['search'] || {};
 
             this.editConfig = configRes['edit'];
+
+            this.searchapi = configRes['searchapi'];
 
             this.apiRequest();
             console.log('user',sessionStorage.getItem('userName'));
@@ -172,6 +175,14 @@ export class TabletemplateComponent implements OnInit {
         console.log(_page);
         //let _page = event.target.value;
         this.apiRequest(_page);
+    }
+
+    getSearchData(obj){
+        console.log(obj,'111');
+        this.httpservice.get(this.searchapi, obj).then((res)=>{
+            console.log(res);
+        })
+        
     }
 
 }

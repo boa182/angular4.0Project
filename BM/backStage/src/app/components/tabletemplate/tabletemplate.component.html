@@ -1,6 +1,6 @@
 <div *ngIf="dataset">
     <div *ngIf="searchConfig.show">
-        <formtemplate [api]="searchConfig.api"></formtemplate>
+        <formtemplate [api]="searchConfig.api" (parentAttr)="getSearchData($event)"></formtemplate>
     </div>
     <table class='table table-striped table-bordered'>
         <thead>
