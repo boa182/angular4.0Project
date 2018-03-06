@@ -7,6 +7,9 @@ import {ShoppingComponent} from '../components/shopping/shopping.component';
 import {SuperSellComponent} from '../components/super-sell/super-sell.component';
 import {LoginComponent} from '../components/login/login.component';
 import {RegisterComponent} from '../components/register/register.component';
+import {PinpaiComponent} from '../components/pinpai/pinpai.component';
+import {OrderComponent} from '../components/order/order.component';
+
 
 const appRoutes: Routes = [
 	{
@@ -20,7 +23,10 @@ const appRoutes: Routes = [
 	{path:'super',component:SuperSellComponent},
 	{path:'login',component:LoginComponent},
 	{path:'goodslist',component:ListComponent},
-	{path:'regster',component:RegisterComponent},
+	{path:'register',component:RegisterComponent},
+	{path:'pinpai',component:PinpaiComponent},
+	{path:'order',component:OrderComponent},
+
 	
 ]
 

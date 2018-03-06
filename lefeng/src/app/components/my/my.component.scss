@@ -1,0 +1,108 @@
+.bigbox{
+    background: #f6f6f6;
+    .head{
+        height: 90px;
+        width: 100%;
+        position: relative;
+        background:#ccc;
+        background-image: url(https://h5rsc-ssl.vipstatic.com/lefeng/build/ce0cbb137bb02dffefc5d38959e9c489.png);
+        background-repeat:no-repeat;
+        background-size: cover;
+        img{  
+            position: absolute;
+            left: 50px;
+            top: 50%;
+            width: 60px;
+            height: 60px;
+            transform: translate(-50%,-50%)
+        }
+        p{
+            position: absolute;
+            left: 145px;
+            top: 50%;
+            width: 110px;
+            transform: translate(-50%,-50%);
+            font-size: 14px;
+            color:#444;
+        }
+    }
+    .order{
+        .my_order{  
+            display: inline-block;
+            height: 47px;
+            width: 100%;
+            padding: 0 10px;
+            color:#444;
+            font-size: 14px;
+            line-height: 47px;
+            border-top: 1px solid rgba(0,0,0,.06);
+            border-bottom: 1px solid rgba(0,0,0,.06);
+            background: #fff;
+            b{
+                font-size: 14px;
+                line-height: 47px;
+                color:#444;
+                font-weight: normal;
+                margin-left: 215px;
+            }
+            span{
+                font-size: 14px;
+                margin-left: 5px;
+                color:#ccc;
+            }
+            
+        }
+        .order_tag{
+            width: 100%;
+            display: flex;
+            background: #fff;
+            margin-bottom: 10px;
+            a{  
+                height: 55px;
+                flex: 1;
+                display:block;
+                box-sizing: border-box;
+                padding: 10px 0;
+                font-size: 14px;
+                text-align: center;
+                span{
+                    color:pink;
+                }
+                p{
+                    font-size: 12px;
+                }
+            }
+        }
+        .item{
+            height: 52px;
+            padding:0 30px 0 15px;
+            background: #fff;
+            border-top: 1px solid rgba(0,0,0,.06);
+            border-bottom: 1px solid rgba(0,0,0,.06);
+            line-height: 52px;
+            font-size: 14px;
+            position: relative;
+            b{
+                margin-left: 200px;
+                font-size: 12px;
+            }
+            span:nth-of-type(1){
+                margin-right: 10px;
+                color:pink;
+            }
+            span:nth-of-type(2){
+                font-size: 12px;
+                color:#ccc;
+                position: absolute;
+                top: 0;
+                right: 10px;
+            }
+        }
+        .cc{
+            color:#ccc !important;
+        }
+        .mb{
+            margin-bottom: 10px;
+        }
+    }
+}

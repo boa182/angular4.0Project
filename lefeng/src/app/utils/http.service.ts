@@ -11,6 +11,7 @@ export class HttpService{
 	// private baseUrl = 'http://10.3.132.88:3000/';
 
 
+
 	private getUrl(_url){
 	    if(_url.startsWith('http')){
 	        return _url;

@@ -61,12 +61,16 @@
     }
     .article4{
         background:#fff;
+        .content-block{
+            margin: 0 !important;
+        }
         .title{
-            width:145px !important;
+            width:125px !important;
             position: relative !important;
             float: left;
             font-size: 14px;
             color:#444;
+            box-sizing:border-box;
         }
     }
     .article5{
