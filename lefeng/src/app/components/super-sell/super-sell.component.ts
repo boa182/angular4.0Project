@@ -24,7 +24,7 @@ export class SuperSellComponent implements OnInit {
     this.http.get('getgoods').then((res)=>{
       let dataB =JSON.parse(JSON.stringify(res));
       this.Discount = dataB;
-      console.log(this.Discount)
+//    console.log(this.Discount)
     })
   }
 
@@ -39,4 +39,16 @@ export class SuperSellComponent implements OnInit {
   getKeys(_obj){
     return Object.keys(_obj)
   }
+
+  getA(){
+  }
+
+  getB(){
+    
+  }
+
+  getC(){
+    
+  }
+
 }

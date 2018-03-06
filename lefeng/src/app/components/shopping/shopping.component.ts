@@ -3,6 +3,7 @@ import {Router} from '@angular/router'
 //依赖组件模块引用
 import { HttpService } from './../../utils/http.service';
 import { CommonService } from './../../utils/common.service';
+import * as $ from 'jquery';
 
 @Component({
 	selector: 'app-shopping',
@@ -23,6 +24,12 @@ export class ShoppingComponent implements OnInit {
 		if(e.target.tagName=="P"){
 			this.common.type = e.target.innerText;
 			this.router.navigate(['/goodslist']);
+		}
+		if(e.target.tagName=="IMG"){
+			
+				this.common.type = e.target.title;
+				this.router.navigate(['/goodslist']);
+			
 		}
 	}
 	getScroll(){

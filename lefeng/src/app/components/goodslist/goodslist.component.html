@@ -1,6 +1,6 @@
 <!--<h1>{{common.type}}</h1>-->
-<ul *ngIf="goodslist">
-	<li *ngFor="let obj of dataset[type]; trackBy: trackByGid">
+<ul>
+	<li *ngFor="let obj of dataset[type]; trackBy: trackByGid" (click)='toDetails(obj.gid)'>
 		<img [src]="obj.verticalImage"/>
 		<p>
 			<span>{{obj.brandStoreName}}</span>

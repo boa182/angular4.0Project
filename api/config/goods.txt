@@ -1,4 +1,6 @@
 {
+    "api":"getgoods",
+    "cols":"*",
     "api":"goods",
     "cols":"name,brandStoreName,marketPrice,vipshopPrice,class,originArea",
     "filterCols":"imgurl,color,size,type",

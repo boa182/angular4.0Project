@@ -37,9 +37,30 @@
 					<img src="//b.appsimg.com/upload/mst/2018/03/02/168/0a2b96b326a106a4101964eb831d0d11.gif">
 			</div>
 			<div class="article4 clearfix">
-					<h1 class="title">促销专场</h1>
-					<h1 class="title">品牌专区</h1>
-					<h1 class="title">每日精选</h1>
+						<div class="buttons-tab">
+						<a href="#tab1" class="tab-link active button title" (click)='getA()'>促销专场</a>
+						<a href="#tab2" class="tab-link button title" (click)='getB()'>品牌专区</a>
+						<a href="#tab3" class="tab-link button title" (click)='getC()'>每日精选</a>
+						</div>
+						<div class="content-block">
+						<div class="tabs">
+							<div id="tab1" class="tab active">
+							<div class="content-block">
+							</div>
+							</div>
+							<div id="tab2" class="tab">
+							<div class="content-block">
+							</div>
+							</div>
+							<div id="tab3" class="tab">
+							<div class="content-block">
+							</div>
+							</div>
+						</div>
+						</div>
+					<!-- <h1 class=""></h1>
+					<h1 class="title"></h1>
+					<h1 class="title"></h1> -->
 			</div>
 			<div class="article5">
 				<img src="http://b.appsimg.com/upload/maappactadmin/2018/03/02/86/151998031095_710x260_70.jpg">
@@ -63,8 +84,13 @@
 					<div>
 						<img src={{obj.verticalImage}} >
 					</div>
-					<p><strong>{{obj.brandStoreName}}&nbsp;</strong>{{obj.name}}</p>
 					<div class="tag-warp"></div>
+					<p><strong>{{obj.brandStoreName}}&nbsp;</strong>{{obj.name}}</p>
+					<div>
+						<span><i>￥</i>{{obj.vipshopPrice}}</span>
+						<span>￥{{obj.totalCount}}</span>
+						<span class="icon icon-cart" ></span>
+					</div>
 				</li>
 			</ul>
 		</div>

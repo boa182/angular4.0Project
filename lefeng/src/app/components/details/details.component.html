@@ -1,3 +1,169 @@
-<p>
+<!--<p (click)="goBack()">
   details works!
-</p>
+  {{this.common.gid}}
+</p>-->
+<div class="bigbox" *ngIf="data">
+		<div class="detailsHead" *ngFor="let obj of data">
+				<p>
+				 		<span class="icon icon-left" (click)="goBack()"></span>
+				 		{{obj.name}}
+				 	
+						<span class="icon icon-share"></span>
+				</p>
+		</div>
+			<ul class="detailsCon" *ngFor="let obj of data">
+					<li>
+						<img [src]="obj.middleImage"/>
+						<p>
+							<span>{{obj.brandStoreName}}  {{obj.name}}</span>
+							<span class="icon icon-star"></span>
+						</p>
+						<p>
+							<span>￥{{obj.vipshopPrice}}</span>
+							<del>￥{{obj.marketPrice}}</del>
+						</p>
+					</li>
+					<li>
+						<p><span>买赠</span><span>跨品牌满199减100上不封顶</span></p>
+						<p><span>买赠</span><span>买即可增猪圆肉润的鱼露一枚</span></p>
+						<p><span>买赠</span><span></span>满99增清润护肤品一套</p>
+				</li>
+					<li>
+							<p>
+								<span>
+									商品评论 （{{obj.goodCount}}）								
+								</span>
+								<span>
+									<i>
+										{{obj.greatScale}}
+									</i>
+									好评
+								</span>
+							</p>
+								<ul class="comment">
+									<li>
+										<p>
+											<span class="icon icon-star">满意</span>
+											<span>138******   2018-8-12</span>
+										</p>
+										<p>
+											满199减100的活动，太给力，买了两盒
+										</p>
+									</li>
+									<li>
+										<p>
+											<span class="icon icon-star">满意</span>
+											<span>181******   2017-5-1</span>
+										</p>
+										<p>
+											效果挺好的
+										</p>
+									</li>
+								</ul>
+					</li>
+					<li class="detalisImag" >
+						<div class="uibox">
+							<!--<goodslist></goodslist>-->
+							<div class="buttons-tab typeNav">
+								<a href="#tab1" class="tab-link active button">商品详情</a>
+								<a href="#tab2" class="tab-link button">商品说明</a>
+							</div>
+							<div class="content-block">
+								<div class="tabs">
+						
+									<div id="tab1" class="tab active">
+											<div *ngIf = "images">
+												<img [src]="item"  *ngFor="let item of images"/>
+											</div>
+									</div>
+									<div id="tab2" class="tab">
+											<h3>关于商品</h3>
+											<p>网上所售卖的商品均经过品牌授权，确保正品，并由中国人民财产保险股份有限公司为您购买的每一件商品进行承保。</p>
+											<h3>商品价格说明</h3>
+											<p>乐蜂展示的中间未划横线价格（显示如¥799）为乐蜂销售价，该价格是交易成交价，是您最终决定是否购买商品的依据。
+
+乐蜂展示的中间划横线价格（显示如￥1399）为参考价，采集自品牌专柜标价、商品吊牌价或由品牌供应商提供的正品零售价；由于地区、时间的差异性和市场行情波动，品牌专柜标价、商品吊牌价可能会与您购物时展示的不一致。该价格仅供您参考。
+
+折扣比为乐蜂销售价与参考价的对比（该值四舍五入后采用小数点后1位，如¥799/¥2899=0.2756=2.8折），该对比值仅供您参考，不作为结算基数。</p>
+											<h3>售后说明</h3>
+											<p>在您签收商品之日起的7天之内，乐蜂为您提供七天无理由放心退服务，但以下情形将不能退货：</p>
+											<p>												
+												1、非乐蜂销售的商品，或有明显使用痕迹影响二次销售的商品；
+											</p>
+											<p>												
+												2、法律明确规定不适用七天无理由退货的商品；
+											</p>
+											<p>
+												3、基于安全及健康的考虑，已拆封的食品、药品、保健品、化妆品、贴身用品等；												
+											</p>
+											<p>
+												4、已经激活的手机、电脑、数码产品等；
+											</p>
+											<p>
+												5、已在线交付的充值类商品；												
+											</p>
+											<p>
+												6、未经授权的维修、误用、碰撞、疏忽、滥用、进液、事故、改动、不正确的安装所造成的商品质量问题，或撕毁、涂改标贴、机器序号、防伪标记；												
+											</p>
+											<p>
+												7、无法提供商品的发票（如已索要发票）、保修卡等三包凭证或者三包凭证信息与商品不符及被涂改的；												
+											</p>
+											<p>
+												8、礼包或套装中的商品不可以部分退换货。上述退货规则，客户一经购买，视为认可。											
+											</p>
+
+
+												
+									</div>
+									
+								</div>
+							</div>
+						</div>
+					</li>
+			</ul>
+			<!--<ul class="detailsCon">
+				<li></li>
+				<li>
+						<p><span>买赠</span><span>跨品牌满199减100上不封顶</span></p>
+						<p><span>买赠</span><span>买即可增猪圆肉润的鱼露一枚</span></p>
+						<p><span>买赠</span><span></span>满99增清润护肤品一套</p>
+				</li>
+				<li>
+						<p>
+							<span>
+								商品评论 （197）								
+							</span>
+							<span>
+								<i>
+									95.6%
+								</i>
+								好评
+							</span>
+						</p>
+							<ul class="comment">
+								<li>
+									<p>
+										<span class="icon icon-star">满意</span>
+										<span>电话号码   日期</span>
+									</p>
+									<p>
+										评论内容：好棒棒啊啊啊啊啊啊
+									</p>
+								</li>
+								<li>
+									<p>
+										<span class="icon icon-star">满意</span>
+										<span>电话号码   日期</span>
+									</p>
+									<p>
+										评论内容：好棒棒啊啊啊啊啊啊
+									</p>
+								</li>
+							</ul>
+				</li>
+			</ul>-->
+		<div class="detailsNav">
+			<span class="icon icon-cart"></span>
+			<span>加入购物车</span>
+		</div>
+</div>

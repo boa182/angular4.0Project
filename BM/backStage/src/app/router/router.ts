@@ -13,7 +13,7 @@ const appRoutes:Routes=[
             {path: 'login', component:LoginComponent},
             {path:'register',component:RegisterComponent}
         ]},
-    {path:'home',component:HomeComponent,children:[
+    {path:'home',component:HomeComponent,children: [
         {path:'goods',component:GoodsComponent},
         {path:'vip',component:VipComponent}
     ]},

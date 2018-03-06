@@ -22,8 +22,13 @@ import { PinpaiComponent } from './components/pinpai/pinpai.component';
 import { FootnavComponent } from './components/footnav/footnav.component';
 import { SearchComponent } from './components/search/search.component';
 import { BannerComponent } from './components/banner/banner.component';
+<<<<<<< HEAD
+import { ListComponent } from './components/list/list.component';
+import { OrderComponent } from './components/order/order.component'
+=======
 import {ListComponent} from './components/list/list.component';
 import { DetailsComponent } from './components/details/details.component';
+>>>>>>> 7303869d97031bc6285523417286d67a2f50d6a5
 
 @NgModule({
   declarations: [
@@ -39,7 +44,11 @@ import { DetailsComponent } from './components/details/details.component';
     PinpaiComponent,
     FootnavComponent,
    	ListComponent,
+<<<<<<< HEAD
+    OrderComponent,
+=======
     DetailsComponent,
+>>>>>>> 7303869d97031bc6285523417286d67a2f50d6a5
     SearchComponent,
     BannerComponent
   ],

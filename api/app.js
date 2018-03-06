@@ -47,6 +47,57 @@ app.get('/selectbrand', function(req, res) {
     require('./router/select').selectBrand(req,res,connection);
     console.log(req.query)
 })
+
+//根据用户名查找类型
+app.get('/usertype', function(req, res) {
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/user').userType(req,res,connection);
+    console.log(req.query)
+})
+
+//根据userid删除用户
+app.get('/updateuser', function(req, res) {
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/select').updateUser(req,res,connection);
+    console.log(req.query)
+})
+
+//根据品牌查找商品
+app.get('/getgid', function(req, res) {
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/select').getGid(req,res,connection);
+    console.log(req.query)
+})
+
+//查找goods前一百条数据
+app.get('/getgoods', function(req, res) {
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/select').getGoods(req,res,connection);
+    console.log(req.query)
+})
+
+//查找所有用户信息
+app.get('/getuser', function(req, res) {
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/select').getUser(req,res,connection);
+    console.log(req.query)
+})
+
 //通过class查找商品
 app.get('/selectclass', function(req, res) {
     //然后请求的很快的时候才能正常关闭链接、
