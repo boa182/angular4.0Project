@@ -23,6 +23,10 @@ export class ClassifyComponent implements OnInit {
         if(e.target.tagName=="P"){
             this.common.type = e.target.innerText;
             this.router.navigate(['/goodslist']);
+            console.log(e.target.innerText)
+        }
+        if(e.target.tagName=="IMG"){
+            console.log('参考一下我的更改回来')
         }
     }
     xsdataset: Array<any>=[
