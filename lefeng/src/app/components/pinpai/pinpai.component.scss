@@ -10,6 +10,9 @@
         font-weight: bold;
         color:#DADADA;
     }
+    a{
+        display:block;
+    }
 }
 .active{
     a{
@@ -22,6 +25,9 @@
         position:absolute;
         bottom:0;
         height: 0.0625rem;
+        a{
+            display:block;
+        }
     }
 }
 .hotgoods{
@@ -40,10 +46,10 @@
 .fixed{
     position:fixed;
     right:0.15625rem;
-    top:25%;
+    top:15%;
     li{
-        font-size: 0.46875rem;
-        line-height: 0.625rem;
+        font-size: 0.6rem;
+        line-height: 0.8rem;
         >a{
             font-weight: bold;   
         }

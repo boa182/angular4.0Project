@@ -1,0 +1,17 @@
+{
+    "cols":"brandStoreName,vipshopPrice",
+    "colsAttributes":{
+        "brandStoreName":{
+            "type":"select-api",
+            "api":"brandStore",
+            "match":{
+                "value":"brandStoreName",
+                "text":"brandStoreName"
+            }
+        },
+        "vipshopPrice":{
+            "type":"area"
+        }
+
+    }
+}

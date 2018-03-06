@@ -20,10 +20,10 @@ export class RegisterComponent implements OnInit {
     console.log(this.user,this.password);
     this.httpserver.post( 'register', {user:this.user,psd:this.password}).then((res) => {
             console.log(res);
-            console.log(res._body);
-            if(res._body=='exist'){
+            //console.log(res._body);
+            if(res['_body']=='exist'){
                 this.askRes='exist';
-            }else if(res._body=='success'){
+            }else if(res['_body']=='success'){
                 alert('注册成功');
                 this.askRes='success';
                 console.log(this);
