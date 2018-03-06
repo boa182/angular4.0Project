@@ -81,3 +81,16 @@ exports.selectClass = function(req, res, connection) {
 	});
 }
 
+// 查找商品中所有品牌
+exports.brandStore = function(req, res, connection) {
+	
+	connection.query(`select DISTINCT brandStoreName from goods`, function(error, results, fields) {
+		if(error) throw error;
+		//results =>array类型
+		console.log('The solution is: ', results);		
+		res.send(results);
+		connection.end();
+	});
+}
+
+
