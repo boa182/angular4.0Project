@@ -1,8 +1,8 @@
-<div class="bigbox">
+<div class="bigbox" >
 	<div class="clearfix">
 		<search></search>
 	</div>
-	<div class="contain">
+	<div class="contain"  (scroll)='getScroll()'>
 		<banner></banner>
 		<div id="contain">
 			<div class="article1">
@@ -42,8 +42,31 @@
 					<h1 class="title">每日精选</h1>
 			</div>
 			<div class="article5">
-				
+				<img src="http://b.appsimg.com/upload/maappactadmin/2018/03/02/86/151998031095_710x260_70.jpg">
+				<img src="http://b.appsimg.com/upload/maappactadmin/2018/03/02/182/15199804794_710x260_70.jpg">
+				<img src="http://b.appsimg.com/upload/maappactadmin/2018/03/02/62/151998059726_710x260_70.jpg">
+				<img src="http://b.appsimg.com/upload/maappactadmin/2018/03/02/153/151998074321_710x260_70.jpg">
+				<img src="http://b.appsimg.com/upload/maappactadmin/2018/03/02/90/151998088280_710x260_70.jpg">
+				<img src="http://b.appsimg.com/upload/maappactadmin/2018/02/28/36/151978389937_710x260_70.jpg">
 			</div>
+			<ul class="article6">
+				<li *ngFor='let obj of Brand'>
+					<div>
+						<img src={{obj.brandImage}}>
+						<span>{{obj.pms}}</span>
+					</div>
+					<p>{{obj.name}}</p>
+				</li>
+			</ul>
+			<ul class="article7 clearfix">
+				<li *ngFor='let obj of Discount'>
+					<div>
+						<img src={{obj.verticalImage}} >
+					</div>
+					<p><strong>{{obj.brandStoreName}}&nbsp;</strong>{{obj.name}}</p>
+					<div class="tag-warp"></div>
+				</li>
+			</ul>
 		</div>
 	</div>
 	
