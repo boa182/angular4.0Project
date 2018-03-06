@@ -1,21 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-
-//在需要ajax请求的组件
-import {Http} from '@angular/http';
-import httpclient from '../../utils/httpclient';
+import {Router} from '@angular/router'
+//依赖组件模块引用
+import { HttpService } from './../../utils/http.service';
+import { CommonService } from './../../utils/common.service';
 
 @Component({
-  selector: 'app-shopping',
-  templateUrl: './shopping.component.html',
-  styleUrls: ['./shopping.component.scss']
+	selector: 'app-shopping',
+	templateUrl: './shopping.component.html',
+	styleUrls: ['./shopping.component.scss']
 })
 export class ShoppingComponent implements OnInit {
+	
+	constructor(private http: HttpService,private common:CommonService,private router:Router ) {}
 
-  constructor(private http: Http) { }
+	ngOnInit() {
 
-  ngOnInit() {
-  	httpclient.get(this.http,'try.txt').then((res)=>{
-  		console.log(res);
-  	})
 	}
+	selectType(e){
+		this.common.type = e.target.innerText;
+	}
+	toList(e){
+		if(e.target.tagName=="P"){
+			this.common.type = e.target.innerText;
+			this.router.navigate(['/goodslist']);
+		}
+	}
+
 }

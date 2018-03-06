@@ -1,0 +1,44 @@
+ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background: #f5f5f5;
+    li{
+        background: #FFFFFF;
+        width: 49.5%;
+        margin-bottom: 0.266666rem;
+        
+        img{
+            width: 100%;
+        }
+        p:nth-of-type(1){
+//          text-align: center;
+            
+            span:nth-child(1){
+                display: block;
+                width: 100%;
+                text-align: center;
+                font-weight: bold;
+                padding-right: 0.266666rem;
+            }
+            span{
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 1;
+                overflow: hidden;
+            }
+        }
+        p:nth-of-type(2){
+            margin-top: 0.466666rem;
+            del{
+                color: #9A9A9A;
+            }
+            span:nth-child(2){
+                color: #E98AAA;
+                float: right;
+                padding-right: 0.4rem;
+            }
+            
+        }
+    }
+}

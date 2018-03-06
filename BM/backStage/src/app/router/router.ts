@@ -6,14 +6,17 @@ import {PagenotfoundComponent} from "../components/pagenotfound/pagenotfound.com
 import {LoginComponent} from '../components/login/login.component';
 import { LogRegisterComponent} from '../components/log-register/log-register.component';
 import {RegisterComponent} from '../components/register/register.component';
+import {HomeComponent} from '../components/home/home.component';
 
 const appRoutes:Routes=[
-    {path:'goods',component:GoodsComponent},
     {path:'vip',component:VipComponent},
     {path:'enter',component:LogRegisterComponent,children: [
             {path: 'login', component:LoginComponent},
             {path:'register',component:RegisterComponent}
-        ]}
+        ]},
+    {path:'home',component:HomeComponent,children:[
+        {path:'goods',component:GoodsComponent}
+    ]},
     {path:'**',component:PagenotfoundComponent}
 
 ]

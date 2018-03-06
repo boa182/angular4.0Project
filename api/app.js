@@ -7,7 +7,7 @@ var mysql = require("mysql");
 //连接服务器配置.......................................................................
 function createConnection() {
 	var connection = mysql.createConnection({
-		host: '10.3.136.140',// 127.0.0.1 /10.3.136.140 /10.0.136.252
+		host: '10.3.132.88',// 127.0.0.1 10.3.136.153
 		user: 'root',
 		password: '',
 		database: 'lefeng',
@@ -38,11 +38,43 @@ app.get('/login', function(req, res) {
     console.log(req.query)
 })
 
+//根据名牌id查找东西
+app.get('/selectbrand', function(req, res) {
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/select').selectBrand(req,res,connection);
+    console.log(req.query)
+})
+//通过class查找商品
+app.get('/selectclass', function(req, res) {
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/select').selectClass(req,res,connection);
+    console.log(req.query)
+})
+
+// 分页查找商品
+app.get('/goods', function(req, res) {
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/goods').goods(req,res,connection);
+    console.log(req.query)
+})
+
 //要post请求...............................................................................
 // parse application/x-www-form-urlencoded 
 //使用bodyParser模块
 //用于post请求获取参数
 var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({
+    extended: false
+}))
 
 app.post('/register', function(req, res) {
     //然后请求的很快的时候才能正常关闭链接、
@@ -50,7 +82,6 @@ app.post('/register', function(req, res) {
     connection.connect();
     //引入查找模块
     require('./router/user').register(req,res,connection);
-    console.log(req.query)
 })
 
 

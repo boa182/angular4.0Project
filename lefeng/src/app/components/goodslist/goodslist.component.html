@@ -1,6 +1,17 @@
-<div class="bigbox">
-	<div class="contain">
-		goodslist
-	</div>
+<!--<h1>{{common.type}}</h1>-->
+<ul *ngIf="goodslist">
+	<li *ngFor="let obj of dataset[type]; trackBy: trackByGid">
+		<img [src]="obj.verticalImage"/>
+		<p>
+			<span>{{obj.brandStoreName}}</span>
+			<span>{{obj.name}}</span>
+			<!--<span>{{obj.pointDescribe}}</span>-->
+		</p>
+		
+		<p>
+			<span>￥{{obj.vipshopPrice}} <del>￥{{obj.marketPrice}}</del></span>
+			<span class="icon icon-cart gouwuche"></span>
+		</p>
+	</li>
 	
-</div>
+</ul>
