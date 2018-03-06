@@ -1,0 +1,8 @@
+{
+    "cols":"*",
+    "api":"getuser",
+    "mutipleSelect":true,
+    "pagination":{
+        "pageitems":200
+    }
+}

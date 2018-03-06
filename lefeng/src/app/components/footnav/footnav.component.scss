@@ -12,5 +12,14 @@
                 font-size: 0.4rem;
                 align-self: center;
             }
+            li.active{
+                span{
+                    
+                    color:red;
+                }
+                a{
+                    color:red;
+                }
+            }
         }
     }

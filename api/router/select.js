@@ -1,4 +1,28 @@
+exports.getGid = function(req, res, connection) {
+    //查找......................
+    console.log(req)
+    var gid = req.query.gid;
+    connection.query(`SELECT * FROM goods where gid='${gid}'`, function(error, results, fields) { 
+        if(error) throw error;
+        //results =>array类型
+        console.log('The solution is: ', results);
+        res.send(results);
+        connection.end();
+    });
+}
 
+//查找所有用户信息  余路
+exports.getUser = function(req, res, connection) {
+	connection.query(`SELECT * FROM user`, function(error, results, fields) {
+		if(error) throw error;
+		//results =>array类型
+		console.log('The solution is: ', results);
+		//把数据整理，返回到前端
+		
+		res.send(results);
+		connection.end();
+	});
+}
 
 //查找travel所有的东西  黄子健
 exports.selectBrand = function(req, res, connection) {
@@ -14,7 +38,7 @@ exports.selectBrand = function(req, res, connection) {
 }
 //查找travel所有的东西  黄子健
 exports.getGoods = function(req, res, connection) {
-	connection.query(`select * from goods limit 100`, function(error, results, fields) {
+	connection.query(`select SQL_CALC_FOUND_ROWS * from goods limit 100`, function(error, results, fields) {
 		if(error) throw error;
 		//results =>array类型
 		console.log('The solution is: ', results);

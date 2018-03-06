@@ -21,11 +21,13 @@ export class LoginComponent implements OnInit {
     
      this.httpserver.get( 'login', {user:this.user,psd:this.password}).then((res) => {
             console.log(res);
+            
             if(res.length==0){
               alert('password error');
             }else if(res.length==1){
               this.router.navigate(['/home']);
             }
+
         })
     
   }

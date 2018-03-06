@@ -7,7 +7,7 @@ var mysql = require("mysql");
 //连接服务器配置.......................................................................
 function createConnection() {
 	var connection = mysql.createConnection({
-		host: '10.3.132.88',// 127.0.0.1 /10.3.136.140 /10.0.136.252
+		host: '10.3.132.88',// 127.0.0.1 10.3.136.153
 		user: 'root',
 		password: '',
 		database: 'lefeng',
@@ -37,6 +37,7 @@ app.get('/login', function(req, res) {
     require('./router/user').login(req,res,connection);
     console.log(req.query)
 })
+
 //根据名牌id查找东西
 app.get('/selectbrand', function(req, res) {
     //然后请求的很快的时候才能正常关闭链接、
@@ -47,13 +48,33 @@ app.get('/selectbrand', function(req, res) {
     console.log(req.query)
 })
 
-//根据名牌id查找东西
+//根据品牌查找商品
+app.get('/getgid', function(req, res) {
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/select').getGid(req,res,connection);
+    console.log(req.query)
+})
+
+//查找goods前一百条数据
 app.get('/getgoods', function(req, res) {
     //然后请求的很快的时候才能正常关闭链接、
     var connection = createConnection();
     connection.connect();
     //引入查找模块
     require('./router/select').getGoods(req,res,connection);
+    console.log(req.query)
+})
+
+//查找所有用户信息
+app.get('/getuser', function(req, res) {
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/select').getUser(req,res,connection);
     console.log(req.query)
 })
 
@@ -64,6 +85,16 @@ app.get('/selectclass', function(req, res) {
     connection.connect();
     //引入查找模块
     require('./router/select').selectClass(req,res,connection);
+    console.log(req.query)
+})
+
+// 分页查找商品
+app.get('/goods', function(req, res) {
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/goods').goods(req,res,connection);
     console.log(req.query)
 })
 

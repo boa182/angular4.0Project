@@ -1,8 +1,13 @@
 {
     "api":"getgoods",
     "cols":"*",
+    "api":"goods",
+    "cols":"name,brandStoreName,marketPrice,vipshopPrice,class",
     "filterCols":"imgurl,color,size,type",
     "mutipleSelect":true,
+    "pagination":{
+        "pageitems":200
+    },
     "dictionary":{
         "en":{
 
