@@ -21,6 +21,12 @@ export class TabletemplateComponent implements OnInit {
     apiConfig: string;
     searchConfig: Object = {};
     pagearr:Array<number>=[];
+    firstPage:number=1;
+    pageNum:number = 5;
+    page :number= 1 ;//当前页
+    lastPage:number;
+    pages:Array<number>;
+    issearch:boolean;
     
 
     @Input() config: string;
@@ -51,7 +57,7 @@ export class TabletemplateComponent implements OnInit {
             this.searchConfig = configRes['search'] || {};
 
             this.apiRequest();
-
+            
         })
     }
 
@@ -72,17 +78,50 @@ export class TabletemplateComponent implements OnInit {
             console.log(apiRes[1][0]['rowscount']);
             console.log(pageItems,rowsCount);
             this.pageCount = Math.ceil(rowsCount / pageItems);
-            this.setPage(this.pageCount);
+            if(_page==1){
+                this.sub(1);
+            }
+            //this.setPage(this.pageCount);
         })
     }
-    setPage(count){
-        this.pagearr=[];
-        for(let i=1;i<=count;i++){
-        this.pagearr.push(i);
-        }
-        console.log(this.pagearr);
-       
-    }
+
+    /*-----------------------分页--------------------*/
+    setPage( num, first) {//创建保存页码数组的函数
+     //length数据总条数
+     //amount每页数据条数
+     //num保留的页码数
+     //first第一页的页码
+     let pages = []; //创建分页数组
+     let page = this.pageCount;
+     
+     if (page <= num) {
+       for (let i = 1; i <= page; i++) {
+         pages.push(i);
+       }
+     }
+     if (page > num) {
+       for (let i = first; i < first + num; i++) {
+         pages.push(i);
+       }
+     }
+     console.log(pages);
+     return pages;
+   }
+
+   sub(page){
+        this.lastPage = this.pageCount;
+         if (page >= this.pageNum) {
+           this.firstPage = page - Math.floor(this.pageNum / 2);
+         } else {
+           this.firstPage = 1;
+         }
+         if (this.firstPage > this.lastPage - this.pageNum) {
+           this.firstPage = this.lastPage - this.pageNum + 1;
+         }
+         this.pages = this.setPage( this.pageNum, this.firstPage);
+         this.page = page;
+   }
+    /*-----------------------分页--------------------*/
 
     getKeys(item){
         return Object.keys(item);
@@ -123,8 +162,9 @@ export class TabletemplateComponent implements OnInit {
         }
     }
 
-    goto(event){
-        let _page = event.target.value;
+    goto(_page){
+        console.log(_page);
+        //let _page = event.target.value;
         this.apiRequest(_page);
     }
 

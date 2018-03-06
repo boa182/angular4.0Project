@@ -4,7 +4,7 @@
     "filterCols":"imgurl,color,size,type",
     "mutipleSelect":true,
     "pagination":{
-        "pageitems":200
+        "pageitems":20
     },
     "dictionary":{
         "en":{
@@ -24,5 +24,9 @@
             "reg":"(.).+",
             "replaceVal":"$1**"
         }
+    },
+    "search":{
+        "show":true,
+        "api":"goodsForm.txt"
     }
 }
