@@ -14,6 +14,7 @@ export class FormtemplateComponent implements OnInit {
     privateDic: Object = {};
     colsAttributes: Object = {};
     selectApiDataSet: Object = {};
+    searchData:object={};
 
     constructor(private http: HttpService, private common: CommonService) { }
 

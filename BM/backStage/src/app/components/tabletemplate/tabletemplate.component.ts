@@ -26,7 +26,8 @@ export class TabletemplateComponent implements OnInit {
     page :number= 1 ;//当前页
     lastPage:number;
     pages:Array<number>;
-    issearch:boolean;
+    editConfig:boolean;
+    keyConfig:string;
     
 
     @Input() config: string;
@@ -43,6 +44,8 @@ export class TabletemplateComponent implements OnInit {
             let filterCols = configRes['filterCols'];
             this.filterColumns = !filterCols ? [] : filterCols.split(',');
 
+            this.keyConfig = configRes['key'] ? configRes['key'] : null;
+
             let dic = configRes['dictionary'];
             this.privateDic = dic || {};
 
@@ -56,7 +59,10 @@ export class TabletemplateComponent implements OnInit {
             
             this.searchConfig = configRes['search'] || {};
 
+            this.editConfig = configRes['edit'];
+
             this.apiRequest();
+            console.log('user',sessionStorage.getItem('userName'));
             
         })
     }

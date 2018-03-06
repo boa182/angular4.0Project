@@ -1,5 +1,5 @@
 {
-    "cols":"brandStoreName,vipshopPrice",
+    "cols":"brandStoreName,vipshopPrice,name",
     "colsAttributes":{
         "brandStoreName":{
             "type":"select-api",
@@ -12,6 +12,7 @@
         "vipshopPrice":{
             "type":"area"
         }
+
 
     }
 }

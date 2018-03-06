@@ -1,0 +1,17 @@
+.inlineForm>div{
+    float:left;
+    margin:8px 10px;
+   }
+ .inlineForm{
+    border: 1px solid #ccc;
+    border-top: 3px solid #3c8dbc;
+    margin: 5px 0px 10px;
+ }  
+ .inlineForm h1{
+    font-size:30px;
+    padding-left: 8px;
+    border-bottom: 1px solid #ddd;
+ }
+ .sbutton{
+    padding-top: 25px;
+ }
