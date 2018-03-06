@@ -7,11 +7,7 @@ var mysql = require("mysql");
 //连接服务器配置.......................................................................
 function createConnection() {
 	var connection = mysql.createConnection({
-<<<<<<< HEAD
-		host: '10.3.136.88',// 127.0.0.1 /10.3.136.140 /10.0.136.252
-=======
-		host: '10.3.136.140',// 127.0.0.1 10.3.136.153
->>>>>>> 38cd8325736cad66553e41b67adbe6adb1a1cae7
+		host: '10.3.132.88',// 127.0.0.1 /10.3.136.140 /10.0.136.252
 		user: 'root',
 		password: '',
 		database: 'lefeng',
@@ -50,6 +46,17 @@ app.get('/selectbrand', function(req, res) {
     require('./router/select').selectBrand(req,res,connection);
     console.log(req.query)
 })
+
+//根据名牌id查找东西
+app.get('/getgoods', function(req, res) {
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/select').getGoods(req,res,connection);
+    console.log(req.query)
+})
+
 //通过class查找商品
 app.get('/selectclass', function(req, res) {
     //然后请求的很快的时候才能正常关闭链接、
