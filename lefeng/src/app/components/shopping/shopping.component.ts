@@ -22,13 +22,14 @@ export class ShoppingComponent implements OnInit {
 	}
 	toList(e){
 		if(e.target.tagName=="P"){
+			this.common.brandStoreName='';
 			this.common.type = e.target.innerText;
 			this.router.navigate(['/goodslist']);
 		}
 		if(e.target.tagName=="IMG"){
-			
-				this.common.type = e.target.title;
-				this.router.navigate(['/goodslist']);
+			this.common.brandStoreName='';
+			this.common.type = e.target.title;
+			this.router.navigate(['/goodslist']);
 			
 		}
 	}
@@ -39,4 +40,12 @@ export class ShoppingComponent implements OnInit {
 	      $('.typeNav').css({'position':'fixed','top':44,'z-index':'2','width':'100%'})
 	    }
   	}
+	toBrandList(e){
+		if(e.target.tagName=="IMG"){
+			this.common.type='';
+			this.common.brandStoreName = e.target.title;
+			this.router.navigate(['/brand']);
+
+		}
+	}
 }
