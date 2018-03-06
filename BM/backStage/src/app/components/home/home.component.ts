@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+    
+    user:string;
+
     setting(){
         if($(".setting").stop().hasClass('aa')){
             $(".setting").animate({
@@ -24,6 +27,19 @@ export class HomeComponent implements OnInit {
     constructor() { }
 
     ngOnInit() {
+        this.user = sessionStorage.getItem('userName')
     }
-
+    exitUser(){
+        if($(".exituser").hasClass('bb')){
+            $(".exit").css({
+                display:'block'
+            })
+            $(".exituser").removeClass('bb')
+        }else{
+            $(".exit").css({
+                display:'none'
+            })
+            $(".exituser").addClass('bb')
+        }
+    }
 }

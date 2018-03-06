@@ -9,12 +9,28 @@
         </thead>
         <tbody>
             <tr *ngFor="let obj of dataset; let idx = index">
-                <td *ngFor="let key of getkeys(obj)">{{obj[key]}}</td>
+                <td *ngFor="let key of getkeys(obj) trackBy:trackByName" >{{obj[key]}}</td>
                 <td>
-                    <button type="button" class="btn btn-primary" (click)="redact()">编辑</button>
-                    <button type="button" class="btn btn-success" (click)="deleteUser(idx)">删除</button>
+                    <button type="button" class="btn btn-primary" (click)="redact(obj.userid)">编辑</button>
+                    <button type="button" class="btn btn-success" (click)="deleteUser(obj.userid)">删除</button>
                 </td>
             </tr>
         </tbody>
     </table>
+    <nav aria-label="Page navigation">
+      <ul class="pagination">
+        <li>
+          <a href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li *ngFor='let item of pagearr'><a href="#">{{item}}</a></li>
+       
+        <li>
+          <a href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
 </div>

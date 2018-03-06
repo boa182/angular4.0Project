@@ -9,16 +9,32 @@
             <i class="iconfont icon-xiaoxi1"></i>
             <span style="background-color: #f39c12">15</span>
         </li>
-        <li>
-            <h4>欢迎您：yulu</h4>
+        <li  (click)="exitUser()" class="exituser bb">
+            <h4>欢迎您：{{user}}</h4>
+            <ul class="exit">
+                <li class="message">
+                    <img src="../../../assets/user.jpg">
+                    <p>
+                        Alexander Pierce - Web <br/>Developer<br/>
+                        <span style="font-size: 12px">Member since Nov. 2018</span>
+                    </p>
+                </li>
+                <li class="exit_b">
+                    <a href="#" class="btn btn-default btn-lg active" role="button">设置</a>
+                    <a href="#" class="btn btn-default btn-lg active" role="button">退出</a>
+                </li>
+            </ul>
         </li>
         <div class="setting aa">
             <div class="setting_main">
-                <span>语言设置</span>
-                <select>
-                    <option value="en">en</option>
-                    <option value="cn">cn</option>
-                </select>
+                
+                <div>
+                    <span>语言设置</span>
+                    <select>
+                        <option value="en">en</option>
+                        <option value="cn">cn</option>
+                    </select>
+                </div>
             </div>
         </div>
         <li (click)="setting()">

@@ -11,22 +11,18 @@
     letter-spacing: 10px;
     font-weight: bold;
 }
-#header select{
-    position:absolute;
-    top:0;
-}
 #header .header_r{
     position:absolute;
     right:0;
     top:0;
     margin-bottom: 0rem;
 }
-#header .header_r li{
+#header .header_r>li{
     float:left;
     padding: 0 10px;
     position:relative;
 }
-#header .header_r li span{
+#header .header_r>li>span{
     position:absolute;
     top: 13px;
     left: 18px;
@@ -41,21 +37,56 @@
     vertical-align: baseline;
     line-height: .9;
 }
-#header .header_r li i{
+#header .header_r>li i{
     color:#fff;
     line-height: 60px;
 }
-#header .header_r li h4{
+#header .header_r>li h4{
     line-height: 60px;
     color:#fff;
     margin-bottom: 0px;
     margin-left: 15px;
 }
-#header .header_r li:last-child{
+#header .header_r>li:last-child{
     padding: 0 15px;
+    position:relative;
 }
-#header .header_r li:last-child:hover{
+#header .header_r>li:last-child:hover{
     background:#337ab7;
+}
+#header .exit{
+    position: absolute;
+    height: 281px;
+    text-align: center;
+    right: 5%;
+    top: 62px;
+    border: 1px solid #ddd;
+    background: #fff;
+    z-index: 100;
+    display:none;
+ }
+ .exituser:hover{
+    background:#337ab7;
+ }
+.message{
+    height: 175px;
+    padding:10px;
+    text-align: center;
+    background-color: #3c8dbc;
+    width:278px;
+ }
+.message img{
+    width:84px;
+    height:84px;
+    border-radius: 50%;
+    border-color: rgba(255,255,255,0.2);
+    vertical-align: middle;
+}
+.message p{
+    color: rgba(255,255,255,0.8);
+    font-size: 17px;
+    margin-top: 10px;
+    margin: 0 0 10px;
 }
 .setting{
     position:fixed;
@@ -68,8 +99,13 @@
     height:635px;
     background:#333;
 }
-.setting_main span{
+.setting_main>div>span{
     color:#fff;
+}
+.exit_b{
+    display:flex;
+    justify-content: space-evenly;
+    padding: 10px;
 }
 #main{
     position:fixed;
