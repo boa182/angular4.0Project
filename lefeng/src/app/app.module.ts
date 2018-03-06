@@ -14,6 +14,8 @@ import { MyComponent } from './components/my/my.component';
 import { GoodslistComponent } from './components/goodslist/goodslist.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { PinpaiComponent } from './components/pinpai/pinpai.component';
+
 
 import { FootnavComponent } from './components/footnav/footnav.component';
 import { SearchComponent } from './components/search/search.component';
@@ -30,11 +32,12 @@ import { BannerComponent } from './components/banner/banner.component';
     GoodslistComponent,
     LoginComponent,
     RegisterComponent,
+    PinpaiComponent,
    
     FootnavComponent,
    
     SearchComponent,
-   
+      
     BannerComponent
   ],
   imports: [
