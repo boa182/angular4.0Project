@@ -1,4 +1,4 @@
-﻿<div class="bigbox clearfix">
+<div class="bigbox clearfix">
 	<div class="clearfix">
 		<search></search>
 	</div> 
@@ -18,70 +18,10 @@
                     <p>面部护理</p>
                     <span>>>>>>>>>>>>>>></span>
                 </div>
-                <ul class="goods">
-                    <li>
-                        <img src="../../../assets/images/l1.jpg" alt="" />
-                        <p>喷雾</p>
-                    </li>
-                    <li>
-                        <img src="../../../assets/images/l2.jpg" alt="" />
-                        <p>按摩膏</p>
-                    </li>
-                    <li>
-                        <img src="../../../assets/images/l3.jpg" alt="" />
-                        <p>鼻贴</p>
-                    </li>
-                    <li>
-                        <img src="../../../assets/images/l4.jpg" alt="" />
-                        <p>护肤套装</p>
-                    </li>
-                    <li>
-                        <img src="../../../assets/images/l5.jpg" alt="" />
-                        <p>精油护理</p>
-                    </li>
-                    <li>
-                        <img src="../../../assets/images/l6.jpg" alt="" />
-                        <p>眼部护理</p>
-                    </li>
-                    <li>
-                        <img src="../../../assets/images/l7.jpg" alt="" />
-                        <p>洁面</p>
-                    </li>
-                    <li>
-                        <img src="../../../assets/images/l8.jpg" alt="" />
-                        <p>防晒</p>
-                    </li>
-                    <li>
-                        <img src="../../../assets/images/l9.jpg" alt="" />
-                        <p>爽肤水</p>
-                    </li>
-                    <li>
-                        <img src="../../../assets/images/l10.jpg" alt="" />
-                        <p>面膜</p>
-                    </li>
-                    <li>
-                        <img src="../../../assets/images/l11.jpg" alt="" />
-                        <p>日霜</p>
-                    </li>
-                    <li>
-                        <img src="../../../assets/images/l12.jpg" alt="" />
-                        <p>晚霜</p>
-                    </li>
-                    <li>
-                        <img src="../../../assets/images/l13.jpg" alt="" />
-                        <p>面部精华</p>
-                    </li>
-                    <li>
-                        <img src="../../../assets/images/l14.jpg" alt="" />
-                        <p>乳液</p>
-                    </li>
-                    <li>
-                        <img src="../../../assets/images/l15.jpg" alt="" />
-                        <p>隔离</p>
-                    </li>
-                    <li>
-                        <img src="../../../assets/images/l16.jpg" alt="" />
-                        <p>母婴护肤</p>
+                <ul class="goods"  (click)=toList($event)>
+                    <li *ngFor="let obj of facedataset">
+                        <img src={{obj.img}} alt="" />
+                        <p>{{obj.name}}</p>
                     </li>
                 </ul>
                 <div class="abc"></div>
@@ -90,38 +30,10 @@
                     <p>男士护肤</p>
                     <span>>>>>>>>>>>>>>></span>
                 </div>
-                <ul class="goods">
-                    <li>
-                        <img src="../../../assets/images/l1.jpg" alt="" />
-                        <p>界面</p>
-                    </li>
-                    <li>
-                        <img src="../../../assets/images/l2.jpg" alt="" />
-                        <p>爽肤水</p>
-                    </li>
-                    <li>
-                        <img src="../../../assets/images/l3.jpg" alt="" />
-                        <p>精华</p>
-                    </li>
-                    <li>
-                        <img src="../../../assets/images/l4.jpg" alt="" />
-                        <p>乳液</p>
-                    </li>
-                    <li>
-                        <img src="../../../assets/images/l5.jpg" alt="" />
-                        <p>面膜</p>
-                    </li>
-                    <li>
-                        <img src="../../../assets/images/l6.jpg" alt="" />
-                        <p>眼霜</p>
-                    </li>
-                    <li>
-                        <img src="../../../assets/images/l7.jpg" alt="" />
-                        <p>身体护理</p>
-                    </li>
-                    <li>
-                        <img src="../../../assets/images/l8.jpg" alt="" />
-                        <p>护理套装</p>
+                <ul class="goods"  (click)=toList($event)>
+                    <li *ngFor="let obj of mandataset">
+                        <img src={{obj.img}} alt="" />
+                        <p>{{obj.name}}</p>
                     </li>
                 </ul>
                 <div class="abc"></div>
@@ -130,42 +42,10 @@
                     <p>彩妆</p>
                     <span>>>>>>>>>>>>>>></span>
                 </div>
-                <ul class="goods">
-                    <li>
-                        <img src="../../../assets/images/l1.jpg" alt="" />
-                        <p>加装</p>
-                    </li>
-                    <li>
-                        <img src="../../../assets/images/l2.jpg" alt="" />
-                        <p>卸妆</p>
-                    </li>
-                    <li>
-                        <img src="../../../assets/images/l3.jpg" alt="" />
-                        <p>遮瑕</p>
-                    </li>
-                    <li>
-                        <img src="../../../assets/images/l4.jpg" alt="" />
-                        <p>腮红</p>
-                    </li>
-                    <li>
-                        <img src="../../../assets/images/l5.jpg" alt="" />
-                        <p>彩妆套装</p>
-                    </li>
-                    <li>
-                        <img src="../../../assets/images/l6.jpg" alt="" />
-                        <p>眼妆</p>
-                    </li>
-                    <li>
-                        <img src="../../../assets/images/l7.jpg" alt="" />
-                        <p>唇妆</p>
-                    </li>
-                    <li>
-                        <img src="../../../assets/images/l8.jpg" alt="" />
-                        <p>美甲</p>
-                    </li>
-                    <li>
-                        <img src="../../../assets/images/l9.jpg" alt="" />
-                        <p>彩妆工具</p>
+                <ul class="goods"  (click)=toList($event)>
+                    <li *ngFor="let obj of czdataset">
+                        <img src={{obj.img}} alt="" />
+                        <p>{{obj.name}}</p>
                     </li>
                 </ul>
                 <div class="abc"></div>
@@ -174,38 +54,10 @@
                     <p>个人护理</p>
                     <span>>>>>>>>>>>>>>></span>
                 </div>
-                <ul class="goods">
-                    <li>
-                        <img src="../../../assets/images/l1.jpg" alt="" />
-                        <p>洗发护发</p>
-                    </li>
-                    <li>
-                        <img src="../../../assets/images/l2.jpg" alt="" />
-                        <p>身体护理</p>
-                    </li>
-                    <li>
-                        <img src="../../../assets/images/l3.jpg" alt="" />
-                        <p>口腔护理</p>
-                    </li>
-                    <li>
-                        <img src="../../../assets/images/l4.jpg" alt="" />
-                        <p>手足护理</p>
-                    </li>
-                    <li>
-                        <img src="../../../assets/images/l5.jpg" alt="" />
-                        <p>套装离合</p>
-                    </li>
-                    <li>
-                        <img src="../../../assets/images/l6.jpg" alt="" />
-                        <p>美体瘦身</p>
-                    </li>
-                    <li>
-                        <img src="../../../assets/images/l7.jpg" alt="" />
-                        <p>美容仪器</p>
-                    </li>
-                    <li>
-                        <img src="../../../assets/images/l8.jpg" alt="" />
-                        <p>卫生巾</p>
+                <ul class="goods"  (click)=toList($event)>
+                    <li *ngFor="let obj of hldataset">
+                        <img src={{obj.img}} alt="" />
+                        <p>{{obj.name}}</p>
                     </li>
                 </ul>
                 <div class="abc"></div>
@@ -214,26 +66,10 @@
                     <p>香水香氛</p>
                     <span>>>>>>>>>>>>>>></span>
                 </div>
-                <ul class="goods">
-                    <li>
-                        <img src="../../../assets/images/l1.jpg" alt="" />
-                        <p>中性香水</p>
-                    </li>
-                    <li>
-                        <img src="../../../assets/images/l2.jpg" alt="" />
-                        <p>男性香水</p>
-                    </li>
-                    <li>
-                        <img src="../../../assets/images/l3.jpg" alt="" />
-                        <p>女性香水</p>
-                    </li>
-                    <li>
-                        <img src="../../../assets/images/l4.jpg" alt="" />
-                        <p>女士套装</p>
-                    </li>
-                    <li>
-                        <img src="../../../assets/images/l5.jpg" alt="" />
-                        <p>男士套装</p>
+                <ul class="goods"  (click)=toList($event)>
+                    <li *ngFor="let obj of xsdataset">
+                        <img src={{obj.img}} alt="" />
+                        <p>{{obj.name}}</p>
                     </li>
                 </ul>
             </div>
