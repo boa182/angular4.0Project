@@ -1,9 +1,11 @@
 ## 主要目的：通过一个angular项目来学习angular框架
 ### 参考资料：官网api  https://angular.cn/docs
 ### 一、如何跑通项目
+#### 1.跑通app的步骤
 - 在lefeng文件下npm install -g @angular/cli
 - 然后再npm install 
 - 开启服务器 ng serve --open
+#### 2.开启后台服务器
 ### 二、从零搭建
 #### 1.typeScript知识的学习
 - 1）与JavaScript最大的区别<br />
@@ -39,11 +41,12 @@ I'll be ${ age + 1 } years old next month.`;
 	 ng g c shopping   商场页面 <br />
 	 ng g c car	   购物车页面 <br />
 	 ng g c my  	   个人页面 <br />
-	 ng g c goodslist  商品列表页面 <br />
+	 ng g c list  商品列表页面 <br />
 	 ng g c login      登录页面 <br />
 	 ng g c register  注册页面 <br />
 	 ng g c search    头部搜索组件 <br />
 	 ng g c banner    轮播图组件 <br />
+	 ng g c details   详情页 <br />
 #### 3.配置路由
 - 在src目录下新建一个router文件夹，新建一个配置文件router.ts
 ```javascript
@@ -223,4 +226,49 @@ declare var swiper:any;;
 	import * as swiper from 'swiper'
 - 参照swiper的文档，在组件内写入swiper的代码结构
 
-#### 2.组件间传参	
+#### 2.请求回来的数据太多，造成的ERROR  is not assignable to type 'object[]'.Property 'includes' is missing in type '{}'.
+- 第一种解决方法
+```javascript
+//在组件里面
+	//利用深拷贝，防止数据源的改变
+	let data = JSON.parse(JSON.stringify(res));
+	this.goodslist = data;				
+```
+- 第二种解决方法
+```javascript
+//在组件里
+//利用对象，把数据分类存储起来
+	dataset: Object = {};
+	this.http.get('selectClass',{
+			type: this.type		
+		}).then((res) => {
+			this.dataset[this.type] = res;
+		})	
+```
+#### 3.底部菜单高亮(routerLinkActive)
+```javascript
+	<li routerLink="/my" routerLinkActive="active">
+```
+
+#### 4.如何在angular中引入jquery(error TS2304: Cannot find name '$'.)
+- 请参考这位大神：http://blog.csdn.net/home_zhang/article/details/77992734
+- npm install --save jquery
+- npm install @types/jquery --save
+- 在组件中引入jquery	import * as $ from 'jquery';
+##### 4-1.利用jquery做吸顶
+```html
+	<div class="buttons-tab typeNav" (click)="selectType($event)">
+		<a href="#tab1" class="tab-link active button">保湿</a>
+		<a href="#tab2" class="tab-link button">洗护</a>
+		<a href="#tab3" class="tab-link button">防晒</a>
+	</div>
+```
+```javascript
+	getScroll(){
+	    if($('.contain').scrollTop() < 1000){
+	      $('.typeNav').removeAttr("style")
+	    }else{
+	      $('.typeNav').css({'position':'fixed','top':44,'z-index':'2','width':'100%'})
+	    }
+  	}
+```

@@ -6,3 +6,4 @@ interface NodeModule {
 
 declare var jquey:any;
 declare var swiper:any;
+

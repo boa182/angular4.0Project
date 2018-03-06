@@ -37,6 +37,7 @@ app.get('/login', function(req, res) {
     require('./router/user').login(req,res,connection);
     console.log(req.query)
 })
+
 //根据名牌id查找东西
 app.get('/selectbrand', function(req, res) {
     //然后请求的很快的时候才能正常关闭链接、

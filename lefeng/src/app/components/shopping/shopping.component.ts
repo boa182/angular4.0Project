@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
+import {Router} from '@angular/router'
 //依赖组件模块引用
 import { HttpService } from './../../utils/http.service';
+import { CommonService } from './../../utils/common.service';
 
 @Component({
 	selector: 'app-shopping',
@@ -9,26 +10,26 @@ import { HttpService } from './../../utils/http.service';
 	styleUrls: ['./shopping.component.scss']
 })
 export class ShoppingComponent implements OnInit {
-	zclassify: String = "面膜";
-	goodslist: Array = [];
-	constructor(private http: HttpService) {}
+	
+	constructor(private http: HttpService,private common:CommonService,private router:Router ) {}
 
 	ngOnInit() {
-		this.http.get('selectClass', {
-			type: this.zclassify;
-		}).then((res) => {
-			this.goodslist = res;
-			
-		})	
+
 	}
-	selectType(e) {
-		//	console.log(e.target.innerText)
-		this.zclassify = e.target.innerText;
-		this.http.get('selectClass', {
-			type: this.zclassify;
-		}).then((res) => {
-				this.goodslist = res;
-				console.log(this.goodslist)
-		})
+	selectType(e){
+		this.common.type = e.target.innerText;
 	}
+	toList(e){
+		if(e.target.tagName=="P"){
+			this.common.type = e.target.innerText;
+			this.router.navigate(['/goodslist']);
+		}
+	}
+	getScroll(){
+	    if($('.contain').scrollTop() < 1000){
+	      $('.typeNav').removeAttr("style")
+	    }else{
+	      $('.typeNav').css({'position':'fixed','top':44,'z-index':'2','width':'100%'})
+	    }
+  	}
 }

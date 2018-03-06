@@ -1,0 +1,80 @@
+.daohang{
+    display:flex;
+    height: 1.171875rem;
+    margin-top: 0.40625rem;
+    li{
+        width:50%;
+        text-align: center;
+        line-height: 1.171875rem;
+        font-size: 0.546875rem;
+        font-weight: bold;
+        color:#DADADA;
+    }
+}
+.active{
+    a{
+        color:red;
+    }
+    position:relative;
+    div:first-of-type{
+        width: 100%;
+        background-color: red;
+        position:absolute;
+        bottom:0;
+        height: 0.0625rem;
+    }
+}
+.hotgoods{
+    display:flex;
+    flex-wrap:wrap;
+    li{
+        width:33%;
+        >a{
+            font-weight: bold;
+        }
+        img{
+            width: 100%;
+        }
+    }
+}
+.fixed{
+    position:fixed;
+    right:0.15625rem;
+    top:25%;
+    li{
+        font-size: 0.46875rem;
+        line-height: 0.625rem;
+        >a{
+            font-weight: bold;   
+        }
+    }
+}
+
+.abc{
+    height: 1rem;
+    background-color: #F6F6F6;
+    font-size:0.703125rem;
+    color:#626262;
+    font-weight: bold;
+    line-height: 1rem;
+    text-indent: 2em;
+    a{
+        font-weight: bold
+    }
+}
+.datalist{
+    li{
+        display:flex;
+        border-bottom:1px solid #F3F3F3;
+        span{
+            font-size: 0.46875rem;
+            align-self:center;
+        }
+        img{
+            width: 2.796875rem;
+            height: 2.796875rem;
+            margin: 0.3125rem 0.3125rem;
+        }
+    }
+    
+}

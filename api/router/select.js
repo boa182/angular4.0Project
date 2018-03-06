@@ -1,5 +1,3 @@
-
-
 //查找travel所有的东西  黄子健
 exports.selectBrand = function(req, res, connection) {
 	connection.query(`SELECT * FROM brand`, function(error, results, fields) {
@@ -25,9 +23,9 @@ exports.selectClass = function(req, res, connection) {
 		var obj = {
 			news: results,
 		}
-		res.send(results);
-		connection.end();
-	});
+ 		res.send(results);
+ 		connection.end();
+ 	});
 }
 
 // 查找商品中所有品牌

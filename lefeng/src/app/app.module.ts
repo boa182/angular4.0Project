@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {RootRouter} from './router/router'
+import {RootRouter} from './router/router';
 //第一步往根模块引入http
 import { HttpModule } from '@angular/http';
 import {HttpService} from './utils/http.service';
-
+import {CommonService} from './utils/common.service'
 //双向绑定表单
 import {FormsModule} from '@angular/forms';
 
@@ -18,10 +18,12 @@ import { MyComponent } from './components/my/my.component';
 import { GoodslistComponent } from './components/goodslist/goodslist.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-
+import { PinpaiComponent } from './components/pinpai/pinpai.component';
 import { FootnavComponent } from './components/footnav/footnav.component';
 import { SearchComponent } from './components/search/search.component';
 import { BannerComponent } from './components/banner/banner.component';
+import {ListComponent} from './components/list/list.component';
+import { DetailsComponent } from './components/details/details.component';
 
 @NgModule({
   declarations: [
@@ -34,18 +36,18 @@ import { BannerComponent } from './components/banner/banner.component';
     GoodslistComponent,
     LoginComponent,
     RegisterComponent,
-   
+    PinpaiComponent,
     FootnavComponent,
-   
+   	ListComponent,
+    DetailsComponent,
     SearchComponent,
-   
     BannerComponent
   ],
   imports: [
     BrowserModule,RootRouter,HttpModule,FormsModule
   ],
   providers: [
-  	HttpService
+  	HttpService,CommonService
   ],
   bootstrap: [AppComponent]
 })
