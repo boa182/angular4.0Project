@@ -46,6 +46,7 @@ I'll be ${ age + 1 } years old next month.`;
 	 ng g c register  注册页面 <br />
 	 ng g c search    头部搜索组件 <br />
 	 ng g c banner    轮播图组件 <br />
+	 ng g c details   详情页 <br />
 #### 3.配置路由
 - 在src目录下新建一个router文件夹，新建一个配置文件router.ts
 ```javascript
@@ -247,4 +248,27 @@ declare var swiper:any;;
 #### 3.底部菜单高亮(routerLinkActive)
 ```javascript
 	<li routerLink="/my" routerLinkActive="active">
+```
+
+#### 4.如何在angular中引入jquery(error TS2304: Cannot find name '$'.)
+- 请参考这位大神：http://blog.csdn.net/home_zhang/article/details/77992734
+- npm install --save jquery
+- npm install @types/jquery --save
+- 在组件中引入jquery	import * as $ from 'jquery';
+##### 4-1.利用jquery做吸顶
+```html
+	<div class="buttons-tab typeNav" (click)="selectType($event)">
+		<a href="#tab1" class="tab-link active button">保湿</a>
+		<a href="#tab2" class="tab-link button">洗护</a>
+		<a href="#tab3" class="tab-link button">防晒</a>
+	</div>
+```
+```javascript
+	getScroll(){
+	    if($('.contain').scrollTop() < 1000){
+	      $('.typeNav').removeAttr("style")
+	    }else{
+	      $('.typeNav').css({'position':'fixed','top':44,'z-index':'2','width':'100%'})
+	    }
+  	}
 ```

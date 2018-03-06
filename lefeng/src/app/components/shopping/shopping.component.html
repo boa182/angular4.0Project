@@ -2,7 +2,7 @@
 	<div class="clearfix">
 		<search></search>
 	</div>
-	<div class="contain clearfix">
+	<div class="contain clearfix" (scroll)='getScroll()'>
 		<banner></banner>
 		<div id="contain">
 			<div class="classifyItem">
@@ -90,7 +90,7 @@
 				</div>
 				<div class="uibox">
 					<!--<goodslist></goodslist>-->
-					<div class="buttons-tab" (click)="selectType($event)">
+					<div class="buttons-tab typeNav" (click)="selectType($event)">
 						<a href="#tab1" class="tab-link active button">保湿</a>
 						<a href="#tab2" class="tab-link button">洗护</a>
 						<a href="#tab3" class="tab-link button">防晒</a>

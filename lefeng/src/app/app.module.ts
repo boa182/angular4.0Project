@@ -22,7 +22,8 @@ import { PinpaiComponent } from './components/pinpai/pinpai.component';
 import { FootnavComponent } from './components/footnav/footnav.component';
 import { SearchComponent } from './components/search/search.component';
 import { BannerComponent } from './components/banner/banner.component';
-import {ListComponent} from './components/list/list.component'
+import {ListComponent} from './components/list/list.component';
+import { DetailsComponent } from './components/details/details.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import {ListComponent} from './components/list/list.component'
     PinpaiComponent,
     FootnavComponent,
    	ListComponent,
+    DetailsComponent,
     SearchComponent,
     BannerComponent
   ],
