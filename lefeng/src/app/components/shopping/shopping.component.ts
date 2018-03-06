@@ -3,6 +3,7 @@ import {Router} from '@angular/router'
 //依赖组件模块引用
 import { HttpService } from './../../utils/http.service';
 import { CommonService } from './../../utils/common.service';
+import * as $ from 'jquery';
 
 @Component({
 	selector: 'app-shopping',
