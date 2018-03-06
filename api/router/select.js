@@ -1,3 +1,15 @@
+//查找travel所有的东西  黄子健
+exports.selectBrand = function(req, res, connection) {
+	connection.query(`SELECT * FROM brand`, function(error, results, fields) {
+		if(error) throw error;
+		//results =>array类型
+		console.log('The solution is: ', results);
+		//把数据整理，返回到前端
+		
+		res.send(results);
+		connection.end();
+	});
+}
 //通过class查找goods表里面的东西
 exports.selectClass = function(req, res, connection) {
 	console.log(req.query.type);
@@ -11,9 +23,8 @@ exports.selectClass = function(req, res, connection) {
 		var obj = {
 			news: results,
 		}
-		res.send(results);
-		connection.end();
-	});
+ 		res.send(results);
+ 		connection.end();
+ 	});
 }
-
 

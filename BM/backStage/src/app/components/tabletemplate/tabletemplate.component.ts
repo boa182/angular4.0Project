@@ -1,8 +1,7 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {Http} from '@angular/http';
-import $ from '../../utils/httpclient'
-import {Utils} from '../../utils/utils'
-import {CommonService} from '../../utils/common.service'
+import {Utils} from '../../utils/utils';
+import {CommonService} from '../../utils/common.service';
+import {HttpService} from '../../utils/http.service';
 
 @Component({
   selector: 'tabletemplate',
@@ -21,16 +20,17 @@ export class TabletemplateComponent implements OnInit {
     paginationConfig: Object;
     apiConfig: string;
     searchConfig: Object = {};
+    pagearr:Array<number>=[];
     
 
     @Input() config: string;
 
-    constructor(private http: Http, private common: CommonService){}
+    constructor(private httpservice:HttpService, private common: CommonService){}
 
-  
-  ngOnInit(){
+     ngOnInit(){
         //获取当前模块的配置
-        $.get(this.http, this.config).then((configRes) => {
+        this.httpservice.get( this.config).then((configRes) => {
+            console.log(configRes);
             let cols = configRes['cols'];
             this.columns = !cols || cols == '*' ? [] : cols.split(',');
 
@@ -40,13 +40,15 @@ export class TabletemplateComponent implements OnInit {
             let dic = configRes['dictionary'];
             this.privateDic = dic || {};
 
-            this.multiple = configRes['mutipleSelect'];
+            this.multiple = configRes['multiple'];
 
             this.filterDataConfig = configRes['filterData'] || {};
 
+            this.paginationConfig = configRes['pagination'] || {};
 
             this.apiConfig = configRes['api'];
             
+            this.searchConfig = configRes['search'] || {};
 
             this.apiRequest();
 
@@ -55,18 +57,31 @@ export class TabletemplateComponent implements OnInit {
 
     apiRequest(_page = 1){
         let pageParams = {};
+
         if(this.paginationConfig){
             pageParams['pageitems'] = this.paginationConfig['pageitems'];
             pageParams['page'] = _page;
-        }        
+        }       
+        console.log(pageParams); 
         //配置信息中的 api
-        $.get(this.http, this.apiConfig, pageParams).then((apiRes) => {
+        this.httpservice.get(this.apiConfig, pageParams).then((apiRes) => {
             console.log(apiRes);
-            this.dataset = apiRes['data'].result;
-            //let rowsCount = apiRes['rowsCount'];
-            //let pageItems = this.paginationConfig['pageitems'];
-            //this.pageCount = Math.ceil(rowsCount / pageItems);
+            this.dataset = apiRes[0];
+            let rowsCount = apiRes[1][0]['rowscount'];
+            let pageItems = this.paginationConfig['pageitems'];
+            console.log(apiRes[1][0]['rowscount']);
+            console.log(pageItems,rowsCount);
+            this.pageCount = Math.ceil(rowsCount / pageItems);
+            this.setPage(this.pageCount);
         })
+    }
+    setPage(count){
+        this.pagearr=[];
+        for(let i=1;i<=count;i++){
+        this.pagearr.push(i);
+        }
+        console.log(this.pagearr);
+       
     }
 
     getKeys(item){
@@ -112,7 +127,6 @@ export class TabletemplateComponent implements OnInit {
         let _page = event.target.value;
         this.apiRequest(_page);
     }
-  
 
 }
 

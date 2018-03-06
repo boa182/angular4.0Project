@@ -5,7 +5,7 @@ import {Injectable} from '@angular/core';
 export class HttpService{
     constructor(private http: Http){}
 
-    private baseUrl:string = 'http://10.3.136.252:3000/';
+    private baseUrl:string = 'http://localhost:3000/';
     private getUrl(_url){
         if(_url.startsWith('http')){
             return _url;
@@ -25,8 +25,6 @@ export class HttpService{
             })
         })
     }
-
-
      post(api,params={}){
 
         return new Promise((resolve,reject)=>{
@@ -50,7 +48,4 @@ export class HttpService{
             } )
         })
     }
-
-
-   
 }

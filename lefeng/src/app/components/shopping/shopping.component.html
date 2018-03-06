@@ -6,7 +6,7 @@
 		<banner></banner>
 		<div id="contain">
 			<div class="classifyItem">
-				<ul>
+				<ul (click)=toList($event)>
 					<li>
 						<img src="http://a2.vimage1.com/upload/merchandise/pdcvis/2017/12/25/124/5f977f3a-fd36-41b0-ba0e-5443c921c13b.jpg" />
 						<p>保湿</p>
@@ -89,26 +89,28 @@
 					</p>
 				</div>
 				<div class="uibox">
+					<!--<goodslist></goodslist>-->
 					<div class="buttons-tab" (click)="selectType($event)">
-						<a href="#tab1" class="tab-link active button">面膜</a>
-						<a href="#tab2" class="tab-link button">服饰</a>
-						<a href="#tab3" class="tab-link button">洗浴</a>
+						<a href="#tab1" class="tab-link active button">保湿</a>
+						<a href="#tab2" class="tab-link button">洗护</a>
+						<a href="#tab3" class="tab-link button">防晒</a>
 					</div>
 					<div class="content-block">
 						<div class="tabs">
+							
 							<div id="tab1" class="tab active">
 								
-								<goodslist [type]="goodslist"></goodslist>
+								<goodslist [type]="'保湿'"></goodslist>
 								
 							</div>
 							<div id="tab2" class="tab">
 								
-								<goodslist [type]="goodslist"></goodslist>
+								<goodslist [type]="'洗护'"></goodslist>
 								
 							</div>
 							<div id="tab3" class="tab">
 								
-								<goodslist [type]="goodslist"></goodslist>
+								<goodslist [type]="'防晒'"></goodslist>
 								
 							</div>
 						</div>

@@ -6,8 +6,10 @@ import { Injectable } from '@angular/core';
 
 export class HttpService{
 	constructor(private http: Http){}
-
 	private baseUrl = 'http://10.3.132.91:3000/';
+
+	// private baseUrl = 'http://10.3.132.88:3000/';
+
 
 	private getUrl(_url){
 	    if(_url.startsWith('http')){
