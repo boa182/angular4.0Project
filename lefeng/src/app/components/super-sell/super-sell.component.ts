@@ -13,13 +13,12 @@ export class SuperSellComponent implements OnInit {
   constructor(private http: HttpService) { }
 
   ngOnInit() {
-    this.http.get('selectBrand').then((res)=>{
-      this.Brand = res;
-    })
+    // this.http.get('selectBrand').then((res)=>{
+    //   this.Brand = res;
+    // })
     
     this.http.get('getgoods').then((res)=>{
       this.Discount = res;
-      console.log(this.Discount)
     })
   }
 
