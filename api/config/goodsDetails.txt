@@ -1,0 +1,9 @@
+{
+    "cols":"agio,allImages,brandStoreName,brandId,largeImage,marketPrice,middleImage,name,vipshopPrice,class",
+    "filterCols":"sn,validity,content,postAt,authorAvatar,score,authorName,greatScale,standard,channelFeatureList,pointDescribe,activeId,activeTpyeId,badCount,goodCount,mediumCount,totalCount",
+    "colsAttributes":{
+
+    },
+    "searchapi":"getgid",
+    "updateapi":"updategoods"
+}

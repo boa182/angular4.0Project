@@ -1,3 +1,6 @@
 .active{
     background:skyblue;
 }
+.modal-dialog{
+    margin-top: 200px;
+}

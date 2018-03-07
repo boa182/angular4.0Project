@@ -26,11 +26,8 @@ export class HomeComponent implements OnInit {
         }
     }
     
-<<<<<<< HEAD
-    constructor(private common: CommonService) { }
-=======
-    constructor(private router: Router) { }
->>>>>>> 7f4ee9844e5e23a327c8ad52fe3214d1fcdeba68
+
+    constructor(private common: CommonService,private router: Router) { }
 
     ngOnInit() {
         this.user = sessionStorage.getItem('userName')
