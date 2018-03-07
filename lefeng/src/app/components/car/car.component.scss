@@ -4,3 +4,96 @@
     line-height: 2.2rem;
     border: 1px solid #DADCDB;
 }
+.ccon{
+    background-color: #F2F2F2;
+    height: 100%;
+    overflow-y:scroll ;
+    img{
+        width:100%;
+    }
+    p{
+        margin: 100px;
+        width: 200px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        background: #FF0056;
+        color: #fff;
+       
+    }
+}
+.ncon{
+    height: 100%;
+    overflow-y:scroll ;
+    background-color: #F2F2F2;
+    padding-top: 20px;
+    ul{
+        
+        li{
+            background: #fff;
+            display: flex;
+            padding: 15px;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            b{
+                font-weight: bold;
+                margin-right: 10px;
+            }
+            img{
+                width: 30%;
+                height: 100%;
+            }
+            >div{
+                width: 65%;
+            }
+            p{
+                padding: 10px 0;
+            }
+            .price{
+                color: red;
+            }
+            .count{
+                span{
+                    display: inline-block;
+                    width: 30px;
+                    height: 30px;
+                    border: 1px solid #CCCCCC;
+                    text-align: center;
+                    line-height: 30px;
+                    margin: 0 -3px;
+                }
+                span:active{
+                    color: yellow;
+                    border: 1px solid yellow;
+                }
+                span:nth-child(4){
+                    float: right;
+                    border: 0 none;
+                }
+            }
+        }
+    }
+}
+.carNav{
+  height: 2.6rem;  
+  line-height: 2.6rem;
+  border-top: 1px solid #DEDEDE;
+  span{
+      margin-left: 10px;
+      b{
+          color: red;
+      }
+  }
+  span:nth-child(2){
+      display: block;
+      float: right;
+      height: 2rem;
+      width: 100px;
+      background:#FF0056 ;
+      color:#F6F2F3 ;
+      text-align: center;
+      line-height: 2rem;
+      margin-top: 0.2rem;
+      margin-right: 10px;
+  }
+}

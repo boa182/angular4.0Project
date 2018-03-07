@@ -4,7 +4,9 @@ import {Injectable} from '@angular/core'
 @Injectable()
 export class CommonService{
     type: string = '保湿';
-
+	gid: string = '';
+	carType: string = '0';
+	brandStoreName: string = '';
 //  constructor(private http: Http){
 //      http.get('http://localhost:88/config1707/dictionary.txt').subscribe((dicRes) => {
 //          this.publicDic = dicRes.json();

@@ -48,6 +48,7 @@ I'll be ${ age + 1 } years old next month.`;
 	 ng g c banner    轮播图组件 <br />
 	 ng g c details   详情页 <br />
 #### 3.配置路由
+- 路由示例参考： http://yunkus.com/angular-tutorial-part5/
 - 在src目录下新建一个router文件夹，新建一个配置文件router.ts
 ```javascript
 	//引入组件

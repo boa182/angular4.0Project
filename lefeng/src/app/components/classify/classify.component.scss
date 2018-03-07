@@ -8,6 +8,9 @@
         font-size: 0.546875rem;
         font-weight: bold;
         color:#DADADA;
+        a{
+            display:block;
+        }
     }
 }
 .abc{
@@ -33,17 +36,17 @@
     }
 }
 .biaoti{
-        display:flex;
-        justify-content:center;
-        font-size: 0.390625rem;
-        >span{
-            color:#F4F4F4;
+    display:flex;
+    justify-content:center;
+    font-size: 0.390625rem;
+    >span{
+        color:#F4F4F4;
 
-        }
-        >p{
-            font-weight: bold;
-        }   
     }
+    >p{
+        font-weight: bold;
+    }   
+}
 .goods{
     display:flex;
     flex-wrap:wrap;

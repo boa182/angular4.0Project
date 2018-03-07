@@ -7,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PinpaiComponent implements OnInit {
 
-    
+    goTo(location: string): void {
+        window.location.hash = ''; 
+        window.location.hash = location;
+    }
 
   constructor() { }
 

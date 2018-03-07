@@ -24,9 +24,16 @@ export class LoginComponent implements OnInit {
             
             if(res['length']==0){
               alert('password error');
+<<<<<<< HEAD
             }else if(res.length==1){
               sessionStorage.setItem('userName',this.user)
               this.router.navigate(['/home'])
+=======
+            }else if(res['length']==1){
+              sessionStorage.setItem('userName',this.user)
+              console.log(sessionStorage.getItem('userName'));
+              this.router.navigate(['/home']);
+>>>>>>> 7efcbf80dcca44da6112ebbf73a6fd5cb589a5d0
             }
 
         })

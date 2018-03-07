@@ -49,10 +49,12 @@ export class HomeComponent implements OnInit {
         sessionStorage.removeItem('userName')
         this.router.navigate(['/enter/login']);
     }
-    /*$('body').click(funciton(){
-        $(".exit").css({
-            display:'none'
-        })
-        $(".exituser").addClass('bb')
-    })*/
+    $(document).mouseup(function(e){
+        var _con = $('.exit');   // 设置目标区域
+        if(!_con.is(e.target) && _con.has(e.target).length === 0){ // Mark 1
+            _con.css({
+                display:'none'
+            })   // 功能代码
+        }
+    });
 }

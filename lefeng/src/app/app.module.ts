@@ -22,8 +22,10 @@ import { PinpaiComponent } from './components/pinpai/pinpai.component';
 import { FootnavComponent } from './components/footnav/footnav.component';
 import { SearchComponent } from './components/search/search.component';
 import { BannerComponent } from './components/banner/banner.component';
-import {ListComponent} from './components/list/list.component';
+import { ListComponent } from './components/list/list.component';
+import { OrderComponent } from './components/order/order.component'
 import { DetailsComponent } from './components/details/details.component';
+import { BrandListComponent } from './components/brand-list/brand-list.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { DetailsComponent } from './components/details/details.component';
     PinpaiComponent,
     FootnavComponent,
    	ListComponent,
+    OrderComponent,
     DetailsComponent,
+    BrandListComponent,
     SearchComponent,
     BannerComponent
   ],
