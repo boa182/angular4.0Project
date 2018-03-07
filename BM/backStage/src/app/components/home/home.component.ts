@@ -29,7 +29,15 @@ export class HomeComponent implements OnInit {
 
     ngOnInit() {
         this.user = sessionStorage.getItem('userName')
-        
+        $(document).mouseup(function(e){
+            var _con = $('.exit');   // 设置目标区域
+            var _setting = $('.setting')
+            if(!_con.is(e.target) && _con.has(e.target).length === 0){ // Mark 1
+                _con.css({
+                    display:'none'
+                })   // 功能代码
+            }
+        });
     }
     exitUser(){
         if($(".exituser").hasClass('bb')){
@@ -49,12 +57,5 @@ export class HomeComponent implements OnInit {
         sessionStorage.removeItem('userName')
         this.router.navigate(['/enter/login']);
     }
-    $(document).mouseup(function(e){
-        var _con = $('.exit');   // 设置目标区域
-        if(!_con.is(e.target) && _con.has(e.target).length === 0){ // Mark 1
-            _con.css({
-                display:'none'
-            })   // 功能代码
-        }
-    });
+    
 }

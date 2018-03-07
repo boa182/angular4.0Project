@@ -2,3 +2,12 @@
     top: 90px;
     left: 25%;
 }
+.form-horizontal h1{
+    text-align: center;
+    padding:10px 0;
+}
+.form-horizontal .form-group {
+     margin-right: 0px; 
+     margin-left: 0px;
+     margin:10px 0;
+}
