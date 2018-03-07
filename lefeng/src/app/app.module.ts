@@ -25,6 +25,7 @@ import { BannerComponent } from './components/banner/banner.component';
 import { ListComponent } from './components/list/list.component';
 import { OrderComponent } from './components/order/order.component'
 import { DetailsComponent } from './components/details/details.component';
+import { BrandListComponent } from './components/brand-list/brand-list.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { DetailsComponent } from './components/details/details.component';
    	ListComponent,
     OrderComponent,
     DetailsComponent,
+    BrandListComponent,
     SearchComponent,
     BannerComponent
   ],

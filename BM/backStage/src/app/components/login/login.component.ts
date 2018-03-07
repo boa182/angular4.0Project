@@ -27,11 +27,13 @@ export class LoginComponent implements OnInit {
 <<<<<<< HEAD
             }else if(res.length==1){
               sessionStorage.setItem('userName',this.user)
-              console.log(sessionStorage.getItem('userName'))
+              this.router.navigate(['/home'])
 =======
             }else if(res['length']==1){
->>>>>>> 4fcd3372a2cfef0e0618c663872400b0485013ce
+              sessionStorage.setItem('userName',this.user)
+              console.log(sessionStorage.getItem('userName'));
               this.router.navigate(['/home']);
+>>>>>>> 7efcbf80dcca44da6112ebbf73a6fd5cb589a5d0
             }
 
         })
