@@ -17,7 +17,7 @@ export class GoodslistComponent implements OnInit {
   constructor(private http: HttpService ,private common: CommonService,private router:Router ) { }
 	
   ngOnInit() {
-  		
+  		this.createList();
   }
   
   trackByGid(item){
@@ -31,6 +31,7 @@ export class GoodslistComponent implements OnInit {
 		})	
   }
 	toDetails(gid){
+		console.log(gid);
 		this.common.gid = gid;
 		this.router.navigate(['/details']);
 	}
