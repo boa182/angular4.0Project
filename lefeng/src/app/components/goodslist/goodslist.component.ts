@@ -31,6 +31,7 @@ export class GoodslistComponent implements OnInit {
 		})	
   }
 	toDetails(gid){
+		console.log(gid);
 		this.common.gid = gid;
 		this.router.navigate(['/details']);
 	}
