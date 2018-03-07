@@ -50,7 +50,9 @@ export class VipComponent implements OnInit {
             if(res[0].type == 0){
                 return alert('您当前没有全选操作权限')
             }else if(res[0].type == 1){
-                
+                $('.modal-backdrop').css({
+                    display:'none'
+                })
                 //this.httpservice.get('updateuser',pageParams).then((res) => {
                     //console.log(this.dataset.userid)
                 //})
