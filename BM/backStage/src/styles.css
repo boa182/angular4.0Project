@@ -49,3 +49,10 @@ a{text-decoration:none;}
 .font12{ font-size: 12px;}
 .font14{ font-size: 14px;}
 .font16{ font-size: 16px;}
+.modal-backdrop{
+    z-index: 1;
+    display:none;
+}
+.modal-content{
+    z-index: 2;
+}

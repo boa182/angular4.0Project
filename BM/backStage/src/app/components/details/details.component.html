@@ -1,0 +1,13 @@
+
+<div *ngIf="dataset.length>0">
+
+    <div *ngFor="let key of getKeys(dataset[0])">
+        
+        <label *ngIf="(!columns[0] || columns.indexOf(key) > -1) && filterColumns.indexOf(key) < 0">{{privateDic[common.lanType] && privateDic[common.lanType][key] ? privateDic[common.lanType][key] : common.publicDic[common.lanType][key] || key}}</label> 
+        <div *ngIf="!colsAttributes[col] &&(!columns[0] || columns.indexOf(key) > -1) && filterColumns.indexOf(key) < 0">
+            <div class="form-group">
+                <input type="text" class="form-control" [value]="dataset[0][key]" (change)="getchange(key,$event)"/>
+            </div>
+        </div>
+    </div>
+</div>

@@ -2,6 +2,8 @@ import {Component, OnInit, Input} from '@angular/core';
 import {Utils} from '../../utils/utils';
 import {CommonService} from '../../utils/common.service';
 import {HttpService} from '../../utils/http.service';
+import {Router} from '@angular/router';
+//import * as $ from 'jquery';
 
 @Component({
   selector: 'tabletemplate',
@@ -30,11 +32,12 @@ export class TabletemplateComponent implements OnInit {
     keyConfig:string;
     searchapi:string;
     searchParams:Object={};
+    currentGood:number;
     
 
     @Input() config: string;
 
-    constructor(private httpservice:HttpService, private common: CommonService){}
+    constructor(private httpservice:HttpService, private common: CommonService,private router: Router){}
 
      ngOnInit(){
         //获取当前模块的配置
@@ -194,7 +197,15 @@ export class TabletemplateComponent implements OnInit {
         this.apiRequest();
         
     }
-
+    todetails(_id){
+        //console.log(_id);
+        this.currentGood=_id;      
+        $('#exampleModal').modal({
+            show:true,
+            keyboard: true
+        });
+       
+    }
 }
 
 
