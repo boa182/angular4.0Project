@@ -8,12 +8,8 @@ import {SuperSellComponent} from '../components/super-sell/super-sell.component'
 import {LoginComponent} from '../components/login/login.component';
 import {RegisterComponent} from '../components/register/register.component';
 import {PinpaiComponent} from '../components/pinpai/pinpai.component';
-<<<<<<< HEAD
 import {OrderComponent} from '../components/order/order.component';
-
-=======
 import {DetailsComponent} from '../components/details/details.component';
->>>>>>> 7303869d97031bc6285523417286d67a2f50d6a5
 
 const appRoutes: Routes = [
 	{
@@ -29,12 +25,8 @@ const appRoutes: Routes = [
 	{path:'goodslist',component:ListComponent},
 	{path:'register',component:RegisterComponent},
 	{path:'pinpai',component:PinpaiComponent},
-<<<<<<< HEAD
 	{path:'order',component:OrderComponent},
-
-=======
 	{path:'details',component:DetailsComponent}
->>>>>>> 7303869d97031bc6285523417286d67a2f50d6a5
 	
 ]
 
