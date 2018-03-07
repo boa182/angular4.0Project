@@ -1,5 +1,5 @@
 {
-    "cols":"brandStoreName,vipshopPrice,name",
+    "cols":"brandStoreName,vipshopPrice,name,class",
     "colsAttributes":{
         "brandStoreName":{
             "type":"select-api",
@@ -11,6 +11,14 @@
         },
         "vipshopPrice":{
             "type":"area"
+        },
+        "class":{
+            "type":"select-api",
+            "api":"allclass",
+            "match":{
+                "value":"class",
+                "text":"class"
+            }
         }
 
 
