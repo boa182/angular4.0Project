@@ -19,6 +19,7 @@ export class CarComponent implements OnInit {
   		this.carType = this.common.carType;
   		
   	}
+  	
   }
   changcount(){
   	console.log(123);

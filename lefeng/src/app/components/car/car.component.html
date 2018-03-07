@@ -3,11 +3,11 @@
 		<div id="chead">
 			购物车
 		</div>
-		<!--<div class="ccon" *ngIf="carType">
+		<div class="ccon" *ngIf="carType">
 			<img src="./../../../assets/images/n4.jpg"/>
-			<p routerLink="/shopping">现在去购物咯~❤</p>
-		</div>-->
-		<div class="ncon">
+			<p routerLink="/shopping"  class="open-preloader">现在去购物咯~❤</p>
+		</div>
+		<div class="ncon" *ngIf="carlist">
 			<ul>
 				<li>
 					<img src="http://a2.vimage1.com/upload/merchandise/pdc/851/651/8882582148735651851/1/5HT423B-5.jpg"/>
@@ -90,3 +90,7 @@
 	</div>
 	<footnav></footnav>
 </div>
+<script>
+		$.init()
+		$.config = {router: false}
+</script>
