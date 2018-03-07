@@ -63,12 +63,37 @@ exports.getGoods = function(req, res, connection) {
 		connection.end();
 	});
 }
-//通过class查找goods表里面的东西
+//通过class or brandStoreName 分页查找goods表里面的东西
 exports.selectClass = function(req, res, connection) {
 	console.log(req.query.type);
 	//查找......................
 	var type = req.query.type;
-	connection.query(`SELECT * FROM goods where class = '${type}'`, function(error, results, fields) {
+	//分页查找
+	var pageCount = 6;//每一页显示多少条
+	var page = req.query.page||1;//页码
+	var pageBegin = pageCount * (page - 1)//从哪里开始
+	let sql= `SELECT * FROM goods where class = '${type}' or brandStoreName = '${type}' limit `+ pageBegin + ','+pageCount;
+	console.log(sql)
+	connection.query(sql, function(error, results, fields) {
+		if(error) throw error;
+		//results =>array类型
+		console.log('The solution is: ', results);
+		//把数据整理，返回到前端
+		var obj = {
+			news: results,
+		}
+		res.send(results);
+		connection.end();
+	});
+}
+//通过brandStoreName 查找brandStoreName表里面的东西
+exports.selectStoreName = function(req, res, connection) {
+	console.log(req.query.type);
+	//查找......................
+	var brandStoreName = req.query.brandStoreName;
+	let sql= `SELECT * FROM brand where name = '${brandStoreName}'`;
+	console.log(sql)
+	connection.query(sql, function(error, results, fields) {
 		if(error) throw error;
 		//results =>array类型
 		console.log('The solution is: ', results);
@@ -81,6 +106,7 @@ exports.selectClass = function(req, res, connection) {
 	});
 }
 
+
 // 查找商品中所有品牌
 exports.brandStore = function(req, res, connection) {
 	
@@ -92,5 +118,15 @@ exports.brandStore = function(req, res, connection) {
 		connection.end();
 	});
 }
-
+// 查找商品中所有品牌
+exports.allclass = function(req, res, connection) {
+	
+	connection.query(`select DISTINCT class from goods`, function(error, results, fields) {
+		if(error) throw error;
+		//results =>array类型
+		console.log('The solution is: ', results);		
+		res.send(results);
+		connection.end();
+	});
+}
 

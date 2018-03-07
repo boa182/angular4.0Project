@@ -29,6 +29,7 @@ export class TabletemplateComponent implements OnInit {
     editConfig:boolean;
     keyConfig:string;
     searchapi:string;
+    searchParams:Object={};
     
 
     @Input() config: string;
@@ -66,20 +67,21 @@ export class TabletemplateComponent implements OnInit {
 
             this.apiRequest();
             console.log('user',sessionStorage.getItem('userName'));
+            console.log(this.common,222);
             
         })
     }
 
     apiRequest(_page = 1){
-        let pageParams = {};
+        
 
         if(this.paginationConfig){
-            pageParams['pageitems'] = this.paginationConfig['pageitems'];
-            pageParams['page'] = _page;
+            this.searchParams['pageitems'] = this.paginationConfig['pageitems'];
+            this.searchParams['page'] = _page;
+            
         }       
-        console.log(pageParams); 
         //配置信息中的 api
-        this.httpservice.get(this.apiConfig, pageParams).then((apiRes) => {
+        this.httpservice.get(this.apiConfig, this.searchParams).then((apiRes) => {
             console.log(apiRes);
             this.dataset = apiRes[0];
             let rowsCount = apiRes[1][0]['rowscount'];
@@ -102,6 +104,10 @@ export class TabletemplateComponent implements OnInit {
      //first第一页的页码
      let pages = []; //创建分页数组
      let page = this.pageCount;
+     if(page==0){
+        console.log(pages,111);
+        return [1];
+     }
      
      if (page <= num) {
        for (let i = 1; i <= page; i++) {
@@ -128,6 +134,7 @@ export class TabletemplateComponent implements OnInit {
            this.firstPage = this.lastPage - this.pageNum + 1;
          }
          this.pages = this.setPage( this.pageNum, this.firstPage);
+         console.log(this.pages);
          this.page = page;
    }
     /*-----------------------分页--------------------*/
@@ -179,9 +186,12 @@ export class TabletemplateComponent implements OnInit {
 
     getSearchData(obj){
         console.log(obj,'111');
-        this.httpservice.get(this.searchapi, obj).then((res)=>{
-            console.log(res);
-        })
+        //加上分页
+        if(obj.searchapi){
+            this.apiConfig=obj.searchapi;
+        }
+        this.searchParams=obj;
+        this.apiRequest();
         
     }
 

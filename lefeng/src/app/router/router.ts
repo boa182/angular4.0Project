@@ -30,10 +30,9 @@ const appRoutes: Routes = [
 	{path:'register',component:RegisterComponent},
 	{path:'pinpai',component:PinpaiComponent},
 	{path:'order',component:OrderComponent},
-	{path:'details',component:BrandListComponent},
+	{path:'details',component:DetailsComponent},
 	{path:'brand',component:BrandListComponent},
-	{path:'orderform',component:OrderFormComponent},
-
+	{path:'orderform',component:OrderFormComponent}
 ]
 
 export const RootRouter = RouterModule.forRoot(
