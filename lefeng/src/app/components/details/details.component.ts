@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 //依赖注入
 import {Location} from '@angular/common';
 import { HttpService } from './../../utils/http.service';
@@ -13,7 +14,7 @@ export class DetailsComponent implements OnInit {
 	resdata: Array<any> = [];
 	data: Array<any> = [];
 	images :Array<any> = [];
-  constructor(private location: Location,private http: HttpService ,private common: CommonService) { }
+  constructor(private location: Location,private http: HttpService ,private common: CommonService,private router:Router) { }
 
   ngOnInit() {
   	this.http.get('getgid',{
@@ -33,6 +34,10 @@ export class DetailsComponent implements OnInit {
   goBack(){
   	this.location.back();
   }
-
+	toCar(){
+		console.log(123);
+		//商品不为空的时候去掉购物车空的页面
+		this.common.carType ="1"
+	}
 
 }
