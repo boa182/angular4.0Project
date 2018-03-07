@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import * as $ from 'jquery';
 
 @Component({
@@ -24,10 +25,11 @@ export class HomeComponent implements OnInit {
         }
     }
     
-    constructor() { }
+    constructor(private router: Router) { }
 
     ngOnInit() {
         this.user = sessionStorage.getItem('userName')
+        
     }
     exitUser(){
         if($(".exituser").hasClass('bb')){
@@ -42,4 +44,17 @@ export class HomeComponent implements OnInit {
             $(".exituser").addClass('bb')
         }
     }
+    exitUsers(){
+        console.log(666)
+        sessionStorage.removeItem('userName')
+        this.router.navigate(['/enter/login']);
+    }
+    $(document).mouseup(function(e){
+        var _con = $('.exit');   // 设置目标区域
+        if(!_con.is(e.target) && _con.has(e.target).length === 0){ // Mark 1
+            _con.css({
+                display:'none'
+            })   // 功能代码
+        }
+    });
 }
