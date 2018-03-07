@@ -20,6 +20,7 @@
                             <option [value]="obj[colsAttributes[col].match.value]" *ngIf="obj[colsAttributes[col].match.value] == colsAttributes[col].defaultvalue" selected>{{obj[colsAttributes[col].match.text]}}</option>
                             <option [value]="obj[colsAttributes[col].match.value]" *ngIf="obj[colsAttributes[col].match.value] != colsAttributes[col].defaultvalue">{{obj[colsAttributes[col].match.text]}}</option>
                     </ng-template>
+                    
                     <!-- <option [value]="obj[colsAttributes[col].match.value]" *ngIf="obj[colsAttributes[col].match.value] != colsAttributes[col].defaultvalue" *ngFor="let obj of selectApiDataSet[col]">{{obj[colsAttributes[col].match.text]}}</option> -->
                     <!-- <option value="" *ngFor="let obj of [] | selectApi: colsAttributes[col].api"></option> -->
                 </select>  

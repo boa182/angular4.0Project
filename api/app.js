@@ -127,6 +127,22 @@ app.get('/brandStore', function(req, res) {
     require('./router/select').brandStore(req,res,connection);
     console.log(req.query)
 })
+// 搜索商品
+app.get('/searchgoods', function(req, res) {
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/search').searchgoods(req,res,connection);
+})
+// 查找商品中所有类别
+app.get('/allclass', function(req, res) {
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/select').allclass(req,res,connection);
+})
 //要post请求...............................................................................
 // parse application/x-www-form-urlencoded 
 //使用bodyParser模块

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
+import {CommonService} from '../../utils/common.service';
 
 @Component({
   selector: 'app-root',
@@ -24,7 +25,7 @@ export class HomeComponent implements OnInit {
         }
     }
     
-    constructor() { }
+    constructor(private common: CommonService) { }
 
     ngOnInit() {
         this.user = sessionStorage.getItem('userName')

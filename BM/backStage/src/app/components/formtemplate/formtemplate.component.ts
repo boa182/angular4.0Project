@@ -15,6 +15,7 @@ export class FormtemplateComponent implements OnInit {
     colsAttributes: Object = {};
     selectApiDataSet: Object = {};
     searchData:object={};
+    tosearchapi:string;
 
     constructor(private http: HttpService, private common: CommonService) { }
 
@@ -23,6 +24,7 @@ export class FormtemplateComponent implements OnInit {
             console.log(configRes);
             this.colsConfig = configRes['cols'].split(',');
             this.colsAttributes = configRes['colsAttributes'] || {};
+            this.tosearchapi = configRes['searchapi'];
 
             for(let item in this.colsAttributes){
                 if(this.colsAttributes[item]['type'] == 'select-api'){
@@ -48,8 +50,10 @@ export class FormtemplateComponent implements OnInit {
             this.searchData[key]="";
         }
         console.log(this.searchData);
+        this.parentAttr.emit(this.searchData);
     }
     tosearch(){
+        this.searchData['searchapi']=this.tosearchapi;
         //把参数传递给父组件
         this.parentAttr.emit(this.searchData);
     }

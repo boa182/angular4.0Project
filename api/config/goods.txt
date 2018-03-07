@@ -21,12 +21,7 @@
         "add_time":{
             "type":"DateFormat",
             "format":"yyyy-MM-dd"
-        },
-        "name":{
-            "type":"Replace",
-            "reg":"(.).+",
-            "replaceVal":"$1**"
-        }
+        }       
     },
     "search":{
         "show":true,
