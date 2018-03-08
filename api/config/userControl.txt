@@ -1,8 +1,14 @@
 {
-    "cols":"*",
     "api":"getuser",
-    "mutipleSelect":true,
-    "pagination":{
-        "pageitems":200
+    "filterData":{
+        "add_time":{
+            "type":"DateFormat",
+            "format":"yyyy-MM-dd"
+        },
+        "name":{
+            "type":"password",
+            "reg":"(.).+",
+            "replaceVal":"$1**"
+        }
     }
 }

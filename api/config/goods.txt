@@ -24,7 +24,7 @@
         },
         "name":{
             "type":"Replace",
-            "reg":"(.).+",
+            "reg":"(d).+",
             "replaceVal":"$1**"
         }
     },

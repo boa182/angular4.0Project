@@ -7,7 +7,7 @@ export class CommonService{
     publicDic: Object = {};
 
     constructor(private http: Http){
-        http.get('http://10.3.132.75:3000/dictionary.txt').subscribe((dicRes) => {
+        http.get('http://localhost:3000/dictionary.txt').subscribe((dicRes) => {
             this.publicDic = dicRes.json();
         })
     }

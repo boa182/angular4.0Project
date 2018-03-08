@@ -96,6 +96,16 @@ app.get('/getgoods', function(req, res) {
     console.log(req.query)
 })
 
+//关联商品表和购物车表
+app.get('/connetGoods', function(req, res) {
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/select').selectgoods(req,res,connection);
+    console.log(req.query)
+})
+
 //查找所有用户信息
 app.get('/getuser', function(req, res) {
     //然后请求的很快的时候才能正常关闭链接、
@@ -113,6 +123,15 @@ app.get('/selectclass', function(req, res) {
     connection.connect();
     //引入查找模块
     require('./router/select').selectClass(req,res,connection);
+    console.log(req.query)
+})
+//通过uid查找数量
+app.get('/selectqty', function(req, res) {
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/select').selectQty(req,res,connection);
     console.log(req.query)
 })
 
@@ -135,6 +154,16 @@ app.get('/brandStore', function(req, res) {
     require('./router/select').brandStore(req,res,connection);
     console.log(req.query)
 })
+// 根据用户id查找订单
+app.get('/getCarGoods', function(req, res) {
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/select').getCarGoods(req,res,connection);
+    console.log(req.query)
+})
+
 //要post请求...............................................................................
 // parse application/x-www-form-urlencoded 
 //使用bodyParser模块
@@ -151,7 +180,39 @@ app.post('/register', function(req, res) {
     //引入查找模块
     require('./router/user').register(req,res,connection);
 })
+//加入购物车
+app.post('/addCar', function(req, res) {
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/select').addCar(req,res,connection);
+})
+//后端用户信息修改
+app.post('/usercontrol', function(req, res) {
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/select').usercontrol(req,res,connection);
+})
 
+//前端修改商品数量
+app.post('/updateqty', function(req, res) {
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/select').updateqty(req,res,connection);
+})
+//减少商品数目
+app.post('/reduceqty', function(req, res) {
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/select').reduceQty(req,res,connection);
+})
 
 //监听该端口..............................................................................
 var server = app.listen(3000, function() {
