@@ -20,7 +20,8 @@ export class GoodslistComponent implements OnInit {
   constructor(private http: HttpService ,private common: CommonService,private router:Router ) { }
 	
   ngOnInit() {
-  		this.createList();
+		  this.createList();
+		  console.log(this.type)
   }
   
   trackByGid(item){

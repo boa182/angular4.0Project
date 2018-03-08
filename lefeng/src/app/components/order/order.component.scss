@@ -1,0 +1,51 @@
+.content-block{
+    margin: 0;
+    margin-top: 10px;
+    padding: 0;
+}
+.content{
+    background: #f6f6f6;
+}
+// .buttons-tab{
+//     position: fixed;
+//     left: 0;
+//     top:44px;
+// }
+
+ul{
+
+    li{
+        margin: 0 auto;
+        background: #fff;
+        width: 353px;
+        height: 148px;
+        margin-bottom: 15px;
+        h3{
+            width: 333px;
+            height: 36px;
+            margin: 0 10px;
+            font-size: 14px;
+            color:#999;
+            border-bottom: 1px solid #e1e1e1;
+            line-height: 36px;
+        }
+        div{
+            position: relative;
+            padding-top: 25px;
+            img{
+                position: absolute;
+                left: 10px;
+                top: 10px;
+                width: 75px;
+                height: 90px;
+            }
+            p{
+                padding-left: 95px;
+                font-size: 12px;
+                color:#000;
+                line-height: 22px;
+            }
+        }
+        
+    }
+}
