@@ -7,6 +7,9 @@ import {LoginComponent} from '../components/login/login.component';
 import { LogRegisterComponent} from '../components/log-register/log-register.component';
 import {RegisterComponent} from '../components/register/register.component';
 import {HomeComponent} from '../components/home/home.component';
+import {DetailsComponent} from '../components/details/details.component';
+import {StatisticsComponent} from '../components/statistics/statistics.component';
+import {GoodsSellComponent} from '../components/goods-sell/goods-sell.component';
 
 const appRoutes:Routes=[
     {path:'enter',component:LogRegisterComponent,children: [
@@ -15,7 +18,10 @@ const appRoutes:Routes=[
         ]},
     {path:'home',component:HomeComponent,children: [
         {path:'goods',component:GoodsComponent},
-        {path:'vip',component:VipComponent}
+        {path:'vip',component:VipComponent},
+        {path:'details',component:DetailsComponent},
+        {path:'statistics',component:StatisticsComponent},
+        {path:'GoodsSell',component:GoodsSellComponent},
     ]},
     {path:'**',component:PagenotfoundComponent}
 

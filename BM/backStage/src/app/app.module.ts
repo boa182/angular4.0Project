@@ -18,6 +18,9 @@ import { LoginComponent } from './components/login/login.component';
 import { FormtemplateComponent } from './components/formtemplate/formtemplate.component';
 import { LogRegisterComponent } from './components/log-register/log-register.component';
 import { RegisterComponent } from './components/register/register.component';
+import { DetailsComponent } from './components/details/details.component';
+import { StatisticsComponent } from './components/statistics/statistics.component';
+import { GoodsSellComponent } from './components/goods-sell/goods-sell.component';
 
 
 @NgModule({
@@ -31,7 +34,10 @@ import { RegisterComponent } from './components/register/register.component';
     LoginComponent,
     FormtemplateComponent,
     LogRegisterComponent,
-    RegisterComponent
+    RegisterComponent,
+    DetailsComponent,
+    StatisticsComponent,
+    GoodsSellComponent
   ],
   imports: [
     BrowserModule,

@@ -1,14 +1,14 @@
 {
     "api":"getuser",
     "filterData":{
-        "add_time":{
+        "time":{
             "type":"DateFormat",
             "format":"yyyy-MM-dd"
         },
-        "name":{
-            "type":"password",
-            "reg":"(.).+",
-            "replaceVal":"$1**"
+        "password":{
+            "type":"Replace",
+            "reg":".+",
+            "replaceVal":"****"
         }
     }
 }

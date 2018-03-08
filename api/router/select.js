@@ -26,6 +26,35 @@ exports.selectgoods = function(req, res, connection) {
         connection.end();
     });
 }
+
+//统计品牌数量
+exports.staisticsGoods = function(req, res, connection) {
+    //查找......................
+    console.log(req)
+    connection.query(`select * from ( select brandStoreName, count(*) as totals  from goods group by brandStoreName) as a order by a.totals DESC LIMIT 5;`, function(error, results, fields) { 
+        if(error) throw error;
+        //results =>array类型
+        console.log('The solution is: ', results);
+        res.send(results);
+        connection.end();
+    });
+}
+
+//删除所有订单
+exports.deleteAll = function(req, res, connection) {
+    //查找......................
+    console.log(req)
+    var uid = req.query.uid;
+    connection.query(`DELETE FROM carFrom WHERE uid = '${uid}'`, function(error, results, fields) { 
+        if(error) throw error;
+        //results =>array类型
+        console.log('The solution is: ', results);
+        res.send(results);
+        connection.end();
+    });
+}
+
+
 //通过id查找商品
 exports.getGid = function(req, res, connection) {
     //查找......................
@@ -74,7 +103,34 @@ exports.getCarGoods = function(req, res, connection) {
     //查找......................
     console.log(req)
     var uid = req.query.uid;
-    connection.query(`SELECT * FROM car where uid='${uid}'`, function(error, results, fields) { 
+    connection.query(`SELECT * FROM carFrom where uid='${uid}'`, function(error, results, fields) { 
+        if(error) throw error;
+        //results =>array类型
+        console.log('The solution is: ', results);
+        res.send(results);
+        connection.end();
+    });
+}
+
+exports.setOrderList = function(req, res, connection) {
+    //查找......................
+    console.log(req)
+    var uid = req.query.uid;
+    var order_detail = req.query.order_detail;
+    connection.query(`insert into orderfrom(uid,order_detail)values('${uid}','${order_detail}');`, function(error, results, fields) { 
+        if(error) throw error;
+        //results =>array类型
+        console.log('The solution is: ', results);
+        res.send(results);
+        connection.end();
+    });
+}
+
+exports.getOrderList = function(req, res, connection) {
+    //查找......................
+    console.log(req)
+    var uid = req.query.uid;
+    connection.query(`select * from orderfrom where uid = '${uid}'`, function(error, results, fields) { 
         if(error) throw error;
         //results =>array类型
         console.log('The solution is: ', results);
@@ -111,6 +167,38 @@ exports.getUser = function(req, res, connection) {
 		res.send(results);
 		connection.end();
 	});
+}
+
+exports.createOrder = function(req, res, connection) {
+    var uid = req.query.uid;
+    let sql = `DELETE FROM car WHERE uid = '${uid}'`;
+    console.log(sql)
+         
+    connection.query(sql, function(error, results, fields) {
+        if(error) throw error;
+        //results =>array类型
+        console.log('The solution is: ', results);
+        //把数据整理，返回到前端
+        
+        res.send(results);
+        connection.end();
+    });
+}
+
+//前端根据uid gid删除商品
+exports.deletegoods = function(req, res, connection) {
+    var uid = req.query.uid;
+    var gid = req.query.gid;
+
+    connection.query(`DELETE FROM car WHERE uid = '${uid}' and gid= '${gid}';`, function(error, results, fields) {
+        if(error) throw error;
+        //results =>array类型
+        console.log('The solution is: ', results);
+        //把数据整理，返回到前端
+        
+        res.send(true);
+        connection.end();
+    });
 }
 
 //查找travel所有的东西  黄子健
@@ -225,3 +313,28 @@ exports.selectQty = function(req, res, connection) {
 		connection.end();
 	});
 }
+// 查找商品中所有品牌
+exports.allclass = function(req, res, connection) {
+	
+	connection.query(`select DISTINCT class from goods`, function(error, results, fields) {
+		if(error) throw error;
+		//results =>array类型
+		console.log('The solution is: ', results);		
+		res.send(results);
+		connection.end();
+	});
+}
+
+//根据uid和goodid查找car
+exports.selectCar = function(req, res, connection) {
+    var uid = req.query.uid;
+    var gid = req.query.gid;
+    connection.query(`select * from car where uid='${uid}' and gid='${gid}' `, function(error, results, fields) {
+        if(error) throw error;
+        //results =>array类型
+        console.log('The solution is: ', results);      
+        res.send(results);
+        connection.end();
+    });
+}
+

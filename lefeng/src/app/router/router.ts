@@ -11,6 +11,9 @@ import {PinpaiComponent} from '../components/pinpai/pinpai.component';
 import {OrderComponent} from '../components/order/order.component';
 import {DetailsComponent} from '../components/details/details.component';
 import {BrandListComponent} from '../components/brand-list/brand-list.component';
+import {OrderFormComponent} from '../components/order-form/order-form.component';
+
+
 
 const appRoutes: Routes = [
 	{
@@ -28,8 +31,8 @@ const appRoutes: Routes = [
 	{path:'pinpai',component:PinpaiComponent},
 	{path:'order',component:OrderComponent},
 	{path:'details',component:DetailsComponent},
-	{path:'details',component:DetailsComponent},
-	{path:'brand',component:BrandListComponent}
+	{path:'brand',component:BrandListComponent},
+	{path:'orderform',component:OrderFormComponent}
 ]
 
 export const RootRouter = RouterModule.forRoot(

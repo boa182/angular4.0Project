@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import {HttpService} from '../../utils/http.service';
+import {Utils} from '../../utils/utils';
 import { Router } from '@angular/router';
 import * as $ from 'jquery';
 
@@ -9,7 +10,7 @@ import * as $ from 'jquery';
   styleUrls: ['./vip.component.css']
 })
 export class VipComponent implements OnInit {
-    dataset: Array<any> = null;
+    dataset: Array<any> = [];
     ids: number = null;//当前编辑的用户id
     users: string = null;//当前编辑的用户名
     user: string = null;//登录的用户名
@@ -30,17 +31,19 @@ export class VipComponent implements OnInit {
             })
         })
         
+        
     }
-    /*filterData(_key, _val){
+    filterData(_key, _val){
         let _config = this.filterDataConfig[_key];
         if(!_config){
             return _val;
-        }else if(_config.type == "password"){
-            console.log(666)
+        } else if(_config.type == "DateFormat"){
+            return Utils.dateFormat(new Date(_val), _config.format); 
+        } else if(_config.type == "Replace"){
             let reg = new RegExp(_config.reg);
             return _val.replace(reg, _config.replaceVal);
         }
-    }*/
+    }
     getkeys(item){
         return Object.keys(item)
     }
@@ -85,7 +88,10 @@ export class VipComponent implements OnInit {
     updateUser(){
         let pageParams = {};
         pageParams['userid'] = this.ids;
-        pageParams['username'] = this.username;
+        if(this.username == '' || this.password == ''){
+            return alert('用户名或者密码为空')
+        }
+        pageParams['username'] = this.username ;
         pageParams['password'] = this.password;
         pageParams['usertype'] = this.usertype || 0;
         console.log(this.dataset,this.ids,pageParams)

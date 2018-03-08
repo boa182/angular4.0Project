@@ -4,6 +4,7 @@ import {Router} from '@angular/router'
 import { HttpService } from './../../utils/http.service';
 import { CommonService } from './../../utils/common.service';
 import * as $ from 'jquery';
+import { NgStyle } from '@angular/common';
 
 @Component({
 	selector: 'app-shopping',
@@ -13,7 +14,7 @@ import * as $ from 'jquery';
 export class ShoppingComponent implements OnInit {
 	
 	constructor(private http: HttpService,private common:CommonService,private router:Router ) {}
-
+	
 	ngOnInit() {
 
 	}
@@ -47,5 +48,8 @@ export class ShoppingComponent implements OnInit {
 			this.router.navigate(['/brand']);
 
 		}
+	}
+	tocar(){
+		this.router.navigate(['/car']);
 	}
 }

@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from './../../utils/http.service';
 import { CommonService } from './../../utils/common.service';
 import {Location} from '@angular/common';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-brand-list',
@@ -13,7 +14,7 @@ import {Location} from '@angular/common';
 export class BrandListComponent implements OnInit {
 	resdata: Array<any> = [];
 	data: Array<any> = [];
-  constructor(private http: HttpService,private common:CommonService,private location: Location) { }
+  constructor(private http: HttpService,private common:CommonService,private location: Location,private router:Router) { }
 
   ngOnInit() {
   	this.http.get('selectstorename',{
@@ -27,4 +28,7 @@ export class BrandListComponent implements OnInit {
 	goBack(){
   	this.location.back();
   }
+	tocar(){
+		this.router.navigate(['/car']);
+	}
 }

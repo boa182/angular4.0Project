@@ -14,6 +14,9 @@ export class GoodslistComponent implements OnInit {
 	goodslist: Array<object> = [];
 	dataset: Object = {};
 	@Input() type :string = null;
+	Res: Object = {};
+	arr: Array<string> = [];
+	qty: Number= 1;
   constructor(private http: HttpService ,private common: CommonService,private router:Router ) { }
 	
   ngOnInit() {
@@ -30,9 +33,36 @@ export class GoodslistComponent implements OnInit {
 					this.dataset[this.type] = res;
 		})	
   }
-	toDetails(gid){
-		console.log(gid);
-		this.common.gid = gid;
-		this.router.navigate(['/details']);
+	toDetails(gid,e){
+		console.log(123);
+			if(e.target.tagName!='SPAN'){
+				this.common.gid = gid;
+				this.router.navigate(['/details']);
+				
+			}
+	}
+	add(goodsId){		
+		//这里加入购物车
+		
+		if(this.arr.indexOf(goodsId)==-1){
+			this.arr.push(goodsId);
+			this.http.post('addCar',{
+				uid:0,
+				gid:goodsId,
+				qty:1
+			}).then((res)=>{
+				let Res = JSON.parse(JSON.stringify(res));
+				console.log(Res);
+			})			
+		}else{
+			this.http.post('updateqty',{
+				uid:0,
+				gid:goodsId,
+			}).then((res)=>{
+				let Res = JSON.parse(JSON.stringify(res));
+				console.log(Res);
+			})			
+		}
+		
 	}
 }

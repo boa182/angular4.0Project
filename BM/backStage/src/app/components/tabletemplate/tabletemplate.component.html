@@ -4,24 +4,31 @@
     </div>
     <table class='table table-striped table-bordered'>
         <thead>
-            <tr>
+            <tr *ngIf=" dataset.length>0">
                 <th *ngIf="multiple"><input type="checkbox" [checked]="currentTrIndexs.length == dataset.length" (click)="selectAll()"></th>
                 <ng-template ngFor let-key [ngForOf]="getKeys(dataset[0])" >
-                    <th *ngIf="(!columns[0] || columns.indexOf(key) > -1) && filterColumns.indexOf(key) < 0">{{privateDic[common.lanType] && privateDic[common.lanType][key] ? privateDic[common.lanType][key] : common.publicDic[common.lanType][key] || key}}</th>
+                  <th *ngIf="(!columns[0] || columns.indexOf(key) > -1) && filterColumns.indexOf(key) < 0">{{privateDic[common.lanType] && privateDic[common.lanType][key] ? privateDic[common.lanType][key] : common.publicDic[common.lanType][key] || key}}</th>
                 </ng-template>
-                <th *ngIf="editConfig">edit</th>
+                <th *ngIf="editConfig">{{privateDic[common.lanType] && privateDic[common.lanType][edit] ? privateDic[common.lanType][edit] : common.publicDic[common.lanType]['edit'] || edit}}</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let obj of dataset; let idx = index;" [class.actived]="currentTrIndexs.indexOf(idx) > -1" (click)="selectTr(idx)" [attr.gid]="obj[keyConfig]">
-                <td *ngIf="multiple"><input type="checkbox" name="" id="" [checked]="currentTrIndexs.indexOf(idx) > -1"></td>
-                <ng-template ngFor let-key [ngForOf]="getKeys(obj)">
-                    <td *ngIf="(!columns[0] || columns.indexOf(key) > -1) &&  filterColumns.indexOf(key) < 0">{{filterData(key, obj[key])}}</td>
-                </ng-template>
-                <td *ngIf="editConfig">
-                    <button type="button" class="btn btn-primary">edit</button>
-                </td>
-            </tr>
+            <ng-template ngFor let-obj [ngForOf]="dataset" *ngIf="dataset.length>0">
+                <tr *ngIf="dataset.length>0" [class.actived]="currentTrIndexs.indexOf(idx) > -1" (click)="selectTr(idx)" [attr.gid]="obj[keyConfig]">
+
+                    <td *ngIf="multiple"><input type="checkbox" name="" id="" [checked]="currentTrIndexs.indexOf(idx) > -1"></td>
+                    <ng-template ngFor let-key [ngForOf]="getKeys(obj)">
+                        <td *ngIf="(!columns[0] || columns.indexOf(key) > -1) &&  filterColumns.indexOf(key) < 0">{{filterData(key, obj[key])}}</td>
+                    </ng-template>
+                    <td *ngIf="editConfig && dataset.length>0">
+                        <button type="button" class="btn btn-primary" (click)="todetails(obj[keyConfig])">edit</button>
+                    </td>
+                 </tr>
+            </ng-template>
+
+           <!--  <tr *ngFor="let obj of dataset; let idx = index;" [class.actived]="currentTrIndexs.indexOf(idx) > -1" (click)="selectTr(idx)" [attr.gid]="obj[keyConfig]">
+                
+            </tr> -->
         </tbody>
     </table>
     <!-- 分页 -->
@@ -53,6 +60,27 @@
          </a>
        </li>
      </ul>
-   </nav>
-   
+   </nav> 
+</div>
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <!-- <h4 class="modal-title" id="exampleModalLabel">New message</h4> -->
+      </div>
+      <div class="modal-body">
+        <form>
+           <app-details [gid]="currentGood" api='goodsDetails.txt'></app-details> 
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="closeModal()">Close</button>
+        <button type="button" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
 </div>

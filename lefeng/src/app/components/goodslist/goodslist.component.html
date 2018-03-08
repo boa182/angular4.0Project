@@ -1,6 +1,6 @@
 <!--<h1>{{common.type}}</h1>-->
 <ul>
-	<li *ngFor="let obj of dataset[type]; trackBy: trackByGid" (click)='toDetails(obj.gid)'>
+	<li *ngFor="let obj of dataset[type]; trackBy: trackByGid" (click)='toDetails(obj.gid,$event)'>
 		<img [src]="obj.verticalImage"/>
 		<p>
 			<span>{{obj.brandStoreName}}</span>
@@ -10,7 +10,7 @@
 		
 		<p>
 			<span>￥{{obj.vipshopPrice}} <del>￥{{obj.marketPrice}}</del></span>
-			<span class="icon icon-cart gouwuche"></span>
+			<span class="icon icon-cart gouwuche" (click)='add(obj.gid)'></span>
 		</p>
 	</li>
 	

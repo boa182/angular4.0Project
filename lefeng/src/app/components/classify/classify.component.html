@@ -20,7 +20,7 @@
                 </div>
                 <ul class="goods"  (click)=toList($event)>
                     <li *ngFor="let obj of facedataset">
-                        <img src={{obj.img}} alt="" />
+                        <img src={{obj.img}} alt="" title={{obj.title}}/>
                         <p>{{obj.name}}</p>
                     </li>
                 </ul>
@@ -32,7 +32,7 @@
                 </div>
                 <ul class="goods"  (click)=toList($event)>
                     <li *ngFor="let obj of mandataset">
-                        <img src={{obj.img}} alt="" />
+                        <img src={{obj.img}} alt="" title={{obj.title}}/>
                         <p>{{obj.name}}</p>
                     </li>
                 </ul>
@@ -44,7 +44,7 @@
                 </div>
                 <ul class="goods"  (click)=toList($event)>
                     <li *ngFor="let obj of czdataset">
-                        <img src={{obj.img}} alt="" />
+                        <img src={{obj.img}} alt="" title={{obj.title}}/>
                         <p>{{obj.name}}</p>
                     </li>
                 </ul>
@@ -56,7 +56,7 @@
                 </div>
                 <ul class="goods"  (click)=toList($event)>
                     <li *ngFor="let obj of hldataset">
-                        <img src={{obj.img}} alt="" />
+                        <img src={{obj.img}} alt="" title={{obj.title}}/>
                         <p>{{obj.name}}</p>
                     </li>
                 </ul>
@@ -68,7 +68,7 @@
                 </div>
                 <ul class="goods"  (click)=toList($event)>
                     <li *ngFor="let obj of xsdataset">
-                        <img src={{obj.img}} alt="" />
+                        <img src={{obj.img}} alt="" title={{obj.title}}/>
                         <p>{{obj.name}}</p>
                     </li>
                 </ul>

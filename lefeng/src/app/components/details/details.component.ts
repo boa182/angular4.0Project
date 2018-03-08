@@ -37,7 +37,7 @@ export class DetailsComponent implements OnInit {
 	toCar(){
 		console.log(123);
 		//商品不为空的时候去掉购物车空的页面
-		this.common.carType ="1"
+		
 	}
 
 }

@@ -1,4 +1,24 @@
 {
-    "en":{},
-    "cn":{}
+    "en":{
+        "brandStoreName":"Brand",
+        "marketPrice":"MarketPrice",
+        "name":"Name",
+        "vipshopPrice":"VipshopPrice",
+        "class":"Class",
+        "originArea":"OriginArea",
+        "edit":"Edit",
+        "Search":"Search",
+        "React":"React"
+    },
+    "cn":{
+        "brandStoreName":"品牌",
+        "marketPrice":"市场价",
+        "name":"商品名",
+        "vipshopPrice":"会员价",
+        "class":"类别",
+        "originArea":"产地",
+        "edit":"编辑",
+        "Search":"搜索",
+        "React":"重置"
+    }
 }
