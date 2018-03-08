@@ -67,21 +67,17 @@ export class CarComponent implements OnInit {
 			
 		}
 	}
-	account(){
-		console.log(this.carRes)
-		
+	account(){	
 		var a = JSON.stringify(this.carRes);
 		sessionStorage.setItem("orderlist",a);
-		console.log(sessionStorage.getItem("orderlist"));
-
-
-//		this.http.get('createOrder',{
-//			uid:this.uid
-//		}).then((res)=>{
-//			console.log(res);
+		this.style = {'display': 'none'};
+		this.http.get('createOrder',{
+			uid:this.uid
+		}).then((ares)=>{
+			console.log(ares);
+			this.navstyle = {'display': 'none'};
 			this.router.navigate(['/order']);
-//		})
-//		console.log('order')
+		})
 	}
 	createList(){
 		
