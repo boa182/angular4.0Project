@@ -6,9 +6,9 @@ import { CommonService } from './../../utils/common.service';
 import * as $ from 'jquery';
 
 @Component({
-  selector: 'app-pinpai',
-  templateUrl: './pinpai.component.html',
-  styleUrls: ['./pinpai.component.scss']
+selector: 'app-pinpai',
+templateUrl: './pinpai.component.html',
+styleUrls: ['./pinpai.component.scss']
 })
 export class PinpaiComponent implements OnInit {
 
@@ -46,11 +46,11 @@ export class PinpaiComponent implements OnInit {
   }
 
 
-  
+
 
   Adataset:Array<any>=[
-      {img:'../../../assets/images/l7.jpg',name:'丽得姿'},
-      {img:'../../../assets/images/l8.jpg',name:'发朵'},
+      {img:'./../../../assets/images/l7.jpg',name:'丽得姿'},
+      {img:'./../../../assets/images/l8.jpg',name:'发朵'},
       {img:'../../../assets/images/l9.jpg',name:'欧莱雅'},
       {img:'../../../assets/images/l10.jpg',name:'纤丝鸟'},
       {img:'../../../assets/images/l2.jpg',name:'伊丽莎白.长耳熊'}，
