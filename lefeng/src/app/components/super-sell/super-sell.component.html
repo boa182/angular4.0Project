@@ -73,7 +73,7 @@
 			<ul class="article6">
 				<li *ngFor='let obj of Brand'>
 					<div>
-						<img src={{obj.brandImage}}>
+						<img src={{obj.brandImage}} (click)='getType(obj.name)'>
 						<span>{{obj.pms}}</span>
 					</div>
 					<p>{{obj.name}}</p>
