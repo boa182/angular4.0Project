@@ -43,6 +43,7 @@ export class GoodslistComponent implements OnInit {
 	}
 	add(goodsId){		
 		//这里加入购物车
+		
 		if(this.arr.indexOf(goodsId)==-1){
 			this.arr.push(goodsId);
 			this.http.post('addCar',{
