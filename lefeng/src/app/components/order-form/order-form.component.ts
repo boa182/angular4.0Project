@@ -10,7 +10,8 @@ import {Router} from '@angular/router'
   styleUrls: ['./order-form.component.scss']
 })
 export class OrderFormComponent implements OnInit {
-    resdata: Array<any> = [];
+    resdata: Array<object> = [];
+    Res:Array<any> = [];
     total:number = 0;
     
     constructor(private http: HttpService ,private common: CommonService,private router:Router ) { }
@@ -20,17 +21,18 @@ export class OrderFormComponent implements OnInit {
      this.http.get('connetGoods',{
         uid:0
     }).then((res) => {
-        this.resdata = res;
+    		let Res = JSON.parse(JSON.stringify(res))
+        this.resdata = Res;
         console.log(this.resdata);
-        for(let i =0;i<res.length;i++){
-            this.total = this.total + Number(res[i].goodCount);
+        for(let i =0;i<this.resdata.length;i++){
+            this.total = this.total + Number(this.resdata[i]['goodCount']);
         }
     }) 
   } 
 
   delete(){
     this.http.get('connetGoods',{
-            uid:21
+        uid:21
     })
   }
 
