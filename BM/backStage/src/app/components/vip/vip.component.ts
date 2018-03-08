@@ -8,7 +8,7 @@ import * as $ from 'jquery';
   styleUrls: ['./vip.component.css']
 })
 export class VipComponent implements OnInit {
-    dataset: Array<any> = null;
+    dataset: Array<object>=[];
     ids: number = null;
     user:string;
 

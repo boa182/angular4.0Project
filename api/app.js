@@ -167,7 +167,29 @@ app.post('/register', function(req, res) {
     //引入查找模块
     require('./router/user').register(req,res,connection);
 })
-
+app.post('/updategoods', function(req, res) {
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/update').updategoods(req,res,connection);
+})
+// 删除商品
+app.post('/deletegood', function(req, res) {
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/delete').deletegood(req,res,connection);
+})
+//批量删除
+app.post('/deletebatch', function(req, res) {
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/delete').deletebatch(req,res,connection);
+})
 
 //监听该端口..............................................................................
 var server = app.listen(3000, function() {
