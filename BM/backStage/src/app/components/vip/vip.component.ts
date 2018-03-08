@@ -74,13 +74,9 @@ export class VipComponent implements OnInit {
         let pageParams = {};
         pageParams['user'] = this.user;
         this.httpservice.get('usertype',pageParams).then((res) => {
-            $('.modal-backdrop').css({
-                display:'none'
-            })
+            $('.modal-backdrop').hide()
             if(res[0].type != 1 ){
-                $('.myModals').css({
-                    display:'none'
-                })
+                $('.myModals').hide()
                 return alert('您当前没有操作权限')
             }
         })

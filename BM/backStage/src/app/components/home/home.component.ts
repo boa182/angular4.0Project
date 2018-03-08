@@ -42,14 +42,10 @@ export class HomeComponent implements OnInit {
     }
     exitUser(){
         if($(".exituser").hasClass('bb')){
-            $(".exit").css({
-                display:'block'
-            })
+            $(".exit").show()
             $(".exituser").removeClass('bb')
         }else{
-            $(".exit").css({
-                display:'none'
-            })
+            $(".exit").hide()
             $(".exituser").addClass('bb')
         }
     }

@@ -18,10 +18,9 @@ export class StatisticsComponent implements OnInit {
         var myChart = echarts.init(document.getElementById('staistics'));
         
         this.httpservice.get('staisticsgoods').then((res)=>{
-            console.log(res)
             for(var i=0;i<res.length;i++){
-                this.dataset.push(res[i].brandStoreName)
-                this.qty.push(res[i].totals)
+                this.dataset.push(res[i].brandStoreName);
+                this.qty.push(res[i].totals);
             }
             // 指定图表的配置项和数据
             var option = {
@@ -44,11 +43,7 @@ export class StatisticsComponent implements OnInit {
             };
             // 使用刚指定的配置项和数据显示图表。
             myChart.setOption(option);
-            }
         })
-
-
-       
     }
 
 }

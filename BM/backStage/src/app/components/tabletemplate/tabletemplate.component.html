@@ -13,17 +13,18 @@
             </tr>
         </thead>
         <tbody>
-            <ng-template ngFor let-obj [ngForOf]="dataset" *ngIf="dataset.length>0">
-                <tr *ngIf="dataset.length>0" [class.actived]="currentTrIndexs.indexOf(idx) > -1" (click)="selectTr(idx)" [attr.gid]="obj[keyConfig]">
+            <ng-template ngFor let-obj [ngForOf]="dataset"; let-idx="index" *ngIf="dataset.length>0">
+                <tr *ngIf="dataset.length>0" [class.actived]="currentTrIndexs.indexOf(idx) > -1" (click)="selectTr(idx,$event)" [attr.gid]="obj[keyConfig]">
 
                     <td *ngIf="multiple"><input type="checkbox" name="" id="" [checked]="currentTrIndexs.indexOf(idx) > -1"></td>
                     <ng-template ngFor let-key [ngForOf]="getKeys(obj)">
                         <td *ngIf="(!columns[0] || columns.indexOf(key) > -1) &&  filterColumns.indexOf(key) < 0">{{filterData(key, obj[key])}}</td>
                     </ng-template>
                     <td *ngIf="editConfig && dataset.length>0">
-                        <button type="button" class="btn btn-primary" (click)="todetails(obj[keyConfig])">edit</button>
+                        <button type="button" class="btn btn-primary" (click)="todetails(obj[keyConfig])">{{privateDic[common.lanType] && privateDic[common.lanType]['edit'] ? privateDic[common.lanType]['edit'] : common.publicDic[common.lanType]['edit'] || edit}}</button>
+                        <button type="button" class="btn btn-danger" (click)="deleteTr(obj[keyConfig],idx)" *ngIf="deleteConfig['show']">{{privateDic[common.lanType] && privateDic[common.lanType]['delete'] ? privateDic[common.lanType]['delete'] : common.publicDic[common.lanType]['delete'] || delete}}</button>
                     </td>
-                 </tr>
+               </tr>
             </ng-template>
 
            <!--  <tr *ngFor="let obj of dataset; let idx = index;" [class.actived]="currentTrIndexs.indexOf(idx) > -1" (click)="selectTr(idx)" [attr.gid]="obj[keyConfig]">
@@ -61,6 +62,7 @@
        </li>
      </ul>
    </nav> 
+   <button type="button" class="btn btn-danger" (click)="deleteBatches()">{{privateDic[common.lanType] && privateDic[common.lanType]['deleteinbatches'] ? privateDic[common.lanType]['deleteinbatches'] : common.publicDic[common.lanType]['deleteinbatches'] || deleteinbatches}}</button>
 </div>
 
 
@@ -74,12 +76,12 @@
       </div>
       <div class="modal-body">
         <form>
-           <app-details [gid]="currentGood" api='goodsDetails.txt'></app-details> 
+           <app-details [gid]="currentGood" api='goodsDetails.txt'  #childDetails (hadchanged)="getchanged($event)"></app-details> 
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="closeModal()">Close</button>
-        <button type="button" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
+        <button type="button" class="btn btn-primary" (click)="childDetails.saveChange()">Save</button>
       </div>
     </div>
   </div>

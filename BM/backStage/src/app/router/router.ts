@@ -21,7 +21,7 @@ const appRoutes:Routes=[
         {path:'vip',component:VipComponent},
         {path:'details',component:DetailsComponent},
         {path:'statistics',component:StatisticsComponent},
-        {path:'GoodsSell',component:GoodsSellComponent},
+        {path:'GoodsSell',component:GoodsSellComponent}
     ]},
     {path:'**',component:PagenotfoundComponent}
 
