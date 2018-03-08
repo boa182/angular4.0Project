@@ -2,8 +2,6 @@ import {Component, OnInit, Input} from '@angular/core';
 import {Utils} from '../../utils/utils';
 import {CommonService} from '../../utils/common.service';
 import {HttpService} from '../../utils/http.service';
-import {Router} from '@angular/router';
-//import * as $ from 'jquery';
 
 @Component({
   selector: 'tabletemplate',
@@ -39,7 +37,7 @@ export class TabletemplateComponent implements OnInit {
 
     @Input() config: string;
 
-    constructor(private httpservice:HttpService, private common: CommonService,private router: Router){}
+    constructor(private httpservice:HttpService, private common: CommonService){}
 
      ngOnInit(){
         this.user = sessionStorage.getItem('userName');
@@ -75,21 +73,19 @@ export class TabletemplateComponent implements OnInit {
 
 
             this.apiRequest();
-            
-            
         })
     }
 
     apiRequest(_page = 1){
-        
+        let pageParams = {};
 
         if(this.paginationConfig){
-            this.searchParams['pageitems'] = this.paginationConfig['pageitems'];
-            this.searchParams['page'] = _page;
-            
+            pageParams['pageitems'] = this.paginationConfig['pageitems'];
+            pageParams['page'] = _page;
         }       
+        console.log(pageParams); 
         //配置信息中的 api
-        this.httpservice.get(this.apiConfig, this.searchParams).then((apiRes) => {
+        this.httpservice.get(this.apiConfig, pageParams).then((apiRes) => {
             console.log(apiRes);
             this.dataset = apiRes[0];
             let rowsCount = apiRes[1][0]['rowscount'];
@@ -112,12 +108,8 @@ export class TabletemplateComponent implements OnInit {
      //first第一页的页码
      let pages = []; //创建分页数组
      let page = this.pageCount;
-     if(page==0){
-        console.log(pages,111);
-        return [1];
-     }
      
-     if (page <= num) {
+    if (page <= num) {
        for (let i = 1; i <= page; i++) {
          pages.push(i);
        }
@@ -129,7 +121,7 @@ export class TabletemplateComponent implements OnInit {
      }
      console.log(pages);
      return pages;
-   }
+    }
 
    sub(page){
         this.lastPage = this.pageCount;
@@ -142,7 +134,6 @@ export class TabletemplateComponent implements OnInit {
            this.firstPage = this.lastPage - this.pageNum + 1;
          }
          this.pages = this.setPage( this.pageNum, this.firstPage);
-         console.log(this.pages);
          this.page = page;
    }
     /*-----------------------分页--------------------*/
@@ -200,14 +191,12 @@ export class TabletemplateComponent implements OnInit {
 
     getSearchData(obj){
         console.log(obj,'111');
-        //加上分页
-        if(obj.searchapi){
-            this.apiConfig=obj.searchapi;
-        }
-        this.searchParams=obj;
-        this.apiRequest();
+        this.httpservice.get(this.searchapi, obj).then((res)=>{
+            console.log(res);
+        })
         
     }
+
     todetails(_id){
         //console.log(_id);
         console.log(this.common['userType']);

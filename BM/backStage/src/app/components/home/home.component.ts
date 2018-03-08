@@ -33,7 +33,6 @@ export class HomeComponent implements OnInit {
         this.user = sessionStorage.getItem('userName')
         $(document).mouseup(function(e){
             var _con = $('.exit');   // 设置目标区域
-            var _setting = $('.setting')
             if(!_con.is(e.target) && _con.has(e.target).length === 0){ // Mark 1
                 _con.css({
                     display:'none'
@@ -43,14 +42,10 @@ export class HomeComponent implements OnInit {
     }
     exitUser(){
         if($(".exituser").hasClass('bb')){
-            $(".exit").css({
-                display:'block'
-            })
+            $(".exit").show()
             $(".exituser").removeClass('bb')
         }else{
-            $(".exit").css({
-                display:'none'
-            })
+            $(".exit").hide()
             $(".exituser").addClass('bb')
         }
     }
