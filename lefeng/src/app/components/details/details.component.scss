@@ -144,3 +144,31 @@ h3{
         line-height: 50px;
     }    
 }
+#Loginmsg {
+    position: fixed;
+    top: 300px;
+    right: 35px;
+    z-index: 10000;
+    width: 1px;
+    height: 52px;
+    line-height: 52px;
+    font-size: 20px;
+    text-align: center;
+    color: #fff;
+    background: #58bc58;
+    display: none
+}
+#success{
+    position: fixed;
+    top: 300px;
+    right: 35px;
+    z-index: 10000;
+    width: 1px;
+    height: 52px;
+    line-height: 52px;
+    font-size: 20px;
+    text-align: center;
+    color: #fff;
+    background: red;
+    display: none
+}
