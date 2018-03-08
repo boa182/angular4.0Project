@@ -12,8 +12,8 @@ import * as $ from 'jquery';
   styleUrls: ['./car.component.scss']
 })
 export class CarComponent implements OnInit {
-	style:Object ={'display': 'none'};
-	navstyle:Object = {'display': 'block'};
+	style:Object ={'display': 'block'};
+	navstyle:Object = {'display': 'none'};
 	Res:Array<any>=[];
 	carRes:Array<any>=[];
 	QtyRes:Array<any>=[];
@@ -23,11 +23,14 @@ export class CarComponent implements OnInit {
   constructor(private http: HttpService,private common:CommonService,private router:Router) { }
 
   ngOnInit() {
-  	this.uid = sessionStorage.getItem("uid");
+  	this.uid = sessionStorage.getItem("uid")||0;
   	console.log(this.uid);
   	if(this.uid==0){
   		this.style ={'display': 'block'};
   		this.navstyle={'display': 'none'}
+  	}else if(this.uid!=0){
+  		this.style ={'display': 'none'};
+  		this.navstyle={'display': 'block'}
   	}
 	this.createList();
   }
@@ -35,7 +38,7 @@ export class CarComponent implements OnInit {
 
 	this.http.post('updateqty',{
 		uid:this.uid,
-			gid:gid,
+		gid:gid,
 	}).then((res)=>{
 		this.count = 0;
 		this.createList()
@@ -52,6 +55,7 @@ export class CarComponent implements OnInit {
 	  	this.createList()
 	  	$("#success").show().animate({width: '250px'}, 200).fadeOut(1000);
 		})
+		
 	}
 	reduceQty(gid,qty){
 		
@@ -98,6 +102,7 @@ export class CarComponent implements OnInit {
 					
 				}
 			}
+			
 		})
 		
 	})

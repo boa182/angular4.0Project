@@ -24,19 +24,22 @@ export class GoodslistComponent implements OnInit {
   constructor(private http: HttpService ,private common: CommonService,private router:Router ) { }
 	
   ngOnInit() {
-  		this.uid = sessionStorage.getItem("uid");
-  		
-		this.http.get('selectqty',{
-			uid:this.uid,
-		}).then((res)=>{
-			let carRes = JSON.parse(JSON.stringify(res)); 
-			this.carres = carRes;
-				this.arr = [];
-			for(var i =0 ;i<this.carres.length;i++){
-				this.arr.push(this.carres[i].gid);
-			}
-			
+  	
+  		this.uid = sessionStorage.getItem("uid")||0;
+  	if(this.uid!=0){
+			this.http.get('selectqty',{
+				uid:this.uid,
+			}).then((res)=>{
+				let carRes = JSON.parse(JSON.stringify(res)); 
+				this.carres = carRes;
+					this.arr = [];
+				for(var i =0 ;i<this.carres.length;i++){
+					this.arr.push(this.carres[i].gid);
+				}
 		})
+			console.log(this.uid);
+  		
+  	}
   		this.createList();
   		
   		
@@ -66,7 +69,7 @@ export class GoodslistComponent implements OnInit {
 		if(this.uid==0){
 			$("#Loginmsg").show().animate({width: '250px'}, 200).fadeOut(1000);
 			
-		}else{
+		}else if(this.uid!=0){
 			//这里加入购物车,缺一个根据uid和gid请求回去的接口
 			if(this.arr.indexOf(goodsId)==-1){
 				this.arr.push(goodsId);
