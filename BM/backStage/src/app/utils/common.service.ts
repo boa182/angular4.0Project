@@ -15,10 +15,12 @@ export class CommonService{
             this.publicDic = dicRes.json();
         })
         this.currentUser = sessionStorage.getItem('userName');
-        httpservice.get('http://10.3.132.75:3000/usertype',{user:this.currentUser}).then((UserRes)=>{
-           console.log(UserRes,'user');
-           this.userType=UserRes[0]['type'];
-           this.userNickName=UserRes[0]['nickName'];
-        })
+        if(this.currentUser){   
+            httpservice.get('http://10.3.132.75:3000/usertype',{user:this.currentUser}).then((UserRes)=>{
+               console.log(UserRes,'user');
+               this.userType=UserRes[0]['type'] || 0;
+               this.userNickName=UserRes[0]['nickName'];
+            })
+        }
     }
 }

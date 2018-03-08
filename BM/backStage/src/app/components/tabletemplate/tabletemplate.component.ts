@@ -265,7 +265,7 @@ export class TabletemplateComponent implements OnInit {
                 str=str.substr(0,str.length-1);
                 console.log(str);
                 console.log(this.deleteConfig['batchapi']);
-                this.httpservice.post(this.deleteConfig['batchapi'],{gid:str}).then((res)=>{
+            this.httpservice.post(this.deleteConfig['batchapi'],{gid:str}).then((res)=>{
                     console.log(res);
                     if(res.ok){
                         this.apiRequest(this.page);

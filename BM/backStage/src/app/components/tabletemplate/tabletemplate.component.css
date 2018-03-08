@@ -4,3 +4,9 @@
 .modal-dialog{
     margin-top: 200px;
 }
+table tbody tr td{
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

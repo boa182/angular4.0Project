@@ -277,51 +277,54 @@ app.post('/register', function(req, res) {
     //引入查找模块
     require('./router/user').register(req,res,connection);
 })
-<<<<<<< HEAD
+
 
 //前端注册接口
 app.post('/registerapp', function(req, res) {
-=======
-app.post('/updategoods', function(req, res) {
->>>>>>> 0742ccd22ddbe046f9fdf631a83fd1a0d395e62e
     //然后请求的很快的时候才能正常关闭链接、
     var connection = createConnection();
     connection.connect();
-    //引入查找模块
-<<<<<<< HEAD
     require('./router/userControl').registerapp(req,res,connection);
+    })
+
+app.post('/updategoods', function(req, res) {
+    var connection = createConnection();
+    connection.connect();
+    require('./router/update').updategoods(req,res,connection);
 })
+
 
 //加入购物车
 app.post('/addCar', function(req, res) {
-=======
-    require('./router/update').updategoods(req,res,connection);
+    var connection = createConnection();
+    connection.connect();
+    require('./router/select').addCar(req,res,connection);
 })
 // 删除商品
 app.post('/deletegood', function(req, res) {
->>>>>>> 0742ccd22ddbe046f9fdf631a83fd1a0d395e62e
+
     //然后请求的很快的时候才能正常关闭链接、
     var connection = createConnection();
     connection.connect();
     //引入查找模块
-<<<<<<< HEAD
-    require('./router/select').addCar(req,res,connection);
+    require('./router/delete').deletegood(req,res,connection);
 })
+    
 //后端用户信息修改
 app.post('/usercontrol', function(req, res) {
-=======
-    require('./router/delete').deletegood(req,res,connection);
+    var connection = createConnection();
+    connection.connect();
+   //引入查找模块
+    require('./router/select').usercontrol(req,res,connection);
 })
 //批量删除
 app.post('/deletebatch', function(req, res) {
->>>>>>> 0742ccd22ddbe046f9fdf631a83fd1a0d395e62e
     //然后请求的很快的时候才能正常关闭链接、
     var connection = createConnection();
     connection.connect();
-    //引入查找模块
-<<<<<<< HEAD
-    require('./router/select').usercontrol(req,res,connection);
+    require('./router/delete').deletebatch(req,res,connection);
 })
+    
 
 //前端修改商品数量
 app.post('/updateqty', function(req, res) {
@@ -337,10 +340,8 @@ app.post('/reduceqty', function(req, res) {
     var connection = createConnection();
     connection.connect();
     //引入查找模块
-    require('./router/select').reduceQty(req,res,connection);
-=======
-    require('./router/delete').deletebatch(req,res,connection);
->>>>>>> 0742ccd22ddbe046f9fdf631a83fd1a0d395e62e
+    require('./router/select').reduceQty(req,res,connection);  
+
 })
 
 //监听该端口..............................................................................

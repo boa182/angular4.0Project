@@ -21,6 +21,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { DetailsComponent } from './components/details/details.component';
 import { StatisticsComponent } from './components/statistics/statistics.component';
 import { GoodsSellComponent } from './components/goods-sell/goods-sell.component';
+import { AddgoodsComponent } from './components/addgoods/addgoods.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { GoodsSellComponent } from './components/goods-sell/goods-sell.component
     RegisterComponent,
     DetailsComponent,
     StatisticsComponent,
-    GoodsSellComponent
+    GoodsSellComponent,
+    AddgoodsComponent
   ],
   imports: [
     BrowserModule,
