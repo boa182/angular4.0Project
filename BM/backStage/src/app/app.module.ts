@@ -19,6 +19,8 @@ import { FormtemplateComponent } from './components/formtemplate/formtemplate.co
 import { LogRegisterComponent } from './components/log-register/log-register.component';
 import { RegisterComponent } from './components/register/register.component';
 import { DetailsComponent } from './components/details/details.component';
+import { StatisticsComponent } from './components/statistics/statistics.component';
+import { GoodsSellComponent } from './components/goods-sell/goods-sell.component';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import { DetailsComponent } from './components/details/details.component';
     FormtemplateComponent,
     LogRegisterComponent,
     RegisterComponent,
-    DetailsComponent
+    DetailsComponent,
+    StatisticsComponent,
+    GoodsSellComponent
   ],
   imports: [
     BrowserModule,

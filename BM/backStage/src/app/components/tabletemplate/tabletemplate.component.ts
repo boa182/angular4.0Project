@@ -2,8 +2,6 @@ import {Component, OnInit, Input} from '@angular/core';
 import {Utils} from '../../utils/utils';
 import {CommonService} from '../../utils/common.service';
 import {HttpService} from '../../utils/http.service';
-import {Router} from '@angular/router';
-//import * as $ from 'jquery';
 
 @Component({
   selector: 'tabletemplate',
@@ -33,13 +31,16 @@ export class TabletemplateComponent implements OnInit {
     searchapi:string;
     searchParams:Object={};
     currentGood:number;
+    editData:Object;
+    deleteConfig:Object = {};
     
 
     @Input() config: string;
 
-    constructor(private httpservice:HttpService, private common: CommonService,private router: Router){}
+    constructor(private httpservice:HttpService, private common: CommonService){}
 
      ngOnInit(){
+        this.user = sessionStorage.getItem('userName');
         //获取当前模块的配置
         this.httpservice.get( this.config).then((configRes) => {
             console.log(configRes);
@@ -68,23 +69,23 @@ export class TabletemplateComponent implements OnInit {
 
             this.searchapi = configRes['searchapi'];
 
+            this.deleteConfig = configRes['delete'];
+
+
             this.apiRequest();
-            console.log('user',sessionStorage.getItem('userName'));
-            console.log(this.common,222);
-            
         })
     }
 
     apiRequest(_page = 1){
-        
+        let pageParams = {};
 
         if(this.paginationConfig){
-            this.searchParams['pageitems'] = this.paginationConfig['pageitems'];
-            this.searchParams['page'] = _page;
-            
+            pageParams['pageitems'] = this.paginationConfig['pageitems'];
+            pageParams['page'] = _page;
         }       
+        console.log(pageParams); 
         //配置信息中的 api
-        this.httpservice.get(this.apiConfig, this.searchParams).then((apiRes) => {
+        this.httpservice.get(this.apiConfig, pageParams).then((apiRes) => {
             console.log(apiRes);
             this.dataset = apiRes[0];
             let rowsCount = apiRes[1][0]['rowscount'];
@@ -107,12 +108,8 @@ export class TabletemplateComponent implements OnInit {
      //first第一页的页码
      let pages = []; //创建分页数组
      let page = this.pageCount;
-     if(page==0){
-        console.log(pages,111);
-        return [1];
-     }
      
-     if (page <= num) {
+    if (page <= num) {
        for (let i = 1; i <= page; i++) {
          pages.push(i);
        }
@@ -124,7 +121,7 @@ export class TabletemplateComponent implements OnInit {
      }
      console.log(pages);
      return pages;
-   }
+    }
 
    sub(page){
         this.lastPage = this.pageCount;
@@ -137,7 +134,6 @@ export class TabletemplateComponent implements OnInit {
            this.firstPage = this.lastPage - this.pageNum + 1;
          }
          this.pages = this.setPage( this.pageNum, this.firstPage);
-         console.log(this.pages);
          this.page = page;
    }
     /*-----------------------分页--------------------*/
@@ -146,16 +142,22 @@ export class TabletemplateComponent implements OnInit {
         return Object.keys(item);
     }
 
-    selectTr(_idx){
-        if(this.multiple){
-            if(this.currentTrIndexs.indexOf(_idx) > -1){
-                this.currentTrIndexs.splice(this.currentTrIndexs.indexOf(_idx), 1);
+    selectTr(_idx,e){
+        console.log(e.target.tagName);
+        if(e.target.tagName=='BUTTON'){
+
+        }else{        
+            if(this.multiple){
+                if(this.currentTrIndexs.indexOf(_idx) > -1){
+                    this.currentTrIndexs.splice(this.currentTrIndexs.indexOf(_idx), 1);
+                } else {
+                    this.currentTrIndexs.push(_idx);
+                }
             } else {
-                this.currentTrIndexs.push(_idx);
+                this.currentTrIndexs = [_idx];
             }
-        } else {
-            this.currentTrIndexs = [_idx];
         }
+        console.log(this.currentTrIndexs);
     }
 
     selectAll(){
@@ -189,22 +191,90 @@ export class TabletemplateComponent implements OnInit {
 
     getSearchData(obj){
         console.log(obj,'111');
-        //加上分页
-        if(obj.searchapi){
-            this.apiConfig=obj.searchapi;
-        }
-        this.searchParams=obj;
-        this.apiRequest();
+        this.httpservice.get(this.searchapi, obj).then((res)=>{
+            console.log(res);
+        })
         
     }
+
     todetails(_id){
         //console.log(_id);
-        this.currentGood=_id;      
-        $('#exampleModal').modal({
-            show:true,
-            keyboard: true
-        });
+        console.log(this.common['userType']);
+        if(this.common['userType']==0){
+            alert(' without permissions');
+        }else{      
+            this.currentGood=_id;      
+            $('#exampleModal').modal({
+                show:true,
+                keyboard: true
+            });
+        }
        
+    }
+    getchanged(e){
+        console.log(e);
+        $('#exampleModal').hide();
+        let params={};
+        params['gid']=e.id;
+        params['data']=JSON.stringify(e.data);
+
+        console.log(params['data']=='{}');
+        if(params['data']=='{}'){
+
+        }else{
+            this.httpservice.post(e.api,params).then((res)=>{
+                console.log(res);
+                if(res.ok){
+                    this.apiRequest();
+                    alert('success');
+                }else{
+                    alert('faile');
+                }
+            })
+        }
+    }
+    deleteTr(key,idx){
+        if(this.common['userType']==0){
+            alert(' without permissions');
+        }else{        
+            //删除当前商品
+            var res=confirm('Delete this good?'));
+            console.log(res);
+            if(res){
+                this.httpservice.post(this.deleteConfig['api'],{gid:key}).then((result)=>{
+                    console.log(result);
+                    if(result.ok){
+                        this.dataset.splice(idx,1);
+                        this.apiRequest(this.page);
+                    }
+                }) 
+            }
+        }
+    }
+    deleteBatches(){
+        if(this.common['userType']==0){
+            alert(' without permissions');
+        }else{
+            //批量删除
+            if(this.currentTrIndexs.length>0){   
+                var str="";
+                for(let i=0;i<this.currentTrIndexs.length;i++){
+                    console.log(this.dataset[this.currentTrIndexs[i]].gid);
+                    str+=(this.dataset[this.currentTrIndexs[i]].gid)+",";
+                }
+                str=str.substr(0,str.length-1);
+                console.log(str);
+                console.log(this.deleteConfig['batchapi']);
+                this.httpservice.post(this.deleteConfig['batchapi'],{gid:str}).then((res)=>{
+                    console.log(res);
+                    if(res.ok){
+                        this.apiRequest(this.page);
+                        alert('success');
+                    }
+                })
+            }
+        }
+
     }
 }
 

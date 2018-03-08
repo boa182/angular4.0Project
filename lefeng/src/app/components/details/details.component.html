@@ -110,10 +110,7 @@
 											</p>
 											<p>
 												8、礼包或套装中的商品不可以部分退换货。上述退货规则，客户一经购买，视为认可。											
-											</p>
-
-
-												
+											</p>	
 									</div>
 									
 								</div>
@@ -121,49 +118,11 @@
 						</div>
 					</li>
 			</ul>
-			<!--<ul class="detailsCon">
-				<li></li>
-				<li>
-						<p><span>买赠</span><span>跨品牌满199减100上不封顶</span></p>
-						<p><span>买赠</span><span>买即可增猪圆肉润的鱼露一枚</span></p>
-						<p><span>买赠</span><span></span>满99增清润护肤品一套</p>
-				</li>
-				<li>
-						<p>
-							<span>
-								商品评论 （197）								
-							</span>
-							<span>
-								<i>
-									95.6%
-								</i>
-								好评
-							</span>
-						</p>
-							<ul class="comment">
-								<li>
-									<p>
-										<span class="icon icon-star">满意</span>
-										<span>电话号码   日期</span>
-									</p>
-									<p>
-										评论内容：好棒棒啊啊啊啊啊啊
-									</p>
-								</li>
-								<li>
-									<p>
-										<span class="icon icon-star">满意</span>
-										<span>电话号码   日期</span>
-									</p>
-									<p>
-										评论内容：好棒棒啊啊啊啊啊啊
-									</p>
-								</li>
-							</ul>
-				</li>
-			</ul>-->
-		<div class="detailsNav">
-			<span class="icon icon-cart"></span>
-			<span (click)="toCar()">加入购物车</span>
+			
+			<div class="detailsNav" *ngFor="let obj of data">
+			<span class="icon icon-cart" (click)="toCar(obj.name)"></span>
+			<span (click)="addCar()">加入购物车</span>
 		</div>
 </div>
+<div id="Loginmsg">请先登录</div>
+<div id="success">加购成功</div>

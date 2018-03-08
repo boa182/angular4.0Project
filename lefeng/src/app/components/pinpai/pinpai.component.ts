@@ -56,6 +56,9 @@ Adataset:Array<any>=[
       {img:'../../../assets/images/l3.jpg',name:'美洲野牛'},
       {img:'../../../assets/images/l4.jpg',name:'LEADERS INSOLUTION'},
       {img:'../../../assets/images/l5.jpg',name:'玛吉卡'},
+      {img:'../../../assets/images/l3.jpg',name:'美洲野牛'},
+      {img:'../../../assets/images/l4.jpg',name:'LEADERS INSOLUTION'},
+      {img:'../../../assets/images/l5.jpg',name:'玛吉卡'},
 ]
 
 Bdataset:Array<any>=[
@@ -64,6 +67,7 @@ Bdataset:Array<any>=[
       {img:'../../../assets/images/l9.jpg',name:'骆驼'},
       {img:'../../../assets/images/l10.jpg',name:'五羊'},
       {img:'../../../assets/images/l2.jpg',name:'ELASTINE'},
+      {img:'../../../assets/images/l3.jpg',name:'LG'},
       {img:'../../../assets/images/l3.jpg',name:'LG'},
 ]
 
@@ -79,8 +83,10 @@ Ddataset:Array<any>=[
       {img:'../../../assets/images/l8.jpg',name:'THE SAEM'},
       {img:'../../../assets/images/l9.jpg',name:'皮尔·卡丹'},
       {img:'../../../assets/images/l10.jpg',name:'婵真'},
-      {img:'../../../assets/images/l2.jpg',name:'丽得姿'},
+      {img:'../../../assets/images/l2.jpg',name:'丽得姿'}
 ]
+
+
 Edataset:Array<any>=[
       {img:'../../../assets/images/l7.jpg',name:'伊加'},
       {img:'../../../assets/images/l8.jpg',name:'迪赛尼斯'},

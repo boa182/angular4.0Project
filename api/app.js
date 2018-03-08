@@ -38,6 +38,15 @@ app.get('/login', function(req, res) {
     console.log(req.query)
 })
 
+app.get('/loginapp', function(req, res) {
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/userControl').loginapp(req,res,connection);
+    console.log(req.query)
+})
+
 //根据名牌id查找东西
 app.get('/selectbrand', function(req, res) {
     //然后请求的很快的时候才能正常关闭链接、
@@ -45,6 +54,16 @@ app.get('/selectbrand', function(req, res) {
     connection.connect();
     //引入查找模块
     require('./router/select').selectBrand(req,res,connection);
+    console.log(req.query)
+})
+
+//根据uid和goodid查找car
+app.get('/selectCar', function(req, res) {
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/select').selectCar(req,res,connection);
     console.log(req.query)
 })
 
@@ -96,6 +115,36 @@ app.get('/getgoods', function(req, res) {
     console.log(req.query)
 })
 
+//关联商品表和购物车表
+app.get('/connetGoods', function(req, res) {
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/select').selectgoods(req,res,connection);
+    console.log(req.query)
+})
+
+//关联商品表和购物车表
+app.get('/createorder', function(req, res) {
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/select').createOrder(req,res,connection);
+    console.log(req.query)
+})
+
+//前端根据uid gid删除商品
+app.get('/deletegoods', function(req, res) {
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/select').deletegoods(req,res,connection);
+    console.log(req.query)
+})
+
 //查找所有用户信息
 app.get('/getuser', function(req, res) {
     //然后请求的很快的时候才能正常关闭链接、
@@ -106,6 +155,16 @@ app.get('/getuser', function(req, res) {
     console.log(req.query)
 })
 
+//删除所有订单
+app.get('/deleteall', function(req, res) {
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/select').deleteAll(req,res,connection);
+    console.log(req.query)
+})
+
 //通过class查找商品
 app.get('/selectclass', function(req, res) {
     //然后请求的很快的时候才能正常关闭链接、
@@ -113,6 +172,25 @@ app.get('/selectclass', function(req, res) {
     connection.connect();
     //引入查找模块
     require('./router/select').selectClass(req,res,connection);
+    console.log(req.query)
+})
+//通过uid查找数量
+app.get('/selectqty', function(req, res) {
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/select').selectQty(req,res,connection);
+    console.log(req.query)
+})
+
+//统计品牌数量
+app.get('/staisticsgoods', function(req, res) {
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/select').staisticsGoods(req,res,connection);
     console.log(req.query)
 })
 
@@ -135,6 +213,37 @@ app.get('/brandStore', function(req, res) {
     require('./router/select').brandStore(req,res,connection);
     console.log(req.query)
 })
+// 根据用户id查找订单
+app.get('/getCarGoods', function(req, res) {
+
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/select').getCarGoods(req,res,connection);
+    console.log(req.query)
+})
+
+app.get('/setorderlist', function(req, res) {
+
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/select').setOrderList(req,res,connection);
+    console.log(req.query)
+})
+
+app.get('/getorderlist', function(req, res) {
+
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/select').getOrderList(req,res,connection);
+    console.log(req.query)
+})
+
 // 搜索商品
 app.get('/searchgoods', function(req, res) {
     //然后请求的很快的时候才能正常关闭链接、
@@ -142,6 +251,7 @@ app.get('/searchgoods', function(req, res) {
     connection.connect();
     //引入查找模块
     require('./router/search').searchgoods(req,res,connection);
+    console.log(req.query)
 })
 // 查找商品中所有类别
 app.get('/allclass', function(req, res) {
@@ -167,7 +277,71 @@ app.post('/register', function(req, res) {
     //引入查找模块
     require('./router/user').register(req,res,connection);
 })
+<<<<<<< HEAD
 
+//前端注册接口
+app.post('/registerapp', function(req, res) {
+=======
+app.post('/updategoods', function(req, res) {
+>>>>>>> 0742ccd22ddbe046f9fdf631a83fd1a0d395e62e
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+<<<<<<< HEAD
+    require('./router/userControl').registerapp(req,res,connection);
+})
+
+//加入购物车
+app.post('/addCar', function(req, res) {
+=======
+    require('./router/update').updategoods(req,res,connection);
+})
+// 删除商品
+app.post('/deletegood', function(req, res) {
+>>>>>>> 0742ccd22ddbe046f9fdf631a83fd1a0d395e62e
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+<<<<<<< HEAD
+    require('./router/select').addCar(req,res,connection);
+})
+//后端用户信息修改
+app.post('/usercontrol', function(req, res) {
+=======
+    require('./router/delete').deletegood(req,res,connection);
+})
+//批量删除
+app.post('/deletebatch', function(req, res) {
+>>>>>>> 0742ccd22ddbe046f9fdf631a83fd1a0d395e62e
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+<<<<<<< HEAD
+    require('./router/select').usercontrol(req,res,connection);
+})
+
+//前端修改商品数量
+app.post('/updateqty', function(req, res) {
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/select').updateqty(req,res,connection);
+})
+//减少商品数目
+app.post('/reduceqty', function(req, res) {
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/select').reduceQty(req,res,connection);
+=======
+    require('./router/delete').deletebatch(req,res,connection);
+>>>>>>> 0742ccd22ddbe046f9fdf631a83fd1a0d395e62e
+})
 
 //监听该端口..............................................................................
 var server = app.listen(3000, function() {

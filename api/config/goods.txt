@@ -21,11 +21,26 @@
         "add_time":{
             "type":"DateFormat",
             "format":"yyyy-MM-dd"
+<<<<<<< HEAD
+        },
+        "name":{
+            "type":"Replace",
+            "reg":"(d).+",
+            "replaceVal":"$1**"
+        }
+=======
         }       
+>>>>>>> 8bf4072f2841764bc91eadca733e3a2b3c81100c
     },
     "search":{
         "show":true,
         "api":"goodsForm.txt"
     },
-    "edit":true
+    "edit":true,
+    "multiple":true,
+    "delete":{
+        "show":true,
+        "api":"deletegood",
+        "batchapi":"deletebatch"
+    }
 }
