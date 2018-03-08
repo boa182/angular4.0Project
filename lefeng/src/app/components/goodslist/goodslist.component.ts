@@ -3,7 +3,8 @@ import { Component, OnInit,Input} from '@angular/core';
 //依赖组件模块引用
 import { HttpService } from './../../utils/http.service';
 import { CommonService } from './../../utils/common.service';
-import {Router} from '@angular/router'
+import {Router} from '@angular/router';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'goodslist',
@@ -17,11 +18,28 @@ export class GoodslistComponent implements OnInit {
 	Res: Object = {};
 	arr: Array<string> = [];
 	qty: Number= 1;
+	carRes :Array<any> = [];
+	carres:Array<any> = [];
+	uid:any = 0;
   constructor(private http: HttpService ,private common: CommonService,private router:Router ) { }
 	
   ngOnInit() {
-		  this.createList();
-		  console.log(this.type)
+  		this.uid = sessionStorage.getItem("uid");
+  		
+		this.http.get('selectqty',{
+			uid:this.uid,
+		}).then((res)=>{
+			let carRes = JSON.parse(JSON.stringify(res)); 
+			this.carres = carRes;
+				this.arr = [];
+			for(var i =0 ;i<this.carres.length;i++){
+				this.arr.push(this.carres[i].gid);
+			}
+			
+		})
+  		this.createList();
+  		
+  		
   }
   
   trackByGid(item){
@@ -34,8 +52,10 @@ export class GoodslistComponent implements OnInit {
 					this.dataset[this.type] = res;
 		})	
   }
+  tocar(){
+		this.router.navigate(['/car']);
+	}
 	toDetails(gid,e){
-		console.log(123);
 			if(e.target.tagName!='SPAN'){
 				this.common.gid = gid;
 				this.router.navigate(['/details']);
@@ -43,26 +63,46 @@ export class GoodslistComponent implements OnInit {
 			}
 	}
 	add(goodsId){		
-		//这里加入购物车
-		if(this.arr.indexOf(goodsId)==-1){
-			this.arr.push(goodsId);
-			this.http.post('addCar',{
-				uid:0,
-				gid:goodsId,
-				qty:1
-			}).then((res)=>{
-				let Res = JSON.parse(JSON.stringify(res));
-				console.log(Res);
-			})			
+		if(this.uid==0){
+			$("#Loginmsg").show().animate({width: '250px'}, 200).fadeOut(1000);
+			
 		}else{
-			this.http.post('updateqty',{
-				uid:0,
-				gid:goodsId,
-			}).then((res)=>{
-				let Res = JSON.parse(JSON.stringify(res));
-				console.log(Res);
-			})			
+			//这里加入购物车,缺一个根据uid和gid请求回去的接口
+			if(this.arr.indexOf(goodsId)==-1){
+				this.arr.push(goodsId);
+				this.http.post('addCar',{
+					uid:this.uid,
+					gid:goodsId,
+					qty:1
+				}).then((res)=>{
+					let Res = JSON.parse(JSON.stringify(res));
+					$("#success").show().animate({width: '250px'}, 200).fadeOut(1000);
+				})			
+			}else{
+				this.http.post('updateqty',{
+					uid:this.uid,
+					gid:goodsId,
+				}).then((res)=>{
+					let Res = JSON.parse(JSON.stringify(res));
+				
+					$("#success").show().animate({width: '250px'}, 200).fadeOut(1000);
+				})			
+			}
+			
 		}
 		
 	}
+	backTop(){
+		window.onscroll = function(){
+			var h =$(window).height();
+			var t = 1000 + $(document).scrollTop();
+			if(t>h){
+				$('.toTop').fadeIn();
+			}else{
+				$('.toTop').fadeOut();
+			}
+		}
+	}
+	//购物车动画
+
 }

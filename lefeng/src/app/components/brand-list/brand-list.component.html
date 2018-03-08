@@ -6,19 +6,20 @@
 		</p>
 			 
 	</div>
-	<div class="brandShow" *ngFor="let obj of data">
-		<img [src]="obj.brandImage" />
-	</div>
-	<div class="listFun">
-		<ul>
-			<li>价格排序</li>
-			<li>销量</li>
-			<li>筛选</li>
-		</ul>
-	</div>
-	<div class="listBox">
-			<goodslist [type]="common.brandStoreName"></goodslist>
-	</div>
+	
+		<div class="listFun">
+			<ul>
+				<li>价格排序</li>
+				<li>销量</li>
+				<li>筛选</li>
+			</ul>
+		</div>
+		<div class="listBox">
+		<div class="brandShow" *ngFor="let obj of data">
+			<img [src]="obj.brandImage" />
+		</div>
+				<goodslist [type]="common.brandStoreName"></goodslist>
+		</div>
 	
 	<ul class="listAside">
 		<li><img src="./../../../assets/images/n1.jpg" /></li>
