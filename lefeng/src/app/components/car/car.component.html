@@ -5,7 +5,7 @@
 		</div>
 		<div class="ccon" [ngStyle]="style">
 			<img src="./../../../assets/images/n4.jpg"/>
-			<p routerLink="/shopping"  class="open-preloader">现在去购物咯~❤</p>
+			<p routerLink="/shopping" >现在去购物咯~❤</p>
 		</div>
 		<div class="ncon" *ngIf="carRes">
 			<ul *ngFor="let obj of carRes">
@@ -23,16 +23,17 @@
 							<span (click)='reduceQty(obj.gid,obj.qty)'>-</span>
 							<span>{{obj.qty}}</span>
 							<span (click)='addQty(obj.gid)'>+</span>
-							<span class="icon icon-remove" (click)="del()"></span>
+							<span class="icon icon-remove" (click)="del(obj.gid)"></span>
 						</p>
 					</div>
 				</li>
 			</ul>
 		</div>
-		<div class="carNav">
+		<div class="carNav" [ngStyle]="navstyle">
 			<span>总金额：<b>￥{{this.count}}</b></span>
-			<span>立即结算</span>
+			<span (click)="account()">立即结算</span>
 		</div>
 	</div>
 	<footnav></footnav>
 </div>
+<div id="success">删除成功</div>

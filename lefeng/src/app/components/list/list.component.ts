@@ -20,7 +20,5 @@ export class ListComponent implements OnInit {
 	goBack(){
   	this.location.back();
   }
-	tocar(){
-		this.router.navigate(['/car']);
-	}
+	
 }
