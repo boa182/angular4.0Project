@@ -15,24 +15,86 @@ export class VipComponent implements OnInit {
     users: string = null;//当前编辑的用户名
     user: string = null;//登录的用户名
     filterDataConfig: Object = {};
+    apiConfig: string;
+    paginationConfig: Object;
+    pageCount: number = 0;
     username: string = '';
     password: string = '';
     usertype: string = 0;
+    lastPage:number;
+    firstPage:number=1;
+    pageNum:number = 5;
+    page :number= 1 ;//当前页
 
     constructor(private httpservice:HttpService ,private router: Router){}
     ngOnInit() {
         this.user = sessionStorage.getItem('userName')
         this.httpservice.get('userControl.txt').then((configRes)=>{
             this.filterDataConfig = configRes['filterData'] || {};
-            console.log(this.filterDataConfig)
-            this.httpservice.get(configRes.api).then((res) => {
-                this.dataset = res;
-                console.log(this.dataset,this.user)
-            })
+
+            this.apiConfig = configRes['api'];
+
+            this.paginationConfig = configRes['pagination'] || {};
+
+            this.paginationConfig = configRes['pagination'] || {};
+            this.apiRequest();
         })
         
         
     }
+
+    apiRequest(_page = 1){
+        let pageParams = {};
+        if(this.paginationConfig){
+            pageParams['pageitems'] = this.paginationConfig['pageitems'];
+            pageParams['page'] = _page;
+        }
+        this.httpservice.get(this.apiConfig, pageParams).then((apiRes) => {
+            this.dataset = apiRes[0];
+            let rowsCount = apiRes[1][0]['rowscount'];
+            let pageItems = this.paginationConfig['pageitems'];
+            this.pageCount = Math.ceil(rowsCount / pageItems);
+            if(_page==1){
+                this.sub(1);
+            }
+        })
+    }
+
+    /*-----------------------分页--------------------*/
+    setPage( num, first) {//创建保存页码数组的函数
+     //length数据总条数
+     //amount每页数据条数
+     //num保留的页码数
+     //first第一页的页码
+     let pages = []; //创建分页数组
+     let page = this.pageCount;
+     
+    if (page <= num) {
+       for (let i = 1; i <= page; i++) {
+         pages.push(i);
+       }
+     }
+     if (page > num) {
+       for (let i = first; i < first + num; i++) {
+         pages.push(i);
+       }
+     }
+     return pages;
+    }
+
+    sub(page){
+        this.lastPage = this.pageCount;
+         if (page >= this.pageNum) {
+           this.firstPage = page - Math.floor(this.pageNum / 2);
+         } else {
+           this.firstPage = 1;
+         }
+         if (this.firstPage > this.lastPage - this.pageNum) {
+           this.firstPage = this.lastPage - this.pageNum + 1;
+         }
+         this.pages = this.setPage( this.pageNum, this.firstPage);
+         this.page = page;
+   }
     filterData(_key, _val){
         let _config = this.filterDataConfig[_key];
         if(!_config){
@@ -44,6 +106,12 @@ export class VipComponent implements OnInit {
             return _val.replace(reg, _config.replaceVal);
         }
     }
+
+    goto(_page){
+        //let _page = event.target.value;
+        this.apiRequest(_page);
+    }
+
     getkeys(item){
         return Object.keys(item)
     }
@@ -70,7 +138,6 @@ export class VipComponent implements OnInit {
     redact(_id,_user){
         this.ids = _id;
         this.users = _user;
-        console.log(this.users,this.user,this.ids)
         let pageParams = {};
         pageParams['user'] = this.user;
         this.httpservice.get('usertype',pageParams).then((res) => {
@@ -90,7 +157,6 @@ export class VipComponent implements OnInit {
         pageParams['username'] = this.username ;
         pageParams['password'] = this.password;
         pageParams['usertype'] = this.usertype || 0;
-        console.log(this.dataset,this.ids,pageParams)
         for(let i=0;i<this.dataset.length;i++){
             if(this.dataset[i].userid ==  this.ids){
                 this.dataset[i].username = this.username;

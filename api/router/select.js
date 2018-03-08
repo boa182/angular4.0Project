@@ -156,17 +156,27 @@ exports.usercontrol = function(req, res, connection) {
     });
 }
 
-//查找所有用户信息  余路
+// 分页查找商品
 exports.getUser = function(req, res, connection) {
-	connection.query(`SELECT * FROM user`, function(error, results, fields) {
-		if(error) throw error;
-		//results =>array类型
-		console.log('The solution is: ', results);
-		//把数据整理，返回到前端
-		
-		res.send(results);
-		connection.end();
-	});
+
+    var page = req.query.page;
+    var pageitems=req.query.pageitems;
+    console.log(page,pageitems)
+    var sql;
+    if(!pageitems){
+        aql=`SELECT  SQL_CALC_FOUND_ROWS * FROM user;select count(*) as rowscount from user;`
+    }else{
+        sql=`SELECT  SQL_CALC_FOUND_ROWS * FROM user limit ${(page-1)*pageitems},${pageitems};
+ select count(*) as rowscount from user;`
+    }
+    //查找......................
+    connection.query(sql, function(error, results, fields) {
+        if(error) throw error;
+        //results =>array类型
+        console.log('The solution is: ', results);
+        res.send(results);
+        connection.end();
+    });
 }
 
 exports.createOrder = function(req, res, connection) {

@@ -1,5 +1,8 @@
 {
     "api":"getuser",
+    "pagination":{
+        "pageitems":5
+    },
     "filterData":{
         "time":{
             "type":"DateFormat",

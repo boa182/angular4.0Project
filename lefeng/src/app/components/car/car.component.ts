@@ -46,7 +46,6 @@ export class CarComponent implements OnInit {
 
   }
 	del(gid){
-		console.log(gid)
 		this.http.get('deletegoods',{
 			uid:this.uid,
 			gid:gid
