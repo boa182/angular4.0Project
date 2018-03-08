@@ -24,7 +24,6 @@ export class CarComponent implements OnInit {
 
   ngOnInit() {
   	this.uid = sessionStorage.getItem("uid");
-  	console.log(this.uid);
   	if(this.uid==0){
   		this.style ={'display': 'block'};
   		this.navstyle={'display': 'none'}
@@ -43,7 +42,6 @@ export class CarComponent implements OnInit {
 
   }
 	del(gid){
-		console.log(gid)
 		this.http.get('deletegoods',{
 			uid:this.uid,
 			gid:gid
@@ -68,11 +66,9 @@ export class CarComponent implements OnInit {
 		}
 	}
 	account(){
-		console.log(this.carRes)
 		
 		var a = JSON.stringify(this.carRes);
 		sessionStorage.setItem("orderlist",a);
-		console.log(sessionStorage.getItem("orderlist"));
 
 
 //		this.http.get('createOrder',{

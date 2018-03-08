@@ -14,7 +14,7 @@
 			<div class="content-block">
 			<ul *ngFor='let obj of Data'>
 				<li>
-					<h3>下单时间：{{obj.addtime.split('T')[0]}}</h3>
+					<h3>下单时间：{{JSON.parse(obj.order_detail).addtime.split('T')[0]}}</h3>
 			<div>
 				<img src={{obj.verticalImage}}>
 				<p>订单编号：{{obj.addtime.split('.')[0].replace('-','').replace('-','').replace('T','').replace(':','').replace(':','').slice(2)}}</p>
