@@ -13,13 +13,15 @@ export class OrderFormComponent implements OnInit {
     resdata: Array<object> = [];
     Res:Array<any> = [];
     total:number = 0;
+    uid:any = 0;
     
     constructor(private http: HttpService ,private common: CommonService,private router:Router ) { }
 
 
   ngOnInit() {
+  	this.uid =	sessionStorage.getItem("uid")||0;
      this.http.get('connetGoods',{
-        uid:0
+        uid:this.uid
     }).then((res) => {
     		let Res = JSON.parse(JSON.stringify(res))
         this.resdata = Res;
