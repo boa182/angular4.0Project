@@ -8,6 +8,7 @@ export class CommonService{
     publicDic: Object = {};
     userType:number;
     currentUser:string;
+    userNickName:string;
 
     constructor(private http: Http,private httpservice:HttpService){
         http.get('http://10.3.132.75:3000/dictionary.txt').subscribe((dicRes) => {
@@ -17,6 +18,7 @@ export class CommonService{
         httpservice.get('http://10.3.132.75:3000/usertype',{user:this.currentUser}).then((UserRes)=>{
            console.log(UserRes,'user');
            this.userType=UserRes[0]['type'];
+           this.userNickName=UserRes[0]['nickName'];
         })
     }
 }

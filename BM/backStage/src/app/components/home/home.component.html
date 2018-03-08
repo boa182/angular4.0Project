@@ -10,7 +10,7 @@
             <span style="background-color: #f39c12">15</span>
         </li>
         <li  (click)="exitUser()" class="exituser bb">
-            <h4>欢迎您：{{user}}</h4>
+            <h4>欢迎您：{{common['userNickName']?common['userNickName'] :user}}</h4>
         </li>
         <ul class="exit">
             <li class="message">
