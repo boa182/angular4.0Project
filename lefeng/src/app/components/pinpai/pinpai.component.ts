@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router'
+//依赖组件模块引用
+import { HttpService } from './../../utils/http.service';
+import { CommonService } from './../../utils/common.service';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-pinpai',
@@ -7,15 +12,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PinpaiComponent implements OnInit {
 
-    constructor() { }
+    constructor(private http: HttpService,private common:CommonService,private router:Router ) {}
 
 
   ngOnInit() {
   }
 
+  toBrandList(e){
+    if(e.target.tagName=="IMG"){
+      this.common.type='';
+      this.common.brandStoreName = e.target.title;
+      this.router.navigate(['/brand']);
 
+    }
+  }
 
-
+  toBrandListZ(e){
+    if(e.target.tagName=="LI"){
+      this.common.type='';
+      this.common.brandStoreName = e.target.lastElementChild.innerText;
+      this.router.navigate(['/brand']);
+    }    
+    if(e.target.tagName=="IMG"){
+      this.common.type='';
+      this.common.brandStoreName = e.target.nextElementSibling.innerText;
+      this.router.navigate(['/brand']);
+    }    
+    if(e.target.tagName=="SPAN"){
+      this.common.type='';
+      this.common.brandStoreName = e.target.innerText;
+      this.router.navigate(['/brand']);
+    }  
+  }
 
 
   
