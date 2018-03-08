@@ -15,7 +15,9 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     $('.forget').click(function(){
       alert('密码都忘记就别登录了')
-    })
+		})
+		
+		sessionStorage.setItem('orderlist','')
   }
 
   back(){
