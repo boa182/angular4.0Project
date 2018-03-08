@@ -1,6 +1,6 @@
 <!--<h1>{{common.type}}</h1>-->
-<ul>
-	<li *ngFor="let obj of dataset[type]; trackBy: trackByGid" (click)='toDetails(obj.gid)'>
+<ul class="zbylist">
+	<li *ngFor="let obj of dataset[type]; trackBy: trackByGid" (click)='toDetails(obj.gid,$event)'>
 		<img [src]="obj.verticalImage"/>
 		<p>
 			<span>{{obj.brandStoreName}}</span>
@@ -10,8 +10,14 @@
 		
 		<p>
 			<span>￥{{obj.vipshopPrice}} <del>￥{{obj.marketPrice}}</del></span>
-			<span class="icon icon-cart gouwuche"></span>
+			<span class="icon icon-cart gouwuche addcar" (click)='add(obj.gid)'></span>
 		</p>
-	</li>
-	
+	</li>	
 </ul>
+<ul class="listAside">
+	<li class="toTop"><img src="./../../../assets/images/n1.jpg" /></li>
+	<li><img src="./../../../assets/images/n2.jpg" /></li>
+	<li id="end" (click)='tocar()'><img src="./../../../assets/images/n3.jpg" /></li>
+</ul>
+<div id="Loginmsg">请先登录</div>
+<div id="success">加购成功</div>

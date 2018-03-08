@@ -39,8 +39,10 @@
 }
 .imglist{
     display:flex;
-    justify-content:space-between;
     padding-right: 1rem;
+    img{
+        margin-right: 0.3125rem;
+    }
 }
 .anniulist{
     height:2.34375rem;

@@ -3,90 +3,37 @@
 		<div id="chead">
 			购物车
 		</div>
-		<!--<div class="ccon" *ngIf="carType">
+		<div class="ccon" [ngStyle]="style">
 			<img src="./../../../assets/images/n4.jpg"/>
-			<p routerLink="/shopping">现在去购物咯~❤</p>
-		</div>-->
-		<div class="ncon">
-			<ul>
+			<p routerLink="/shopping" >现在去购物咯~❤</p>
+		</div>
+		<div class="ncon" *ngIf="carRes">
+			<ul *ngFor="let obj of carRes">
 				<li>
-					<img src="http://a2.vimage1.com/upload/merchandise/pdc/851/651/8882582148735651851/1/5HT423B-5.jpg"/>
+					<img [src]="obj.verticalImage"/>
 					<div>
 						<span>
-							<b>丽得姿</b>
-							奢步士黑色太空棉艺术印花长袖T恤
+							<b>{{obj.brandStoreName}}</b>
+							{{obj.name}}
 						</span>
 						<p class="price">
-							￥98.00
+							￥{{obj.vipshopPrice}}
 						</p>
 						<p class="count">
-							<span (click)='changcount()'>-</span>
-							<span>1</span>
-							<span>+</span>
-							<span class="icon icon-remove" (click)="del()"></span>
-						</p>
-					</div>
-				</li>
-				<li>
-					<img src="http://a2.vimage1.com/upload/merchandise/pdc/851/651/8882582148735651851/1/5HT423B-5.jpg"/>
-					<div>
-						<span>
-							<b>丽得姿</b>
-							奢步士黑色太空棉艺术印花长袖T恤
-						</span>
-						<p class="price">
-							￥98.00
-						</p>
-						<p class="count">
-							<span (click)='changcount()'>-</span>
-							<span>1</span>
-							<span>+</span>
-							<span class="icon icon-remove" (click)="del()"></span>
-						</p>
-					</div>
-				</li>
-				<li>
-					<img src="http://a2.vimage1.com/upload/merchandise/pdc/851/651/8882582148735651851/1/5HT423B-5.jpg"/>
-					<div>
-						<span>
-							<b>丽得姿</b>
-							奢步士黑色太空棉艺术印花长袖T恤
-						</span>
-						<p class="price">
-							￥98.00
-						</p>
-						<p class="count">
-							<span (click)='changcount()'>-</span>
-							<span>1</span>
-							<span>+</span>
-							<span class="icon icon-remove" (click)="del()"></span>
-						</p>
-					</div>
-				</li>
-				<li>
-					<img src="http://a2.vimage1.com/upload/merchandise/pdc/851/651/8882582148735651851/1/5HT423B-5.jpg"/>
-					<div>
-						<span>
-							<b>丽得姿</b>
-							奢步士黑色太空棉艺术印花长袖T恤
-						</span>
-						<p class="price">
-							￥98.00
-						</p>
-						<p class="count">
-							<span (click)='changcount()'>-</span>
-							<span>1</span>
-							<span>+</span>
-							<span class="icon icon-remove" (click)="del()"></span>
+							<span (click)='reduceQty(obj.gid,obj.qty)'>-</span>
+							<span>{{obj.qty}}</span>
+							<span (click)='addQty(obj.gid)'>+</span>
+							<span class="icon icon-remove" (click)="del(obj.gid)"></span>
 						</p>
 					</div>
 				</li>
 			</ul>
 		</div>
-		<div class="carNav">
-			<span>总金额：<b>￥230</b></span>
-			<span>立即结算</span>
+		<div class="carNav" [ngStyle]="navstyle">
+			<span>总金额：<b>￥{{this.count}}</b></span>
+			<span (click)="account()">立即结算</span>
 		</div>
 	</div>
 	<footnav></footnav>
 </div>
+<div id="success">删除成功</div>
