@@ -42,6 +42,20 @@ exports.selectgoods_fromType = function(req, res, connection) {
     });
 }
 
+//根据传order_type获取商品数据
+exports.getGoodsOrder = function(req, res, connection) {
+    //查找......................
+    console.log(req)
+    var uid = req.query.uid;
+    connection.query(`select * from car,goods where car.gid = goods.gid and car.uid = '${uid}' and car.order_type > 0`, function(error, results, fields) { 
+        if(error) throw error;
+        //results =>array类型
+        console.log('The solution is: ', results);
+        res.send(results);
+        connection.end();
+    });
+}
+
 //统计品牌数量
 exports.staisticsGoods = function(req, res, connection) {
     //查找......................
