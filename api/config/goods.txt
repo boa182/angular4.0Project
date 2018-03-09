@@ -38,5 +38,6 @@
         "show":true,
         "api":"deletegood",
         "batchapi":"deletebatch"
-    }
+    },
+    "searchapi":"searchgoods"
 }
