@@ -10,7 +10,7 @@
 		<div class="ncon" *ngIf="carRes">
 			<ul *ngFor="let obj of carRes">
 				<li>
-					<img [src]="obj.verticalImage"/>
+					<img [src]="obj.verticalImage" (click)="todetails(obj.gid)"/>
 					<div>
 						<span>
 							<b>{{obj.brandStoreName}}</b>
