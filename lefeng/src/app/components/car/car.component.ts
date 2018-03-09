@@ -71,7 +71,7 @@ export class CarComponent implements OnInit {
 		}
 	}
 	account(){	
-		var a = JSON.stringify(this.carRes);
+		var a = JSON.stringify(this.qtyArr);
 		sessionStorage.setItem("orderlist",a);
 		this.style = {'display': 'none'};
 		this.http.get('createOrder',{
