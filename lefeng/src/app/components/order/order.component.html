@@ -15,8 +15,8 @@
 		<div class="tabs">
 		<div id="tab1" class="tab active">
 			<div class="content-block">
-			<!-- <ul *ngFor='let obj of Data1'>
-				<li>
+			<ul>
+				<li *ngFor='let obj of Data1' (click)='toDetail()'> 
 					<h3>下单时间：{{obj.addtime.split('T')[0]}}</h3>
 				<div>
 					<img src={{obj.verticalImage}}>
@@ -25,13 +25,13 @@
 					<p>订单状态：{{Status[obj.order_type-1]}}</p>
 				</div>
 				</li>
-			</ul> -->
+			</ul>
 			</div>
 		</div>
 			<div id="tab2" class="tab">
 			<div class="content-block">
-				<ul *ngFor='let obj of Data2 '>
-					<li>
+				<ul>
+					<li  *ngFor='let obj of Data2 '>
 						<h3>下单时间：{{obj.addtime.split('T')[0]}}</h3>
 				<div>
 					<img src={{obj.verticalImage}}>
@@ -45,8 +45,8 @@
 		</div>
 		<div id="tab3" class="tab">
 			<div class="content-block">
-				<ul *ngFor='let obj of Data3 '>
-					<li>
+				<ul>
+					<li  *ngFor='let obj of Data3 '>
 						<h3>下单时间：{{obj.addtime.split('T')[0]}}</h3>
 					<div>
 						<img src={{obj.verticalImage}}>
@@ -60,8 +60,8 @@
 		</div>
 		<div id="tab4" class="tab">
 			<div class="content-block">
-				<ul *ngFor='let obj of Data4'>
-					<li>
+				<ul>
+					<li  *ngFor='let obj of Data4'>
 						<h3>下单时间：{{obj.addtime.split('T')[0]}}</h3>
 					<div>
 						<img src={{obj.verticalImage}}>
