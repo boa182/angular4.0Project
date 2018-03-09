@@ -6,6 +6,11 @@
 - 然后再npm install 
 - 开启服务器 ng serve --open
 #### 2.开启后台服务器
+- 导入sql文件到本地的可视化工具中
+- 在api文件下npm install 一下
+- 在命令行输入node app
+#### 3.跑通app后台管理系统的步骤
+- 在BM文件下，重复1.的步骤
 ### 二、从零搭建
 #### 1.typeScript知识的学习
 - 1）与JavaScript最大的区别<br />
@@ -274,7 +279,7 @@ declare var swiper:any;;
   	}
 ```
 #### 5.那些年写接口过程中遇到的那些坑
-- 1）登录注册接口的坑
+- 1）登录注册接口的坑 <br />
 	因为前端的utils的post请求封装了JSON转换 <br />
 ```javascript
 	this.http.post(this.getUrl(api), param, {headers: headers}).toPromise().then( res=> {
@@ -310,20 +315,20 @@ declare var swiper:any;;
 	let sql = '你的sql语句' <br />
 	连接数据库之前，先console.log(sql),看出来的是什么东西
 - 3）mysql查询语句和多表关联查询
-- 查询一张表：     select * from 表名；
-- 查询指定字段：select 字段1，字段2，字段3….from 表名
-- where条件查询：select 字段1，字段2，字段3 frome 表名 where 条件表达式；
+- 3-1)查询一张表：     select * from 表名；
+- 3-2)查询指定字段：select 字段1，字段2，字段3….from 表名
+- 3-3)where条件查询：select 字段1，字段2，字段3 frome 表名 where 条件表达式；
 	例：select * from t_studect where id=1; <br />
        select * from t_student where age>22; <br />
-- 带like的模糊查询：select 字段1，字段2… frome 表名 where 字段 [not] like ‘字符串’；
+- 3-4)带like的模糊查询：select 字段1，字段2… frome 表名 where 字段 [not] like ‘字符串’；
     “%”代表任意字符；
     “_”代表单个字符；
 	例：select * frome t_student where stuName like ‘张三”；<br />
        select * frome t_student where stuName like ‘张三%”；<br />
        select * frome t_student where stuName like ‘%张三%”；//含有张三的任意字符 <br />
        select * frome t_student where stuName like ‘张三_”	<br />
-- 对查询结果排序order by：select 字段1，字段2…from 表名 order by 属性名 [asc|desc]
+- 3-5)对查询结果排序order by：select 字段1，字段2…from 表名 order by 属性名 [asc|desc]
 	例：select * frome t_student order by age desc；//降序，从大到小 <br />
        select * frome t_student order by age asc；//升序，asc默认可以不写 <br />
-- 内连接查询（两张或以上的表连接起来查询需要的数据）
+- 3-6)内连接查询（两张或以上的表连接起来查询需要的数据）
 	select * from car,goods where car.gid = goods.gid and car.uid = 0  <br />
