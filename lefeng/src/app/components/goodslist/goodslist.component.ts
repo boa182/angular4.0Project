@@ -72,7 +72,7 @@ export class GoodslistComponent implements OnInit {
 		}else if(this.uid!=0){
 			
 //			console.log(e.target.parent().parent()
-			//这里加入购物车,缺一个根据uid和gid请求回去的接口
+			//这里加入购物车
 			if(this.arr.indexOf(goodsId)==-1){
 				this.arr.push(goodsId);
 				this.http.post('addCar',{

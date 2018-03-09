@@ -28,7 +28,7 @@ export class CarComponent implements OnInit {
   	if(this.uid==0){
   		this.style ={'display': 'block'};
   		this.navstyle={'display': 'none'}
-  	}else if(this.uid!=0){
+  	}else if(this.uid!=0&&this.qtyArr!=[]){
   		this.style ={'display': 'none'};
   		this.navstyle={'display': 'block'}
   	}
