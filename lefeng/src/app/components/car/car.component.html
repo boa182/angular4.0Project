@@ -17,7 +17,7 @@
 							{{obj.name}}
 						</span>
 						<p class="price">
-							￥{{obj.vipshopPrice}}
+							￥{{obj.vipshopPrice*obj.qty}}
 						</p>
 						<p class="count">
 							<span (click)='reduceQty(obj.gid,obj.qty)'>-</span>
@@ -30,7 +30,7 @@
 			</ul>
 		</div>
 		<div class="carNav" [ngStyle]="navstyle">
-			<span>总金额：<b>￥{{this.count}}</b></span>
+			<span>总金额：<b>￥{{count}}</b></span>
 			<span (click)="account()">立即结算</span>
 		</div>
 	</div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from './../../utils/http.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-order',
@@ -9,7 +10,7 @@ import { HttpService } from './../../utils/http.service';
 export class OrderComponent implements OnInit {
 	Data:Array<Object>
 
-  constructor(private http: HttpService) { }
+  constructor(private http: HttpService,private location: Location) { }
 
 	ngOnInit() {
 		this.http.get('connetGoods',{uid:21}).then((res)=>{
@@ -18,5 +19,7 @@ export class OrderComponent implements OnInit {
 			console.log(this.Data)
 		})
 	}
-
+	goBack(){
+		this.location.back();
+	}
 }

@@ -20,5 +20,7 @@ export class ListComponent implements OnInit {
 	goBack(){
   	this.location.back();
   }
-	
+	paixu(){
+		
+	}
 }

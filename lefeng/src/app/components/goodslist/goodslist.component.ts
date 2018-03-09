@@ -106,6 +106,8 @@ export class GoodslistComponent implements OnInit {
 			}
 		}
 	}
-	//购物车动画
-
+	//返顶效果
+	getScroll(){
+		console.log(123)
+	}
 }
