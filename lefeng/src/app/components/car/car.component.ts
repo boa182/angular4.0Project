@@ -28,7 +28,7 @@ export class CarComponent implements OnInit {
   	if(this.uid==0){
   		this.style ={'display': 'block'};
   		this.navstyle={'display': 'none'}
-  	}else if(this.uid!=0){
+  	}else if(this.uid!=0&&this.qtyArr!=[]){
   		this.style ={'display': 'none'};
   		this.navstyle={'display': 'block'}
   	}
@@ -72,7 +72,7 @@ export class CarComponent implements OnInit {
 		}
 	}
 	account(){	
-		var a = JSON.stringify(this.carRes);
+		var a = JSON.stringify(this.qtyArr);
 		sessionStorage.setItem("orderlist",a);
 		this.style = {'display': 'none'};
 		this.http.get('createOrder',{
@@ -112,5 +112,9 @@ export class CarComponent implements OnInit {
 				this.count+=this.carRes[i].qty*this.carRes[i].vipshopPrice
 			}
 
+	}
+	todetails(gid){
+		this.common.gid= gid;
+		this.router.navigate(['/details']);
 	}
 }
