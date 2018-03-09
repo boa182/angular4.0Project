@@ -7,7 +7,7 @@ var mutipart= require('connect-multiparty');
 var mutipartMiddeware = mutipart();
 
 //下面会修改临时文件的储存位置，如过没有会默认储存别的地方，这里不在详细描述。
-app.use(mutipart({uploadDir:'./config/images'}));
+app.use(mutipart({uploadDir:'./config'}));
 
 //浏览器访问localhost会输出一个html文件
 app.get('/',function (req,res) {
@@ -139,6 +139,16 @@ app.get('/connetGoods', function(req, res) {
     require('./router/select').selectgoods(req,res,connection);
     console.log(req.query)
 })
+
+app.get('/selectgoods_fromType', function(req, res) {
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/select').selectgoods_fromType(req,res,connection);
+    console.log(req.query)
+})
+
+
 
 //关联商品表和购物车表
 app.get('/createorder', function(req, res) {
@@ -276,6 +286,15 @@ app.get('/allclass', function(req, res) {
     //引入查找模块
     require('./router/select').allclass(req,res,connection);
 })
+
+app.get('/getgoodsorder', function(req, res) {
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/select').getGoodsOrder(req,res,connection);
+})
+
 //要post请求...............................................................................
 // parse application/x-www-form-urlencoded 
 //使用bodyParser模块
@@ -372,8 +391,7 @@ app.post('/upload',mutipartMiddeware,function (req,res) {
     connection.connect();
     //引入查找模块
     require('./router/upload').upload(req,res,connection); 
-    //给浏览器返回一个成功提示。
-    res.send('upload success!');
+
 });
 
 //监听该端口..............................................................................

@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
               alert('password error');
             }else if(res['length']==1){
               sessionStorage.setItem('userName',this.user)
-              this.router.navigate(['/home'])
+              this.router.navigate(['/home/statistics']);
             }
         })
     

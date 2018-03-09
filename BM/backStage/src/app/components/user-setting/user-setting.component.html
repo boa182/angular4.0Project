@@ -1,0 +1,34 @@
+<div class="userSetting">
+    <h1>个人资料设置</h1>
+    <form class="form-horizontal">
+       
+        <div class="form-group">
+            <label for="nickName" class="col-sm-2 control-label">昵称</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" id="nickName" placeholder="昵称" [value]="common['userNickName']">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputText3" class="col-sm-2 control-label">性别</label>
+            <div class="col-sm-5">
+                <select name="sex" id="sex" ([ngModel])="sex">
+                    <option value="man">男</option>
+                    <option value="femail">女</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputText" class="col-sm-2 control-label">头像设置</label>
+            <div class="col-sm-2 portrait">
+                <img [src]="common['imgurl']" />
+            </div>
+            <input type="file" class="col-sm-5" id="file">
+        </div>
+        <div class="col-sm-3" style="margin-left:102px;">
+            <button type="button" class="btn btn-primary " (click)="sendData()">提交</button>
+        </div>
+        <div class="col-sm-3">
+            <button type="button" class="btn btn-primary " (click)="cancel()">取消</button>
+        </div>
+    </form>
+</div>
