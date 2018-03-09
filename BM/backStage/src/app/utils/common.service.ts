@@ -9,6 +9,8 @@ export class CommonService{
     userType:number;
     currentUser:string;
     userNickName:string;
+    imgurl:string;
+    baseUrl:'http://localhost:3000/';
 
     constructor(private http: Http,private httpservice:HttpService){
         http.get('http://localhost:3000/dictionary.txt').subscribe((dicRes) => {
@@ -20,6 +22,7 @@ export class CommonService{
                console.log(UserRes,'user');
                this.userType=UserRes[0]['type'] || 0;
                this.userNickName=UserRes[0]['nickName'];
+               this.imgurl="http://localhost:3000/"+UserRes[0]['imgurl'];
             })
         }
     }

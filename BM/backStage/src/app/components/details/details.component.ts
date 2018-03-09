@@ -1,4 +1,4 @@
-import { Component, OnInit, Input,OnChanges, DoCheck} from '@angular/core';
+import { Component, OnInit, Input,OnChanges, DoCheck, EventEmitter, Output} from '@angular/core';
 import {HttpService} from '../../utils/http.service'
 import {CommonService}  from '../../utils/common.service'
 
@@ -8,16 +8,20 @@ import {CommonService}  from '../../utils/common.service'
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit,OnChanges,DoCheck {
-     @Input() gid: number;
-     @Input() api: string;
-     columns : Array<string>;
-     colsAttributes: Object = {};
-     privateDic: Object = {};
-     searchapi:string;
-     dataset :Array<Object>=[];
-     filterColumns: Array<string> = null;
-     changeData:Object={};
-  constructor(private http: HttpService, private common: CommonService) { }
+    @Input() gid: number;
+    @Input() api: string;
+    @Output() hadchanged = new EventEmitter<Object>();
+    columns : Array<string>;
+    colsAttributes: Object = {};
+    colsAttributes:Array<string>;
+    privateDic: Object = {};
+    searchapi:string;
+    dataset :Array<Object>=[];
+    filterColumns: Array<string> = null;
+    changeData:Object={};
+    updateapi:string;
+    constructor(private http: HttpService, private common: CommonService) { }
+  
 
   ngOnChanges() {
         console.log(this.gid,'gid');
@@ -27,8 +31,9 @@ export class DetailsComponent implements OnInit,OnChanges,DoCheck {
             this.columns = !cols || cols == '*' ? [] : cols.split(',');
             this.colsAttributes = ConfigRes['colsAttributes'] || {};
             this.searchapi=ConfigRes['searchapi'];
-            let filterCols = ConfigRes['filterCols'];
-            this.filterColumns = !filterCols ? [] : filterCols.split(',');
+          let filterCols = ConfigRes['filterCols'];
+          this.filterColumns = !filterCols ? [] : filterCols.split(',');
+         this.updateapi=ConfigRes['updateapi'];
         })
         if(this.gid){
             this.http.get(this.searchapi,{"gid":this.gid}).then((res)=>{
@@ -47,4 +52,14 @@ export class DetailsComponent implements OnInit,OnChanges,DoCheck {
         this.changeData[key]=e.target.value;
         console.log(this.changeData);
     }
+
+    saveChange(){
+         //将改变的数据传递给父组件
+         console.log(666);
+         let params={};
+         params['api']=this.updateapi;
+         params['data']=this.changeData;
+         params['id']=this.gid;
+         this.hadchanged.emit(params);
+     }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChange } from '@angular/core';
 import { Router } from '@angular/router';
 import * as $ from 'jquery';
 import {CommonService} from '../../utils/common.service';
@@ -8,10 +8,10 @@ import {CommonService} from '../../utils/common.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
-    
+export class HomeComponent implements OnInit,OnChange {
+    constructor(private common: CommonService,private router: Router) { }
     user:string;
-
+    imgUrl:"http://localhost:3000/_XnftzNaklgbYKedbs5QpJpL.jpg";
     setting(){
         if($(".setting").stop().hasClass('aa')){
             $(".setting").animate({
@@ -26,11 +26,18 @@ export class HomeComponent implements OnInit {
         }
     }
     
+    ngOnChange() {
+        console.log(this,'???');
+        console.log(this.common);
+        this.user = sessionStorage.getItem('userName');
+        if(this.common.imgurl){
+            console.log(11);
+            this.imgUrl = this.common.imgurl;
+        }
+        
+        console.log(this.imgUrl,666);
 
-    constructor(private common: CommonService,private router: Router) { }
 
-    ngOnInit() {
-        this.user = sessionStorage.getItem('userName')
         $(document).mouseup(function(e){
             var _con = $('.exit');   // 设置目标区域
             if(!_con.is(e.target) && _con.has(e.target).length === 0){ // Mark 1

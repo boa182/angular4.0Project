@@ -53,9 +53,12 @@ export class FormtemplateComponent implements OnInit {
         this.parentAttr.emit(this.searchData);
     }
     tosearch(){
-        this.searchData['searchapi']=this.tosearchapi;
+        
+        let params={};
+        params['searchapi']=this.tosearchapi;
+        params['data']=this.searchData;
         //把参数传递给父组件
-        this.parentAttr.emit(this.searchData);
+        this.parentAttr.emit(params);
     }
 }
 
