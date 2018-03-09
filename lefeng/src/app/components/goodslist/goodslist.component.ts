@@ -65,11 +65,13 @@ export class GoodslistComponent implements OnInit {
 				
 			}
 	}
-	add(goodsId){		
+	add(goodsId,e){		
 		if(this.uid==0){
 			$("#Loginmsg").show().animate({width: '250px'}, 200).fadeOut(1000);
 			
 		}else if(this.uid!=0){
+			
+//			console.log(e.target.parent().parent()
 			//这里加入购物车,缺一个根据uid和gid请求回去的接口
 			if(this.arr.indexOf(goodsId)==-1){
 				this.arr.push(goodsId);
@@ -95,19 +97,16 @@ export class GoodslistComponent implements OnInit {
 		}
 		
 	}
-	backTop(){
-		window.onscroll = function(){
-			var h =$(window).height();
-			var t = 1000 + $(document).scrollTop();
-			if(t>h){
-				$('.toTop').fadeIn();
-			}else{
-				$('.toTop').fadeOut();
-			}
-		}
-	}
-	//返顶效果
-	getScroll(){
-		console.log(123)
-	}
+//	backTop(){
+//		window.onscroll = function(){
+//			var h =$(window).height();
+//			var t = 1000 + $(document).scrollTop();
+//			if(t>h){
+//				$('.toTop').fadeIn();
+//			}else{
+//				$('.toTop').fadeOut();
+//			}
+//		}
+//	}
+	
 }

@@ -113,4 +113,8 @@ export class CarComponent implements OnInit {
 			}
 
 	}
+	todetails(gid){
+		this.common.gid= gid;
+		this.router.navigate(['/details']);
+	}
 }

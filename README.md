@@ -36,7 +36,7 @@ I'll be ${ age + 1 } years old next month.`;
 
 ###  三、实战开始
 #### 1.引入ui框架
-- SUI Mobile 
+- SUI Mobile （不推荐用我们的ui框架，这个ui框架不支持jquery，而且typescrip不能识别它）
 #### 2.新建组件
 - 在指定目录components下，命令行运行以下的代码
 	
