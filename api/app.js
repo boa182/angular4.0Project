@@ -152,6 +152,16 @@ app.get('/connetGoods', function(req, res) {
     console.log(req.query)
 })
 
+app.get('/selectgoods_fromType', function(req, res) {
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/select').selectgoods_fromType(req,res,connection);
+    console.log(req.query)
+})
+
+
+
 //关联商品表和购物车表
 app.get('/createorder', function(req, res) {
     //然后请求的很快的时候才能正常关闭链接、
@@ -288,6 +298,15 @@ app.get('/allclass', function(req, res) {
     //引入查找模块
     require('./router/select').allclass(req,res,connection);
 })
+
+app.get('/getgoodsorder', function(req, res) {
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/select').getGoodsOrder(req,res,connection);
+})
+
 //要post请求...............................................................................
 // parse application/x-www-form-urlencoded 
 //使用bodyParser模块

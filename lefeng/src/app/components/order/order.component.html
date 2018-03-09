@@ -7,40 +7,70 @@
 <div class="content">
 	<div class="buttons-tab">
 		<a href="#tab1" class="tab-link active button">全部订单</a>
-		<a href="#tab2" class="tab-link button">待付款</a>
-		<a href="#tab3" class="tab-link button">待发货</a>
-		<a href="#tab4" class="tab-link button">待发货</a>
+		<a href="#tab2" class="tab-link button" (click)='unpay()'>待付款</a>
+		<a href="#tab3" class="tab-link button" (click)='unsend()'>待收货</a>
+		<a href="#tab4" class="tab-link button" (click)='uncommon()'>待评价</a>
 	</div>
 	<div class="content-block">
 		<div class="tabs">
 		<div id="tab1" class="tab active">
 			<div class="content-block">
-			<ul *ngFor='let obj of Data'>
+			<!-- <ul *ngFor='let obj of Data1'>
 				<li>
-					<h3>下单时间：{{JSON.parse(obj.order_detail).addtime.split('T')[0]}}</h3>
-			<div>
-				<img src={{obj.verticalImage}}>
-				<p>订单编号：{{obj.addtime.split('.')[0].replace('-','').replace('-','').replace('T','').replace(':','').replace(':','').slice(2)}}</p>
-				<p>订单金额：￥{{obj.vipshopPrice * obj.qty}}</p>
-				<p>订单状态：</p>
-			</div>
+					<h3>下单时间：{{obj.addtime.split('T')[0]}}</h3>
+				<div>
+					<img src={{obj.verticalImage}}>
+					<p>订单编号：{{obj.addtime.split('.')[0].replace('-','').replace('-','').replace('T','').replace(':','').replace(':','').slice(2)}}</p>
+					<p>订单金额：￥{{obj.vipshopPrice * obj.qty}}</p>
+					<p>订单状态：{{Status[obj.order_type-1]}}</p>
+				</div>
 				</li>
-			</ul>
+			</ul> -->
 			</div>
 		</div>
 			<div id="tab2" class="tab">
 			<div class="content-block">
-			<p>This is tab 2 content</p>
+				<ul *ngFor='let obj of Data2 '>
+					<li>
+						<h3>下单时间：{{obj.addtime.split('T')[0]}}</h3>
+				<div>
+					<img src={{obj.verticalImage}}>
+					<p>订单编号：{{obj.addtime.split('.')[0].replace('-','').replace('-','').replace('T','').replace(':','').replace(':','').slice(2)}}</p>
+					<p>订单金额：￥{{obj.vipshopPrice * obj.qty}}</p>
+					<p>订单状态：{{Status[obj.order_type-1]}}</p>
+				</div>
+					</li>
+				</ul>
 			</div>
 		</div>
 		<div id="tab3" class="tab">
 			<div class="content-block">
-			<p>This is tab 3 content</p>
+				<ul *ngFor='let obj of Data3 '>
+					<li>
+						<h3>下单时间：{{obj.addtime.split('T')[0]}}</h3>
+					<div>
+						<img src={{obj.verticalImage}}>
+						<p>订单编号：{{obj.addtime.split('.')[0].replace('-','').replace('-','').replace('T','').replace(':','').replace(':','').slice(2)}}</p>
+						<p>订单金额：￥{{obj.vipshopPrice * obj.qty}}</p>
+						<p>订单状态：{{Status[obj.order_type-1]}}</p>
+					</div>
+					</li>
+				</ul>
 			</div>
 		</div>
 		<div id="tab4" class="tab">
 			<div class="content-block">
-			<p>This is tab 4 content</p>
+				<ul *ngFor='let obj of Data4'>
+					<li>
+						<h3>下单时间：{{obj.addtime.split('T')[0]}}</h3>
+					<div>
+						<img src={{obj.verticalImage}}>
+						<p>订单编号：{{obj.addtime.split('.')[0].replace('-','').replace('-','').replace('T','').replace(':','').replace(':','').slice(2)}}</p>
+						<p>订单金额：￥{{obj.vipshopPrice * obj.qty}}</p>
+						<p>订单状态：{{Status[obj.order_type-1]}}</p>
+					</div>
+					</li>
+				</ul>
 			</div>
 		</div>
 		</div>

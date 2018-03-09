@@ -22,6 +22,7 @@ import { DetailsComponent } from './components/details/details.component';
 import { StatisticsComponent } from './components/statistics/statistics.component';
 import { GoodsSellComponent } from './components/goods-sell/goods-sell.component';
 import { AddgoodsComponent } from './components/addgoods/addgoods.component';
+import { UserSettingComponent } from './components/user-setting/user-setting.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { AddgoodsComponent } from './components/addgoods/addgoods.component';
     DetailsComponent,
     StatisticsComponent,
     GoodsSellComponent,
-    AddgoodsComponent
+    AddgoodsComponent,
+    UserSettingComponent
   ],
   imports: [
     BrowserModule,

@@ -14,3 +14,7 @@
 .modal-content{
     position: fixed;
 }
+.userControl{
+    padding: 24px 0;
+    padding-right: 5px;
+}
