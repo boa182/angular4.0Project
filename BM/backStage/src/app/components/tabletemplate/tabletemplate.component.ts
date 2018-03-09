@@ -37,7 +37,7 @@ export class TabletemplateComponent implements OnInit {
 
     @Input() config: string;
 
-    constructor(private httpservice:HttpService, private common: CommonService){}
+    constructor(private httpservice:HttpService,  private common: CommonService){}
 
      ngOnInit(){
         this.user = sessionStorage.getItem('userName');
@@ -80,10 +80,11 @@ export class TabletemplateComponent implements OnInit {
         let pageParams = {};
 
         if(this.paginationConfig){
+           
             this.searchParams['pageitems'] = this.paginationConfig['pageitems'];
             this.searchParams['page'] = _page;
         }       
-        console.log(pageParams); 
+
         //配置信息中的 api
         this.httpservice.get(this.apiConfig, this.searchParams).then((apiRes) => {
             console.log(apiRes);
@@ -188,14 +189,18 @@ export class TabletemplateComponent implements OnInit {
         //let _page = event.target.value;
         this.apiRequest(_page);
     }
-
+    //搜索
     getSearchData(obj){
           console.log(obj,'111');
          //加上分页
          if(obj.searchapi){
              this.apiConfig=obj.searchapi;
          }
-        this.searchParams=obj;
+         if(obj['data']){
+
+            this.searchParams=obj['data'];
+         }
+        console.log(this.searchParams);
         this.apiRequest();
           
       }

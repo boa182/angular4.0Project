@@ -14,7 +14,7 @@
         </li>
         <ul class="exit">
             <li class="message">
-                <img src="../../../assets/user.jpg">
+            <img [src]="common['imgurl'] ? common['imgurl'] :user" />
                 <p>
                     Alexander Pierce - Web <br/>Developer<br/>
                     <span style="font-size: 12px">Member since Nov. 2018</span>
@@ -60,9 +60,6 @@
             <div id="collapseOne" class="panel-collapse collapse in">
                 <div class="panel-body">
                     <div><a routerLink="goods">商品信息预览</a></div>
-                </div>
-                <div class="panel-body">
-                    <div><a routerLink="add">添加商品</a></div>
                 </div>
             </div>
         </li>

@@ -49,4 +49,18 @@ export class HttpService{
             } )
         })
     }
+    postimg(api,params={}){
+
+        return new Promise((resolve,reject)=>{
+                    
+            this.http.request( this.getUrl( api ), new RequestOptions( {
+                method: RequestMethod.Post,
+                body: params
+        
+            } ) ).toPromise().then( ( res ) =>
+            {
+                resolve( res )
+            } )
+        })
+    }
 }
