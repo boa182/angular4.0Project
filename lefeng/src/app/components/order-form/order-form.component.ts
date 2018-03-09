@@ -44,7 +44,7 @@ export class OrderFormComponent implements OnInit {
   delete(){
     this.uid =  sessionStorage.getItem("uid")||0;
 
-    this.http.get('connetGoods',
+    this.http.get('deletgoodsorder',
         {uid:this.uid,type:1}
     )
   }
