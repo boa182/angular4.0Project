@@ -2,6 +2,33 @@ var express = require('express');
 var app = express();
 //链接数据库模块
 var mysql = require("mysql");
+//form表单需要的中间件。
+var mutipart= require('connect-multiparty');
+var mutipartMiddeware = mutipart();
+
+//下面会修改临时文件的储存位置，如过没有会默认储存别的地方，这里不在详细描述。
+app.use(mutipart({uploadDir:'./images'}));
+
+//浏览器访问localhost会输出一个html文件
+app.get('/',function (req,res) {
+    res.type('text/html');
+    res.sendfile('public/index.html')
+
+});
+
+//这里就是接受form表单请求的接口路径，请求方式为post。
+app.post('/upload',mutipartMiddeware,function (req,res) {
+    //这里打印可以看到接收到文件的信息。
+    console.log(req.files);
+    /*//do something
+    * 成功接受到浏览器传来的文件。我们可以在这里写对文件的一系列操作。例如重命名，修改文件储存路径 。等等。
+    *
+    *
+    * */
+
+    //给浏览器返回一个成功提示。
+    res.send('upload success!');
+});
 
 
 //连接服务器配置.......................................................................
@@ -124,6 +151,16 @@ app.get('/connetGoods', function(req, res) {
     require('./router/select').selectgoods(req,res,connection);
     console.log(req.query)
 })
+
+app.get('/selectgoods_fromType', function(req, res) {
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/select').selectgoods_fromType(req,res,connection);
+    console.log(req.query)
+})
+
+
 
 //关联商品表和购物车表
 app.get('/createorder', function(req, res) {
@@ -261,6 +298,15 @@ app.get('/allclass', function(req, res) {
     //引入查找模块
     require('./router/select').allclass(req,res,connection);
 })
+
+app.get('/getgoodsorder', function(req, res) {
+    //然后请求的很快的时候才能正常关闭链接、
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/select').getGoodsOrder(req,res,connection);
+})
+
 //要post请求...............................................................................
 // parse application/x-www-form-urlencoded 
 //使用bodyParser模块
@@ -277,51 +323,54 @@ app.post('/register', function(req, res) {
     //引入查找模块
     require('./router/user').register(req,res,connection);
 })
-<<<<<<< HEAD
+
 
 //前端注册接口
 app.post('/registerapp', function(req, res) {
-=======
-app.post('/updategoods', function(req, res) {
->>>>>>> 0742ccd22ddbe046f9fdf631a83fd1a0d395e62e
     //然后请求的很快的时候才能正常关闭链接、
     var connection = createConnection();
     connection.connect();
-    //引入查找模块
-<<<<<<< HEAD
     require('./router/userControl').registerapp(req,res,connection);
+    })
+
+app.post('/updategoods', function(req, res) {
+    var connection = createConnection();
+    connection.connect();
+    require('./router/update').updategoods(req,res,connection);
 })
+
 
 //加入购物车
 app.post('/addCar', function(req, res) {
-=======
-    require('./router/update').updategoods(req,res,connection);
+    var connection = createConnection();
+    connection.connect();
+    require('./router/select').addCar(req,res,connection);
 })
 // 删除商品
 app.post('/deletegood', function(req, res) {
->>>>>>> 0742ccd22ddbe046f9fdf631a83fd1a0d395e62e
+
     //然后请求的很快的时候才能正常关闭链接、
     var connection = createConnection();
     connection.connect();
     //引入查找模块
-<<<<<<< HEAD
-    require('./router/select').addCar(req,res,connection);
+    require('./router/delete').deletegood(req,res,connection);
 })
+    
 //后端用户信息修改
 app.post('/usercontrol', function(req, res) {
-=======
-    require('./router/delete').deletegood(req,res,connection);
+    var connection = createConnection();
+    connection.connect();
+   //引入查找模块
+    require('./router/select').usercontrol(req,res,connection);
 })
 //批量删除
 app.post('/deletebatch', function(req, res) {
->>>>>>> 0742ccd22ddbe046f9fdf631a83fd1a0d395e62e
     //然后请求的很快的时候才能正常关闭链接、
     var connection = createConnection();
     connection.connect();
-    //引入查找模块
-<<<<<<< HEAD
-    require('./router/select').usercontrol(req,res,connection);
+    require('./router/delete').deletebatch(req,res,connection);
 })
+    
 
 //前端修改商品数量
 app.post('/updateqty', function(req, res) {
@@ -337,10 +386,8 @@ app.post('/reduceqty', function(req, res) {
     var connection = createConnection();
     connection.connect();
     //引入查找模块
-    require('./router/select').reduceQty(req,res,connection);
-=======
-    require('./router/delete').deletebatch(req,res,connection);
->>>>>>> 0742ccd22ddbe046f9fdf631a83fd1a0d395e62e
+    require('./router/select').reduceQty(req,res,connection);  
+
 })
 
 //监听该端口..............................................................................

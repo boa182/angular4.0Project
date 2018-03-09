@@ -18,13 +18,13 @@ export class CarComponent implements OnInit {
 	carRes:Array<any>=[];
 	QtyRes:Array<any>=[];
 	qtyArr:Array<any>=[];
-	count:any = null;
+	count:number = 0;
 	uid:any = "0";
   constructor(private http: HttpService,private common:CommonService,private router:Router) { }
 
   ngOnInit() {
   	this.uid = sessionStorage.getItem("uid")||0;
-  	console.log(this.uid);
+  
   	if(this.uid==0){
   		this.style ={'display': 'block'};
   		this.navstyle={'display': 'none'}
@@ -33,6 +33,7 @@ export class CarComponent implements OnInit {
   		this.navstyle={'display': 'block'}
   	}
 	this.createList();
+  
   }
   addQty(gid){
 
@@ -97,14 +98,19 @@ export class CarComponent implements OnInit {
 			for(var i = 0;i<this.carRes.length;i++){
 				if(this.carRes[i].gid==this.qtyArr[i].gid){
 					this.carRes[i].qty = this.qtyArr[i].qty;
-					this.count += this.carRes[i].qty*this.carRes[i].vipshopPrice;
 					
 				}
 			}
-			
+			this.countPrice();
 		})
 		
 	})
 
 		}
+	countPrice(){
+		for(var i = 0;i<this.carRes.length;i++){
+				this.count+=this.carRes[i].qty*this.carRes[i].vipshopPrice
+			}
+
+	}
 }

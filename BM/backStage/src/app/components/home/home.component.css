@@ -188,3 +188,9 @@ select {
     border: solid 1px #000;
     padding-right: 3px;
 }
+.modal-content{
+    position: fixed;
+    top: 50px;
+    left: 50px;
+    height: 500px;
+}

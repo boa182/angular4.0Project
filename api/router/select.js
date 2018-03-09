@@ -18,7 +18,36 @@ exports.selectgoods = function(req, res, connection) {
     //查找......................
     console.log(req)
     var uid = req.query.uid;
-    connection.query(`select * from car,goods where car.gid = goods.gid and car.uid = '${uid}'`, function(error, results, fields) { 
+    connection.query(`select * from car,goods where car.gid = goods.gid and car.uid = '${uid}' and car.order_type = 0`, function(error, results, fields) { 
+        if(error) throw error;
+        //results =>array类型
+        console.log('The solution is: ', results);
+        res.send(results);
+        connection.end();
+    });
+}
+
+//根据传order_type获取商品数据
+exports.selectgoods_fromType = function(req, res, connection) {
+    //查找......................
+    console.log(req)
+    var uid = req.query.uid;
+    var order_type = req.query.type;
+    connection.query(`select * from car,goods where car.gid = goods.gid and car.uid = '${uid}' and car.order_type = '${order_type}'`, function(error, results, fields) { 
+        if(error) throw error;
+        //results =>array类型
+        console.log('The solution is: ', results);
+        res.send(results);
+        connection.end();
+    });
+}
+
+//根据传order_type获取商品数据
+exports.getGoodsOrder = function(req, res, connection) {
+    //查找......................
+    console.log(req)
+    var uid = req.query.uid;
+    connection.query(`select * from car,goods where car.gid = goods.gid and car.uid = '${uid}' and car.order_type > 0`, function(error, results, fields) { 
         if(error) throw error;
         //results =>array类型
         console.log('The solution is: ', results);
@@ -156,22 +185,32 @@ exports.usercontrol = function(req, res, connection) {
     });
 }
 
-//查找所有用户信息  余路
+// 分页查找商品
 exports.getUser = function(req, res, connection) {
-	connection.query(`SELECT * FROM user`, function(error, results, fields) {
-		if(error) throw error;
-		//results =>array类型
-		console.log('The solution is: ', results);
-		//把数据整理，返回到前端
-		
-		res.send(results);
-		connection.end();
-	});
+
+    var page = req.query.page;
+    var pageitems=req.query.pageitems;
+    console.log(page,pageitems)
+    var sql;
+    if(!pageitems){
+        aql=`SELECT  SQL_CALC_FOUND_ROWS * FROM user;select count(*) as rowscount from user;`
+    }else{
+        sql=`SELECT  SQL_CALC_FOUND_ROWS * FROM user limit ${(page-1)*pageitems},${pageitems};
+ select count(*) as rowscount from user;`
+    }
+    //查找......................
+    connection.query(sql, function(error, results, fields) {
+        if(error) throw error;
+        //results =>array类型
+        console.log('The solution is: ', results);
+        res.send(results);
+        connection.end();
+    });
 }
 
 exports.createOrder = function(req, res, connection) {
     var uid = req.query.uid;
-    let sql = `DELETE FROM car WHERE uid = '${uid}'`;
+    let sql = `UPDATE car SET order_type = 1 WHERE uid = '${uid}'`;
     console.log(sql)
          
     connection.query(sql, function(error, results, fields) {

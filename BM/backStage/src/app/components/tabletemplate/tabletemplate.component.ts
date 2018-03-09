@@ -80,12 +80,12 @@ export class TabletemplateComponent implements OnInit {
         let pageParams = {};
 
         if(this.paginationConfig){
-            pageParams['pageitems'] = this.paginationConfig['pageitems'];
-            pageParams['page'] = _page;
+            this.searchParams['pageitems'] = this.paginationConfig['pageitems'];
+            this.searchParams['page'] = _page;
         }       
         console.log(pageParams); 
         //配置信息中的 api
-        this.httpservice.get(this.apiConfig, pageParams).then((apiRes) => {
+        this.httpservice.get(this.apiConfig, this.searchParams).then((apiRes) => {
             console.log(apiRes);
             this.dataset = apiRes[0];
             let rowsCount = apiRes[1][0]['rowscount'];
@@ -190,12 +190,15 @@ export class TabletemplateComponent implements OnInit {
     }
 
     getSearchData(obj){
-        console.log(obj,'111');
-        this.httpservice.get(this.searchapi, obj).then((res)=>{
-            console.log(res);
-        })
-        
-    }
+          console.log(obj,'111');
+         //加上分页
+         if(obj.searchapi){
+             this.apiConfig=obj.searchapi;
+         }
+        this.searchParams=obj;
+        this.apiRequest();
+          
+      }
 
     todetails(_id){
         //console.log(_id);
@@ -265,7 +268,7 @@ export class TabletemplateComponent implements OnInit {
                 str=str.substr(0,str.length-1);
                 console.log(str);
                 console.log(this.deleteConfig['batchapi']);
-                this.httpservice.post(this.deleteConfig['batchapi'],{gid:str}).then((res)=>{
+            this.httpservice.post(this.deleteConfig['batchapi'],{gid:str}).then((res)=>{
                     console.log(res);
                     if(res.ok){
                         this.apiRequest(this.page);

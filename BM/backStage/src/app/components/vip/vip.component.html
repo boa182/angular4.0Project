@@ -19,22 +19,36 @@
             </tr>
         </tbody>
     </table>
-    <nav aria-label="Page navigation">
-      <ul class="pagination">
-        <li>
-          <a href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-          </a>
-        </li>
-        <li *ngFor='let item of pagearr'><a href="#">{{item}}</a></li>
-       
-        <li>
-          <a href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
+     <!-- 分页 -->
+    <nav aria-label="Page navigation" class="clearfix">
+     <ul class="pagination pagination-sm pagination1 fr" style="margin: 0">
+       <li [class]="{disabled:page==1}">
+         <a href="javascript:void(0)" aria-label="Previous" (click)="sub(page-1<1?1:page-1)" (click)="goto(page-1<1?1:page-1)" ng-disabled="page==1">
+           <span aria-hidden="true">&laquo;</span>
+         </a>
+       </li>
+       <li *ngIf="page >= pageNum && lastPage !== pageNum" (click)="sub(1)" [class]="{active:item==1}">
+         <a>1</a>
+       </li>
+       <li *ngIf="page >= pageNum && lastPage !== pageNum">
+         <a>...</a>
+       </li>
+       <li (click)="sub(item)" (click)="goto(item)" [class.active]="item==page" *ngFor="let item of pages">
+         <a>{{item}}</a>
+       </li>
+       <li *ngIf="lastPage > pageNum && firstPage <= lastPage - pageNum">
+         <a>...</a>
+       </li>
+       <li *ngIf="lastPage > pageNum && firstPage <= lastPage - pageNum" ng-click="sub(lastPage)" [class]="{active:item==page}">
+         <a>{{lastPage}}</a>
+       </li>
+       <li [class]="{disabled:page==lastPage}">
+         <a aria-label="Next" (click)="sub(page+1>lastPage?page:page+1)" (click)="goto(page+1>lastPage?page:page+1)">
+           <span aria-hidden="true">&raquo;</span>
+         </a>
+       </li>
+     </ul>
+   </nav> 
     
 
     <!-- 编辑信息弹窗 -->

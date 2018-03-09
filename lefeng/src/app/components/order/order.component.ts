@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from './../../utils/http.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-order',
@@ -13,7 +14,7 @@ export class OrderComponent implements OnInit {
 	Data4:Array<Object>
 	Status:Array<string> = ['待付款','待收货','待评价'];
 
-  constructor(private http: HttpService) { }
+  constructor(private http: HttpService,private location: Location) { }
 
 	ngOnInit() {
 		var uid = sessionStorage.getItem('uid')
@@ -45,6 +46,9 @@ export class OrderComponent implements OnInit {
 		})
 	}
 	
+	goBack(){
+		this.location.back();
+	}
 }
 
 
