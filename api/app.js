@@ -125,6 +125,16 @@ app.get('/connetGoods', function(req, res) {
     console.log(req.query)
 })
 
+app.get('/selectgoods_fromType', function(req, res) {
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/select').selectgoods_fromType(req,res,connection);
+    console.log(req.query)
+})
+
+
+
 //关联商品表和购物车表
 app.get('/createorder', function(req, res) {
     //然后请求的很快的时候才能正常关闭链接、

@@ -10,6 +10,8 @@ import {HomeComponent} from '../components/home/home.component';
 import {DetailsComponent} from '../components/details/details.component';
 import {StatisticsComponent} from '../components/statistics/statistics.component';
 import {GoodsSellComponent} from '../components/goods-sell/goods-sell.component';
+import {AddgoodsComponent} from  '../components/addgoods/addgoods.component';
+import {UserSettingComponent} from  '../components/user-setting/user-setting.component';
 
 const appRoutes:Routes=[
     {path:'enter',component:LogRegisterComponent,children: [
@@ -21,7 +23,9 @@ const appRoutes:Routes=[
         {path:'vip',component:VipComponent},
         {path:'details',component:DetailsComponent},
         {path:'statistics',component:StatisticsComponent},
-        {path:'GoodsSell',component:GoodsSellComponent}
+        {path:'GoodsSell',component:GoodsSellComponent},
+        {path:'add',component:AddgoodsComponent},
+        {path:'usersetting',component:UserSettingComponent}
     ]},
     {path:'**',component:PagenotfoundComponent}
 

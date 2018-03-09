@@ -10,7 +10,7 @@
             <span style="background-color: #f39c12">15</span>
         </li>
         <li  (click)="exitUser()" class="exituser bb">
-            <h4>欢迎您：{{user}}</h4>
+            <h4>欢迎您：{{common['userNickName']?common['userNickName'] :user}}</h4>
         </li>
         <ul class="exit">
             <li class="message">
@@ -21,7 +21,7 @@
                 </p>
             </li>
             <li class="exit_b">
-                <div class="btn btn-default btn-lg active" role="button">设置</div>
+                <a routerLink="usersetting"><div class="btn btn-default btn-lg active" role="button">设置</div></a>
                 <div class="btn btn-default btn-lg active" role="button" (click)="exitUsers()">退出</div>
             </li>
         </ul>
@@ -60,6 +60,9 @@
             <div id="collapseOne" class="panel-collapse collapse in">
                 <div class="panel-body">
                     <div><a routerLink="goods">商品信息预览</a></div>
+                </div>
+                <div class="panel-body">
+                    <div><a routerLink="add">添加商品</a></div>
                 </div>
             </div>
         </li>

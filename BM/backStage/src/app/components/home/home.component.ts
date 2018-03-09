@@ -40,17 +40,17 @@ export class HomeComponent implements OnInit {
             }
         });
     }
+
     exitUser(){
         if($(".exituser").hasClass('bb')){
-            $(".exit").show()
+            $(".exit").show();
             $(".exituser").removeClass('bb')
         }else{
-            $(".exit").hide()
+            $(".exit").hide();
             $(".exituser").addClass('bb')
         }
     }
     exitUsers(){
-        console.log(666)
         sessionStorage.removeItem('userName')
         this.router.navigate(['/enter/login']);
     }
