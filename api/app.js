@@ -7,7 +7,7 @@ var mutipart= require('connect-multiparty');
 var mutipartMiddeware = mutipart();
 
 //下面会修改临时文件的储存位置，如过没有会默认储存别的地方，这里不在详细描述。
-app.use(mutipart({uploadDir:'./images'}));
+app.use(mutipart({uploadDir:'./config/images'}));
 
 //浏览器访问localhost会输出一个html文件
 app.get('/',function (req,res) {
@@ -16,19 +16,7 @@ app.get('/',function (req,res) {
 
 });
 
-//这里就是接受form表单请求的接口路径，请求方式为post。
-app.post('/upload',mutipartMiddeware,function (req,res) {
-    //这里打印可以看到接收到文件的信息。
-    console.log(req.files);
-    /*//do something
-    * 成功接受到浏览器传来的文件。我们可以在这里写对文件的一系列操作。例如重命名，修改文件储存路径 。等等。
-    *
-    *
-    * */
 
-    //给浏览器返回一个成功提示。
-    res.send('upload success!');
-});
 
 
 //连接服务器配置.......................................................................
@@ -278,7 +266,7 @@ app.get('/searchgoods', function(req, res) {
     connection.connect();
     //引入查找模块
     require('./router/search').searchgoods(req,res,connection);
-    console.log(req.query)
+    
 })
 // 查找商品中所有类别
 app.get('/allclass', function(req, res) {
@@ -370,6 +358,23 @@ app.post('/reduceqty', function(req, res) {
     require('./router/select').reduceQty(req,res,connection);  
 
 })
+
+//这里就是接受form表单请求的接口路径，请求方式为post。
+app.post('/upload',mutipartMiddeware,function (req,res) {
+    //这里打印可以看到接收到文件的信息。
+    
+    /*//do something
+    * 成功接受到浏览器传来的文件。我们可以在这里写对文件的一系列操作。例如重命名，修改文件储存路径 。等等。
+    *
+    *
+    * */
+    var connection = createConnection();
+    connection.connect();
+    //引入查找模块
+    require('./router/upload').upload(req,res,connection); 
+    //给浏览器返回一个成功提示。
+    res.send('upload success!');
+});
 
 //监听该端口..............................................................................
 var server = app.listen(3000, function() {

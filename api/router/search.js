@@ -10,6 +10,8 @@ exports.searchgoods = function(req, res, connection) {
     var className = req.query.class || 'all';
     function minToMax(a,b){
         var c;
+        a=a*1;
+        b=b*1;
         if(a>b){
             c=b;
             b=a;
@@ -19,6 +21,7 @@ exports.searchgoods = function(req, res, connection) {
     }
     a=minToMax(minPrice,maxPrice).a;//得到a,b为小到大
     b=minToMax(minPrice,maxPrice).b;
+    console.log(a,b);
     console.log(a==0 && b==0);
     if(brandStoreName!='all'){  
         console.log(brandStoreName);  
@@ -39,6 +42,7 @@ exports.searchgoods = function(req, res, connection) {
                     AND name like '%${name}%'
                     AND class = '${className}';
                  `
+                 console.log(sql);
             }else if(a==0 && b==0){
                 //a,b都不传
                 sql=`
@@ -52,6 +56,7 @@ exports.searchgoods = function(req, res, connection) {
                     AND name like '%${name}%'
                     AND class = '${className}'; 
                 `
+                console.log(sql);
             }else{
                 //a,b传一个
                 var c=a>b? a : b;
@@ -68,6 +73,7 @@ exports.searchgoods = function(req, res, connection) {
                     AND name like '%${name}%'
                     AND class = '${className}';
                  `
+                 console.log(sql);
             }
         } else{
              if(a!=0 && b!=0){
@@ -84,6 +90,7 @@ exports.searchgoods = function(req, res, connection) {
                     AND name like '%${name}%'
                     ;
                  `
+                 console.log(sql);
             }else if(a==0 && b==0){
                 //a,b都不传
                 sql=`
@@ -96,6 +103,7 @@ exports.searchgoods = function(req, res, connection) {
                     AND name like '%${name}%'
                     ; 
                 `
+                console.log(sql);
             }else{
                 //a,b传一个
                 var c=a>b? a : b;
@@ -111,6 +119,7 @@ exports.searchgoods = function(req, res, connection) {
                     AND name like '%${name}%'
                     ;
                  `
+                 console.log(sql);
             }
         }     
     }else if(brandStoreName=='all'){
@@ -211,7 +220,7 @@ exports.searchgoods = function(req, res, connection) {
     connection.query(sql, function(error, results, fields) {
         if(error) throw error;
         //results =>array类型
-        console.log('The solution is: ', results);      
+        //console.log('The solution is: ', results);      
         res.send(results);
         connection.end();
     });
