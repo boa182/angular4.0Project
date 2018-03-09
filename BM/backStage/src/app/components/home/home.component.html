@@ -10,7 +10,7 @@
             <span style="background-color: #f39c12">15</span>
         </li>
         <li  (click)="exitUser()" class="exituser bb">
-            <h4>欢迎您：{{user}}</h4>
+            <h4>欢迎您：{{common['userNickName']?common['userNickName'] :user}}</h4>
         </li>
         <ul class="exit">
             <li class="message">
@@ -61,6 +61,9 @@
                 <div class="panel-body">
                     <div><a routerLink="goods">商品信息预览</a></div>
                 </div>
+                <div class="panel-body">
+                    <div><a routerLink="add">添加商品</a></div>
+                </div>
             </div>
         </li>
         <li class="panel panel-default">
@@ -75,6 +78,24 @@
             <div id="collapseTwo" class="panel-collapse collapse">
                 <div class="panel-body">
                     <div><a routerLink="vip">会员信息</a></div>
+                </div>
+            </div>
+        </li>
+        <li class="panel panel-default">
+            <div class="panel-heading">
+                <i class="iconfont icon-yonghu"></i>
+                <a data-toggle="collapse" data-parent="#accordion" 
+                   href="#collapseThree">
+                    商品统计
+                </a>
+                <i class="iconfont icon-jiantou3"></i>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div><a routerLink="statistics">在售商品数</a></div>
+                </div>
+                <div class="panel-body">
+                    <div><a routerLink="GoodsSell">销售数量统计</a></div>
                 </div>
             </div>
         </li>

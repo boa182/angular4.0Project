@@ -1,17 +1,17 @@
 <!-- <tabletemplate config="userControl.txt"></tabletemplate> -->
-<div *ngIf="dataset" class="userControl">
+<div class="userControl">
     <table class='table table-striped table-bordered'>
         <thead>
-            <tr>
+            <tr *ngIf="dataset.length>0">
                 <th *ngFor="let obj of getkeys(dataset[0])">{{obj}}</th>
                 <th>商品操作</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let obj of dataset; let idx = index">
-                <td *ngFor="let key of getkeys(obj) trackBy:trackByName" >{{obj[key]}}</td>
+                <td *ngFor="let key of getkeys(obj) trackBy:trackByName" >{{filterData(key, obj[key])}}</td>
                 <td>
-                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" (click)="redact(obj.userid)">
+                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" (click)="redact(obj.userid,obj.username)">
                       编辑
                     </button>
                     <button type="button" class="btn btn-success" (click)="deleteUser(obj.userid)">删除</button>
@@ -19,57 +19,75 @@
             </tr>
         </tbody>
     </table>
-    <nav aria-label="Page navigation">
-      <ul class="pagination">
-        <li>
-          <a href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-          </a>
-        </li>
-        <li *ngFor='let item of pagearr'><a href="#">{{item}}</a></li>
-       
-        <li>
-          <a href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
+     <!-- 分页 -->
+    <nav aria-label="Page navigation" class="clearfix">
+     <ul class="pagination pagination-sm pagination1 fr" style="margin: 0">
+       <li [class]="{disabled:page==1}">
+         <a href="javascript:void(0)" aria-label="Previous" (click)="sub(page-1<1?1:page-1)" (click)="goto(page-1<1?1:page-1)" ng-disabled="page==1">
+           <span aria-hidden="true">&laquo;</span>
+         </a>
+       </li>
+       <li *ngIf="page >= pageNum && lastPage !== pageNum" (click)="sub(1)" [class]="{active:item==1}">
+         <a>1</a>
+       </li>
+       <li *ngIf="page >= pageNum && lastPage !== pageNum">
+         <a>...</a>
+       </li>
+       <li (click)="sub(item)" (click)="goto(item)" [class.active]="item==page" *ngFor="let item of pages">
+         <a>{{item}}</a>
+       </li>
+       <li *ngIf="lastPage > pageNum && firstPage <= lastPage - pageNum">
+         <a>...</a>
+       </li>
+       <li *ngIf="lastPage > pageNum && firstPage <= lastPage - pageNum" ng-click="sub(lastPage)" [class]="{active:item==page}">
+         <a>{{lastPage}}</a>
+       </li>
+       <li [class]="{disabled:page==lastPage}">
+         <a aria-label="Next" (click)="sub(page+1>lastPage?page:page+1)" (click)="goto(page+1>lastPage?page:page+1)">
+           <span aria-hidden="true">&raquo;</span>
+         </a>
+       </li>
+     </ul>
+   </nav> 
     
 
     <!-- 编辑信息弹窗 -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="myModals">
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <form class="form-horizontal">
-                <h1>{{ids}}用户信息修改</h1>
-                <div class="form-group">
-                    <label for="inputText3" class="col-sm-2 control-label">用户名</label>
-                    <div class="col-sm-7">
-                        <input type="text" class="form-control" id="inputText3" placeholder="Email">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form class="form-horizontal" id="userfrom">
+                    <h1>{{users}}用户信息修改</h1>
+                    <div class="form-group">
+                        <label for="inputText3" class="col-sm-2 control-label">用户名</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" id="inputText3" placeholder="Email" [(ngModel)]="username" name="username">
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
-                    <div class="col-sm-7">
-                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
+                        <div class="col-sm-7">
+                            <input type="password" class="form-control" id="inputPassword3" placeholder="Password"  [(ngModel)]="password" name="password">
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputPassword4" class="col-sm-2 control-label">管理权限</label>
-                    <div class="col-sm-7">
-                        <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                    <div class="form-group">
+                        <label for="usertype" class="col-sm-2 control-label">管理权限</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" id="usertype" placeholder="usertype" [(ngModel)]="usertype" name="usertype">
+                        </div>
+                        
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <button type="button" class="btn btn-primary">提交</button>
-                        <button type="button" class="btn btn-primary" style="margin-left: 50px;">取消</button>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="button" class="btn btn-primary" (click)="updateUser()">提交</button>
+                            <button type="button" class="btn btn-primary" style="margin-left: 50px;">取消</button>
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
+          </div>
         </div>
-      </div>
     </div>
 </div>
+

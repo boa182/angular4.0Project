@@ -8,7 +8,10 @@
         "originArea":"OriginArea",
         "edit":"Edit",
         "Search":"Search",
-        "React":"React"
+        "React":"React",
+        "delete":"Delete",
+        "deleteinbatches":"Delete In Batches"
+        
     },
     "cn":{
         "brandStoreName":"品牌",
@@ -19,6 +22,8 @@
         "originArea":"产地",
         "edit":"编辑",
         "Search":"搜索",
-        "React":"重置"
+        "React":"重置",
+        "delete":"删除",
+        "deleteinbatches":"批量删除"
     }
 }
