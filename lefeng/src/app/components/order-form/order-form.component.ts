@@ -14,29 +14,39 @@ export class OrderFormComponent implements OnInit {
     Res:Array<any> = [];
     total:number = 0;
     uid:any = 0;
+    type:any = 1;
     
     constructor(private http: HttpService ,private common: CommonService,private router:Router ) { }
 
 
   ngOnInit() {
   	this.uid =	sessionStorage.getItem("uid")||0;
-     this.http.get('connetGoods',{
-        uid:this.uid
-    }).then((res) => {
-    		let Res = JSON.parse(JSON.stringify(res))
-        this.resdata = Res;
-        console.log(this.resdata);
-        for(let i =0;i<this.resdata.length;i++){
+     
+
+    this.http.get('selectgoods_fromType',{uid:this.uid,type:1}).then((res)=>{
+      var Res = JSON.parse(JSON.stringify(res))
+      this.resdata = Res;
+      for(let i =0;i<this.resdata.length;i++){
             this.total = this.total + Number(this.resdata[i]['goodCount']);
         }
-    }) 
+    })
   } 
 
-  delete(){
-    this.http.get('connetGoods',{
-        uid:21
-    })
+  pay(){
+    this.uid =  sessionStorage.getItem("uid")||0;
+    this.http.get('connetGoods',
+        {uid:this.uid,type:1}
+    )
+    alert("付款成功");
+    this.router.navigateByUrl("order")
   }
 
+  delete(){
+    this.uid =  sessionStorage.getItem("uid")||0;
+
+    this.http.get('connetGoods',
+        {uid:this.uid,type:1}
+    )
+  }
 
 }
