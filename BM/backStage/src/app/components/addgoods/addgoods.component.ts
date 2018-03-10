@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpService} from '../../utils/http.service';
-import {CommonService}  from '../../utils/common.service'
+import {CommonService}  from '../../utils/common.service';
 
 @Component({
   selector: 'app-addgoods',
@@ -13,6 +13,7 @@ export class AddgoodsComponent implements OnInit {
 
   ngOnInit() {
   }
+  /*
   sendData(){
     console.log(666);
     //格式化表单
@@ -27,4 +28,5 @@ export class AddgoodsComponent implements OnInit {
         console.log(res);
     })
   }
+  */
 }

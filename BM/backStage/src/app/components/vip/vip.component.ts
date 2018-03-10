@@ -25,6 +25,7 @@ export class VipComponent implements OnInit {
     firstPage:number=1;
     pageNum:number = 5;
     page :number= 1 ;//当前页
+    pages:Array<number>;
 
     constructor(private httpservice:HttpService ,private router: Router){}
     ngOnInit() {

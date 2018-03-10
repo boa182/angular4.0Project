@@ -1,17 +1,19 @@
-import { Component, OnInit, OnChange } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as $ from 'jquery';
 import {CommonService} from '../../utils/common.service';
+import {GetUser} from '../../utils/getuser.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit,OnChange {
-    constructor(private common: CommonService,private router: Router) { }
-    user:string;
-    imgUrl:"http://localhost:3000/_XnftzNaklgbYKedbs5QpJpL.jpg";
+export class HomeComponent implements OnInit {
+    constructor(private common: CommonService,private router: Router, private getUser:GetUser) { }
+    user:Object={"user":"未登陆"};
+    baseUrl:string=this.common['httpservice']['baseUrl'];
+    imgUrl:string=this.baseUrl+"_XnftzNaklgbYKedbs5QpJpL.jpg";
     setting(){
         if($(".setting").stop().hasClass('aa')){
             $(".setting").animate({
@@ -26,16 +28,11 @@ export class HomeComponent implements OnInit,OnChange {
         }
     }
     
-    ngOnChange() {
-        console.log(this,'???');
-        console.log(this.common);
-        this.user = sessionStorage.getItem('userName');
-        if(this.common.imgurl){
-            console.log(11);
-            this.imgUrl = this.common.imgurl;
-        }
+    ngOnInit() {
+        console.log(this.common['httpservice']['baseUrl']);
+        this.updateUser();
+       
         
-        console.log(this.imgUrl,666);
 
 
         $(document).mouseup(function(e){
@@ -44,6 +41,15 @@ export class HomeComponent implements OnInit,OnChange {
                 _con.css({
                     display:'none'
                 })   // 功能代码
+            }
+        });
+    }
+    updateUser(){
+        this.getUser.getDetails().then((res)=>{
+            console.log(res);
+            this.user={nickName:res[0]['nickName'],user:res[0]['username']}
+            if(res[0]['imgurl']){
+                this.imgUrl=this.baseUrl+res[0]['imgurl'];
             }
         });
     }
@@ -60,6 +66,16 @@ export class HomeComponent implements OnInit,OnChange {
     exitUsers(){
         sessionStorage.removeItem('userName')
         this.router.navigate(['/enter/login']);
+    }
+    tosetting(){
+        console.log(this.user);
+        this.router.navigate(['home/usersetting'], {  
+        queryParams: {  
+            user: encodeURI(this.user['user']),  
+            imgurl: encodeURI(this.imgUrl) ,
+            nickName:encodeURI(this.user['nickName'])
+        }  
+    });  
     }
     
 }

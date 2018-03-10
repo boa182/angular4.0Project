@@ -5,7 +5,7 @@
         <div class="form-group">
             <label for="nickName" class="col-sm-2 control-label">昵称</label>
             <div class="col-sm-5">
-                <input type="text" class="form-control" id="nickName" placeholder="昵称" [value]="common['userNickName']">
+                <input type="text" class="form-control" id="nickName" [value]="nickName" >
             </div>
         </div>
         <div class="form-group">
@@ -20,7 +20,7 @@
         <div class="form-group">
             <label for="inputText" class="col-sm-2 control-label">头像设置</label>
             <div class="col-sm-2 portrait">
-                <img [src]="common['imgurl']" />
+                <img [src]="imgUrl" />
             </div>
             <input type="file" class="col-sm-5" id="file">
         </div>

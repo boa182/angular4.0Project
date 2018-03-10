@@ -109,7 +109,7 @@ export class TabletemplateComponent implements OnInit {
      //first第一页的页码
      let pages = []; //创建分页数组
      let page = this.pageCount;
-     
+     //当前页数小于保留的页码数,全部显示
     if (page <= num) {
        for (let i = 1; i <= page; i++) {
          pages.push(i);
@@ -125,8 +125,10 @@ export class TabletemplateComponent implements OnInit {
     }
 
    sub(page){
+        //根据当前页重新设置页码
         this.lastPage = this.pageCount;
          if (page >= this.pageNum) {
+            //如果当前页大于页码数,页码显示第一页为页码数的一半
            this.firstPage = page - Math.floor(this.pageNum / 2);
          } else {
            this.firstPage = 1;
@@ -241,8 +243,10 @@ export class TabletemplateComponent implements OnInit {
             })
         }
     }
+    
     deleteTr(key,idx){
-        if(this.common['userType']==0){
+        //权限为1的才能操作
+        if(this.common['userType']!=1){
             alert(' without permissions');
         }else{        
             //删除当前商品
@@ -259,8 +263,9 @@ export class TabletemplateComponent implements OnInit {
             }
         }
     }
+   
     deleteBatches(){
-        if(this.common['userType']==0){
+        if(this.common['userType']!=1){
             alert(' without permissions');
         }else{
             //批量删除
@@ -275,7 +280,7 @@ export class TabletemplateComponent implements OnInit {
                 console.log(this.deleteConfig['batchapi']);
             this.httpservice.post(this.deleteConfig['batchapi'],{gid:str}).then((res)=>{
                     console.log(res);
-                    if(res.ok){
+                    if(res['ok']){
                         this.apiRequest(this.page);
                         alert('success');
                     }
@@ -284,6 +289,7 @@ export class TabletemplateComponent implements OnInit {
         }
 
     }
+ 
 }
 
 

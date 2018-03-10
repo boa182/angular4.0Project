@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpService} from '../../utils/http.service';
 import {CommonService}  from '../../utils/common.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-user-setting',
@@ -9,10 +9,27 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-setting.component.css']
 })
 export class UserSettingComponent implements OnInit {
+   
     sex:string='男';
-  constructor(private httpservice:HttpService, private common:CommonService,private router: Router) { }
+    nickName:string='???';
+    imgUrl:string;
+    user:string;
+  constructor(private httpservice:HttpService, private common:CommonService,private router: Router,private activatedRoute: ActivatedRoute) {
+      
+   }
 
   ngOnInit() {
+    
+    this.activatedRoute.queryParams.subscribe(queryParams => {  
+        let user = queryParams.user;  
+        let imgurl = queryParams.imgurl;
+        let nickName = queryParams.nickName; 
+        this.user=decodeURI(user);
+        this.imgUrl=decodeURI(imgurl);
+        this.nickName=decodeURI(nickName);
+        console.log(this);
+
+    });  
   }
   sendData(){
     console.log(666);
@@ -22,16 +39,16 @@ export class UserSettingComponent implements OnInit {
     var nickName=$('#nickName').val();
     console.log(img.files[0]);
     formdData.append("img",img.files[0]);
-    //console.log(formdData);
-    //console.log(this.common['currentUser']);
-    formdData.append("user",this.common['currentUser']);
+    console.log(this.user);
+    formdData.append("user",this.user);
     formdData.append("nickName",nickName);
     formdData.append("sex",this.sex);
     this.httpservice.postimg('upload',formdData).then((res)=>{
         console.log(res);
-        if(res.ok){
+        if(res['ok']){
             alert('success');
-            this.router.navigate(['/home/statistics']);
+            //重新发起请求
+            this.router.navigate(['/home']);
 
         }
     })

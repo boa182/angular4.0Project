@@ -4,6 +4,7 @@ import {RootRouter} from './router/router';
 import {FormsModule} from '@angular/forms';
 import {CommonService} from './utils/common.service';
 import {HttpService} from './utils/http.service';
+import {GetUser} from './utils/getuser.service';
 import {HttpModule} from '@angular/http';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
@@ -52,7 +53,8 @@ import { UserSettingComponent } from './components/user-setting/user-setting.com
   ],
   providers: [
     HttpService,
-    CommonService
+    CommonService,
+    GetUser
   ],
   bootstrap: [AppComponent]
 })

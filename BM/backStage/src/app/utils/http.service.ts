@@ -6,7 +6,7 @@ export class HttpService{
     constructor(private http: Http){}
 
     //private baseUrl:string = 'http://10.3.136.147:3000/';
-    private baseUrl:string = 'http://localhost:3000/';
+    public baseUrl:string = 'http://localhost:3000/';
     private getUrl(_url){
         if(_url.startsWith('http')){
             return _url;
@@ -63,4 +63,5 @@ export class HttpService{
             } )
         })
     }
+    
 }

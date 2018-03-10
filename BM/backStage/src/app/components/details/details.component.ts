@@ -1,4 +1,4 @@
-import { Component, OnInit, Input,OnChanges, DoCheck, EventEmitter, Output} from '@angular/core';
+import { Component, OnInit, Input,OnChanges, EventEmitter, Output} from '@angular/core';
 import {HttpService} from '../../utils/http.service'
 import {CommonService}  from '../../utils/common.service'
 
@@ -7,13 +7,13 @@ import {CommonService}  from '../../utils/common.service'
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.css']
 })
-export class DetailsComponent implements OnInit,OnChanges,DoCheck {
+export class DetailsComponent implements OnInit,OnChanges {
     @Input() gid: number;
     @Input() api: string;
     @Output() hadchanged = new EventEmitter<Object>();
     columns : Array<string>;
     colsAttributes: Object = {};
-    colsAttributes:Array<string>;
+    //scolsAttributes:Array<string>;
     privateDic: Object = {};
     searchapi:string;
     dataset :Array<Object>=[];
@@ -38,6 +38,7 @@ export class DetailsComponent implements OnInit,OnChanges,DoCheck {
         if(this.gid){
             this.http.get(this.searchapi,{"gid":this.gid}).then((res)=>{
                 console.log('goosdetails',res);
+                res=JSON.parse(JSON.stringify(res));
                 this.dataset=res;
                 console.log(this.dataset);
             })

@@ -1,4 +1,4 @@
-<div *ngIf="dataset">
+ <div *ngIf="dataset">
     <div *ngIf="searchConfig.show">
         <formtemplate [api]="searchConfig.api" (parentAttr)="getSearchData($event)"></formtemplate>
     </div>
@@ -36,7 +36,7 @@
     <nav aria-label="Page navigation" class="clearfix">
      <ul class="pagination pagination-sm pagination1 fr" style="margin: 0">
        <li [class]="{disabled:page==1}">
-         <a href="javascript:void(0)" aria-label="Previous" (click)="sub(page-1<1?1:page-1)" (click)="goto(page-1<1?1:page-1)" ng-disabled="page==1">
+         <a  aria-label="Previous" (click)="sub(page-1<1?1:page-1)" (click)="goto(page-1<1?1:page-1)" ng-disabled="page==1">
            <span aria-hidden="true">&laquo;</span>
          </a>
        </li>
@@ -52,7 +52,7 @@
        <li *ngIf="lastPage > pageNum && firstPage <= lastPage - pageNum">
          <a>...</a>
        </li>
-       <li *ngIf="lastPage > pageNum && firstPage <= lastPage - pageNum" ng-click="sub(lastPage)" [class]="{active:item==page}">
+       <li *ngIf="lastPage > pageNum && firstPage <= lastPage - pageNum" (click)="sub(lastPage)" [class]="{active:item==page}">
          <a>{{lastPage}}</a>
        </li>
        <li [class]="{disabled:page==lastPage}">
