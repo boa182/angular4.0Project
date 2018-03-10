@@ -34,17 +34,20 @@ export class OrderFormComponent implements OnInit {
 
   pay(){
     this.uid =  sessionStorage.getItem("uid")||0;
-    this.http.get('connetGoods',
-        {uid:this.uid,type:1}
-    )
-    alert("付款成功");
-    this.router.navigateByUrl("order")
+
+    this.http.get('updateorder',{uid:this.uid}).then((res)=>{
+
+      alert("付款成功");
+    	this.router.navigateByUrl("order")
+    })
+
+    
   }
 
   delete(){
     this.uid =  sessionStorage.getItem("uid")||0;
 
-    this.http.get('connetGoods',
+    this.http.get('deletgoodsorder',
         {uid:this.uid,type:1}
     )
   }

@@ -20,7 +20,13 @@ export class OrderComponent implements OnInit {
 	ngOnInit() {
 		var uid = sessionStorage.getItem('uid')
 		this.http.get('getgoodsorder',{uid:uid}).then((res)=>{
-			console.log(res)
+			var Res = JSON.parse(JSON.stringify(res))
+			this.Data1 = Res
+		})
+	}
+	getAll(){
+		var uid = sessionStorage.getItem('uid')
+		this.http.get('getgoodsorder',{uid:uid}).then((res)=>{
 			var Res = JSON.parse(JSON.stringify(res))
 			this.Data1 = Res
 		})

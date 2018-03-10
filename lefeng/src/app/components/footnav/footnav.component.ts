@@ -10,7 +10,7 @@ export class FootnavComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-  	
+  
   }
 
 }
