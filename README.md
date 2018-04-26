@@ -332,3 +332,5 @@ declare var swiper:any;;
        select * frome t_student order by age asc；//升序，asc默认可以不写 <br />
 - 3-6)内连接查询（两张或以上的表连接起来查询需要的数据）
 	select * from car,goods where car.gid = goods.gid and car.uid = 0  <br />
+
+6.**公共组件不要放太多业务逻辑**
